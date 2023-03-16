@@ -58,7 +58,8 @@ blackpink_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/e/e7/Born_Pink_Digital.jpeg"
     }, 
 ]
-# blackpink_albums.map {|album| Album.create(album)}
+blackpink_albums.map {|album| Album.create(album)}
+puts 'Blackpink albums created'
 
 blackpink_songs = [
     {
@@ -137,7 +138,8 @@ blackpink_songs = [
         album_id: Album.find_by(name: "Born Pink").id
     }
 ]
-# blackpink_songs.map {|song| Song.create(song)}
+blackpink_songs.map {|song| Song.create(song)}
+puts "Created #{blackpink_songs.count}blackpink songs."
 
 blackpink_members = [
     {
@@ -755,14 +757,14 @@ fela_kuti = {
     artist_image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Bh74nZq1WvWEItrq5A7TUBU8-zrdV9I-lQ&usqp=CAU",
     user_id: User.find_by(username: "CASmooth").id
 }
-Artist.create(fela_kuti)
+# Artist.create(fela_kuti)
 
 fela_kuti_album = {
     name: "The Best Best of Fela Kuti",
     year_released: 1999,
     album_cover_url: "https://upload.wikimedia.org/wikipedia/en/f/f4/The_Best_Best_of_Fela_Kuti.jpg"
 }
-Album.create(fela_kuti_album)
+# Album.create(fela_kuti_album)
 
 fela_kuti_songs = [
     {
@@ -791,7 +793,7 @@ fela_kuti_songs = [
         album_id: Album.find_by(name: "The Best Best of Fela Kuti").id
     }
 ]
-fela_kuti_songs.map {|fela_kuti_song| Song.create(fela_kuti_song)}
+# fela_kuti_songs.map {|fela_kuti_song| Song.create(fela_kuti_song)}
 
 fela_kuti_member = {
     name: "Fela Kuti",
@@ -803,7 +805,43 @@ fela_kuti_artist_member = {
     artist_id: Artist.find_by(name: 'Fela Kuti').id,
     member_id: Member.find_by(name: 'Fela Kuti').id
 }
-ArtistMember.create(fela_kuti_artist_member)
+# ArtistMember.create(fela_kuti_artist_member)
 
-puts "Fela Kuti has been ressurected"
+prince_nico_mbarga = {
+    name: "Prince Nico Mbarga",
+    genre: "Afrobeat",
+    date_established: 1970,
+    interesting_fact: "He is renowned for his hit song \"Sweet Mother\", recorded with his band Rocafil Jazz, which has been described as the best-selling song in history by an African recording artist.  His biggest hit, 'Sweet Mother' was released in 1976 and sold 13 million copies",
+    artist_image_url: "https://www.myjoyonline.com/wp-content/uploads/2022/05/mbarga2-583x424.jpg",
+    user_id: User.find_by(username: "CASmooth").id
+}
+# Artist.create(prince_nico_mbarga)
+
+prince_nico_mbarga_album = {
+    name: "Sweet Mother",
+    year_released: 1976,
+    album_cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWnenqNiYDzzaNs1ZyE8XFpng5FG54K4T64Bs0QmkGD_HNmty6024eI5YOmgOnNCB69A0&usqp=CAU"
+}
+# Album.create(prince_nico_mbarga_album)
+
+sweet_mother_song = {
+    name: "Sweet Mother",
+    artist_id: Artist.find_by(name: "Prince Nico Mbarga").id,
+    album_id: Album.find_by(name: "Sweet Mother").id
+}
+# Song.create(sweet_mother_song)
+
+prince_nico_mbarga_member = {
+    name: "Prince Nico Mbarga",
+    image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzkITm9dIVSifRYnmLWi03eWVDmWyvEOdI2A&usqp=CAU"
+}
+# Member.create(prince_nico_mbarga_member)
+
+prince_nico_mbarga_artist_member = {
+    artist_id: Artist.find_by(name: "Prince Nico Mbarga").id,
+    member_id: Member.find_by(name: "Prince Nico Mbarga").id
+}
+# ArtistMember.create(prince_nico_mbarga_artist_member)
+
+puts "Sweet Mother I will never forget you"
 puts 'Seeding done'

@@ -1,10 +1,10 @@
 class ArtistsController < ApplicationController
-    before_action :authorize
+    # before_action :authorize
 
     def index
         # user = User.find_by(id: session[:user_id])
         # artists = user.artists.order(:name)
-        artist = Artist.all.order(:name)
+        artists = Artist.all.order(:name)
         render json: artists, status: :ok
     end
 
@@ -38,9 +38,9 @@ class ArtistsController < ApplicationController
 
     private
 
-    def authorize
-        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
-    end
+    # def authorize
+    #     return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+    # end
 
     def artist_params
         params.permit(:name, :genre, :date_established, :interesting_fact, :artist_image_url, :user_id)

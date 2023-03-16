@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-    before_action :authorize
+    # before_action :authorize
 
     def index
         songs = Song.all
@@ -30,9 +30,9 @@ class SongsController < ApplicationController
 
     private
 
-    def authorize
-        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
-    end
+    # def authorize
+    #     return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+    # end
     
     def song_params
         params.permit(:name, :artist_id, :album_id)

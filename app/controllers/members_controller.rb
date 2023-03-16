@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-    before_action: authorize
+    # before_action: authorize
 
     def index
         members = Member.all.order(:name)
@@ -29,14 +29,14 @@ class MembersController < ApplicationController
     def destroy
         member = Member.find_by(id: params[:id])
         member.destroy
-        head: :no_content
+        head::no_content
     end
 
     private
 
-    def authorize
-        return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
-    end
+    # def authorize
+    #     return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+    # end
     
     def member_params
         params.permit(:name, :image_url)
