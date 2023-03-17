@@ -7,7 +7,7 @@ class MemberSerializer < ActiveModel::Serializer
   end
 
   def user_id
-    artist=self.object.artists.first.user_id
+    self.object.artists.first.user_id
   end
 
 end
