@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 // import HomePage from "./HomePage";
 import DisplayArtists from "./DisplayArtists";
 import DisplayAlbums from "./DisplayAlbums";
-
+import DisplayMembers from "./DisplayMembers";
+import DisplaySongs from "./DisplaySongs";
 
 function App() {
   const [user, setUser] = useState([]);
@@ -24,11 +25,6 @@ function App() {
     .then(res => res.json())
     .then(data => {console.log(data)})
   }, []);  
-  useEffect(() => {
-    fetch("/members")
-    .then(res => res.json())
-    .then(data => {console.log(data)})
-  }, []);
 
   // if (!user) return <Login onLogin={setUser} />;
 
@@ -38,6 +34,8 @@ function App() {
         <DisplayArtist user={user} /> */}
         <DisplayArtists />
         <DisplayAlbums />
+        <DisplayMembers />
+        <DisplaySongs />
     </div>
   );
 }
