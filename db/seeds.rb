@@ -58,8 +58,7 @@ blackpink_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/e/e7/Born_Pink_Digital.jpeg"
     }, 
 ]
-blackpink_albums.map {|album| Album.create(album)}
-puts 'Blackpink albums created'
+# blackpink_albums.map {|album| Album.create(album)}
 
 blackpink_songs = [
     {
@@ -138,8 +137,7 @@ blackpink_songs = [
         album_id: Album.find_by(name: "Born Pink").id
     }
 ]
-blackpink_songs.map {|song| Song.create(song)}
-puts "Created #{blackpink_songs.count}blackpink songs."
+# blackpink_songs.map {|song| Song.create(song)}
 
 blackpink_members = [
     {
@@ -799,7 +797,8 @@ fela_kuti_member = {
     name: "Fela Kuti",
     image_url: "data:image/jpeg;base64,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"
 }
-Member.create(fela_kuti_member)
+# clear
+
 
 fela_kuti_artist_member = {
     artist_id: Artist.find_by(name: 'Fela Kuti').id,
@@ -811,7 +810,7 @@ prince_nico_mbarga = {
     name: "Prince Nico Mbarga",
     genre: "Afrobeat",
     date_established: 1970,
-    interesting_fact: "He is renowned for his hit song \"Sweet Mother\", recorded with his band Rocafil Jazz, which has been described as the best-selling song in history by an African recording artist.  His biggest hit, 'Sweet Mother' was released in 1976 and sold 13 million copies",
+    interesting_fact: "He is renowned for his hit song 'Sweet Mother', recorded with his band Rocafil Jazz, which has been described as the best-selling song in history by an African recording artist.  His biggest hit, 'Sweet Mother' was released in 1976 and sold 13 million copies",
     artist_image_url: "https://www.myjoyonline.com/wp-content/uploads/2022/05/mbarga2-583x424.jpg",
     user_id: User.find_by(username: "CASmooth").id
 }
@@ -843,5 +842,357 @@ prince_nico_mbarga_artist_member = {
 }
 # ArtistMember.create(prince_nico_mbarga_artist_member)
 
-puts "Sweet Mother I will never forget you"
+GG = {
+    name: "Girl's Generation",
+    genre: "K-pop",
+    date_established: 2007,
+    interesting_fact: "The group's Korean name is So-nyuh Shi-dae (Korean: 소녀시대; Hanja: 少女時代; RR: Sonyeo Sidae), from the Sino-Korean root meaning 'Generation of Girls'; they are also known as SoShi (소시) or SNSD, both of which are abbreviated forms of the group's Korean-language name.",
+    artist_image_url: "https://media.tenor.com/uHAOszetpkMAAAAC/snsd-girls-generation.gif",
+    user_id: User.find_by(username: "CASmooth").id
+}
+# Artist.create(GG)
+
+gg_album = [
+    {
+        name: "The Boys",
+        year_released: 2011,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/7/70/The_Boys_%28Girls%27_Generation_album_-_cover_art%29.jpg"
+    }
+]
+# Album.create(gg_album)
+
+gg_song = [
+    {
+        name: "The Boys",
+        artist_id: Artist.find_by(name: "Girl's Generation").id,
+        album_id: Album.find_by(name: "The Boys").id
+    }
+]
+# Song.create(gg_song)
+
+gg_members = [
+    {
+        name: "Taeyeon",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Kim_Tae-yeon_at_Incheon_Airport_on_August_29%2C_2019.png/250px-Kim_Tae-yeon_at_Incheon_Airport_on_August_29%2C_2019.png"
+    },
+    {
+        name: "Sunny",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Sunny_at_Budweiser_Project_B_Party_on_April_2018_02.png/250px-Sunny_at_Budweiser_Project_B_Party_on_April_2018_02.png"
+    },
+    {
+        name: "Tiffany",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Tiffany_Young_at_Incheon_Airport_on_July_29%2C_2019_%282%29.jpg/220px-Tiffany_Young_at_Incheon_Airport_on_July_29%2C_2019_%282%29.jpg"
+    },
+    {
+        name: "Hyoyeon",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/20220323_%EC%86%8C%EB%85%80%EC%8B%9C%EB%8C%80_%ED%9A%A8%EC%97%B0.jpg/220px-20220323_%EC%86%8C%EB%85%80%EC%8B%9C%EB%8C%80_%ED%9A%A8%EC%97%B0.jpg"
+    },
+    {
+        name: "Yuri",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Yuri_2022.jpg/250px-Yuri_2022.jpg"
+    },
+    {
+        name: "Sooyoung",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Choi_Soo_Young_at_Music_Bank_in_August_2022_07.png/250px-Choi_Soo_Young_at_Music_Bank_in_August_2022_07.png"
+    },
+    {
+        name: "Yoona",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/%ED%88%AC%EB%AA%85%ED%95%9C_%ED%94%BC%EB%B6%80%EB%A5%BC_%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94_%EC%9C%A4%EC%95%84%28YOONA%29%EC%9D%98_%ED%94%BC%EB%B6%80_%EA%B4%80%EB%A6%AC_%EB%B9%84%EA%B2%B0%EC%9D%80_%281%29.jpg/250px-%ED%88%AC%EB%AA%85%ED%95%9C_%ED%94%BC%EB%B6%80%EB%A5%BC_%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94_%EC%9C%A4%EC%95%84%28YOONA%29%EC%9D%98_%ED%94%BC%EB%B6%80_%EA%B4%80%EB%A6%AC_%EB%B9%84%EA%B2%B0%EC%9D%80_%281%29.jpg"
+    },
+    {
+        name: "Seohyun",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Seohyun_2022_KBS_Drama_Awards_1.jpg/220px-Seohyun_2022_KBS_Drama_Awards_1.jpg"
+    }
+]
+
+# gg_members.map do |member| 
+#     new_member=Member.create(member)
+#     Artist.find_by(name: "Girl's Generation").members << new_member
+# end
+
+bts = {
+    name: "BTS",
+    genre: "K-pop",
+    date_established: 2013,
+    interesting_fact: "BTS stands for the Korean phrase Bangtan Sonyeondan (Korean: 방탄소년단; Hanja: 防彈少年團), which translates literally to 'Bulletproof Boy Scouts'",
+    artist_image_url: "https://media.tenor.com/0aSvydSWjIgAAAAd/bts.gif",
+    user_id: User.find_by(username: "CASmooth").id
+}
+# Artist.create(bts)
+
+bts_albums = [
+    {
+        name: "Be",
+        year_released: 2020,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/a/a2/BTS_-_Be_Cover.png"
+    },
+    {
+        name: "Map of the Soul",
+        year_released: 2020,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/2/21/BTS_-_Map_of_the_Soul_7.png"
+    }]
+# bts_albums.map { |album| Album.create(album) }
+
+bts_songs = [
+    {
+        name: "Life Goes On",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Be").id
+    },
+    {
+        name: "Blue & Grey",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Be").id
+    },
+    {
+        name: "Dynamite",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Be").id
+    },
+    {
+        name: "Intro: Persona",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Map of the Soul").id
+    },
+    {
+        name: "Boy with Luv",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Map of the Soul").id
+    },    
+    {
+        name: "Make It Right",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Map of the Soul").id
+    },
+    {
+        name: "Dionysus",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Map of the Soul").id
+    },
+    {
+        name: "Black Swan",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Map of the Soul").id
+    },
+    {
+        name: "On",
+        artist_id: Artist.find_by(name: "BTS").id,
+        album_id: Album.find_by(name: "Map of the Soul").id
+    }
+]
+# bts_songs.map { |song| Song.create(song) }
+
+bts_members = [
+    {
+        name: "Jin",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/Jin.jpg"
+    },
+    {
+        name: "Suga",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/Suga.jpg"
+    },
+    {
+        name: "J-Hope",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/J-Hope.jpg"
+    },
+    {
+        name: "RM",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/RM.jpg"
+    },
+    {
+        name: "Jimin",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/Jimin.jpg"
+    },
+    {
+        name: "V",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/V.jpg"
+    },   
+    {
+        name: "Jungkook",
+        image_url: "https://kprofiles.com/wp-content/uploads/2016/04/JK.jpg"
+    }
+]
+
+# bts_members.map do |member| 
+#     new_member = Member.create(member) 
+#     Artist.find_by(name: "BTS").members << new_member
+# end
+
+stray_kids = {
+    name: "Stray Kids",
+    genre: "K-pop",
+    date_established: 2017,
+    interesting_fact: "The group's name 'Stray Kids' was not defined by JYP Entertainment but conceptualized by the members themselves. It originally referred to a lost child who wants to chase their dreams and later evolved to represent the idea of finding a way together out of the ordinary.",
+    artist_image_url: "https://media.tenor.com/o3iO38lDBIkAAAAC/stray-kids-get-cool.gif",
+    user_id: User.find_by(username: "CASmooth").id
+}
+# Artist.create(stray_kids)
+
+stray_kids_albums = [
+    {
+        name: "Noeasy",
+        year_released: 2021,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/59/Stray_Kids_-_Noeasy_%28Digital%29.jpeg"
+    },
+    {
+        name: "Oddinary",
+        year_released: 2022,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/4/45/Stray_Kids_-_Oddinary.jpeg"
+    },
+    {
+        name: "Maxident",
+        year_released: 2022,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/d/de/Stray_Kids_-_Maxident.png"
+    }
+]
+# stray_kids_albums.map { |album| Album.create(album) }
+
+stray_kids_songs = [
+    {
+        name: "Thunderous",
+        artist_id: Artist.find_by(name: "Stray Kids").id,
+        album_id: Album.find_by(name: "Noeasy").id
+    },
+    {
+        name: "Mixtape: Oh",
+        artist_id: Artist.find_by(name: "Stray Kids").id,
+        album_id: Album.find_by(name: "Noeasy").id
+    },
+    {
+        name: "Wolfgang ",
+        artist_id: Artist.find_by(name: "Stray Kids").id,
+        album_id: Album.find_by(name: "Noeasy").id
+    },
+    {
+        name: "Maniac",
+        artist_id: Artist.find_by(name: "Stray Kids").id,
+        album_id: Album.find_by(name: "Oddinary").id
+    },
+    {
+        name: "Case 143",
+        artist_id: Artist.find_by(name: "Stray Kids").id,
+        album_id: Album.find_by(name: "Maxident").id
+    },
+    {
+        name: "Circus",
+        artist_id: Artist.find_by(name: "Stray Kids").id,
+        album_id: Album.find_by(name: "Maxident").id
+    }
+]
+# stray_kids_songs.map { |song| Song.create(song) }
+
+stray_kids_members = [
+    {
+    name: "Bang Chan",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/CA989A20-6696-430E-943C-5722C6A9B8BB-533x800.jpeg"
+    },
+    {
+    name: "Lee Know",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/09D65043-99A5-4725-80D7-2B8D9B8F3644-533x800.jpeg"
+    },
+    {
+    name: "Changbin",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/3934C648-BE8F-4F9B-B194-BB69AB2EB36F-533x800.jpeg"
+    },
+    {
+    name: "Hyunjin",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/D9D8361C-ED02-4EF7-BF64-BADB5AF7D0D0-533x800.jpeg"
+    },
+    {
+    name: "Han",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/3114B979-DC5A-445A-AFA4-13FEB900D433-533x800.jpeg"
+    },
+    {
+    name: "Felix",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/7E35A9C2-7652-40F8-A5FC-E00C4B36F3CF-533x800.jpeg"
+    },
+    {
+    name: "Seungmin",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/09DCA51D-5324-469E-A771-F599B50CA28F-533x800.jpeg"
+    },
+    {
+    name: "I.N.",
+    image_url: "https://kprofiles.com/wp-content/uploads/2017/11/F0558F0F-3337-4EDB-BC97-879118A20E2E-533x800.jpeg"
+    }
+]
+
+# stray_kids_members.map do |member| 
+#     new_member = Member.create(member) 
+#     Artist.find_by(name: "Stray Kids").members << new_member
+# end
+
+wonder_girls = {
+    name: "Wonder Girls",
+    genre: "K-pop",
+    date_established: 2007,
+    interesting_fact: "Wonder Girls are also known as 'South Korea's Retro Queens,' as their music has been noted to contain elements from the 1960s through 80s.",
+    artist_image_url: "https://media.tenor.com/K70Xa0551dgAAAAC/wonder-girls-wonder.gif",
+    user_id: User.find_by(username: "CASmooth").id
+}
+# Artist.create(wonder_girls)
+
+wonder_girls_albums = [
+    {
+        name: "So Hot",
+        year_released: 2008,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/53/So_Hot_%28Wonder_Girls_album_-_cover_art%29.jpg"
+    },
+    {
+        name: "The Wonder Years: Trilogy",
+        year_released: 2008,
+        album_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/53/WGNobody.jpg"
+    }
+]
+# wonder_girls_albums.map {|album| Album.create(album)}
+
+wonder_girls_songs = [
+    {
+        name: "So Hot",
+        artist_id: Artist.find_by(name: "Wonder Girls").id,
+        album_id: Album.find_by(name: "So Hot").id
+    },
+    {
+        name: "Nobody",
+        artist_id: Artist.find_by(name: "Wonder Girls").id,
+        album_id: Album.find_by(name: "The Wonder Years: Trilogy").id
+    },
+]
+# wonder_girls_songs.map {|song| Song.create(song)}
+
+wonder_girls_members = [
+    {
+        name: "Yubin",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/190402_%EC%9C%A0%EB%B9%88.jpg/250px-190402_%EC%9C%A0%EB%B9%88.jpg"
+    },
+    {
+        name: "Yeeun",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Yenny_at_a_fanmeet_in_July_2016_02.jpg/220px-Yenny_at_a_fanmeet_in_July_2016_02.jpg"
+    },
+    {
+        name: "Sunye",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sunye.jpg/220px-Sunye.jpg"
+    },
+    {
+        name: "Sunmi",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Lee_Sunmi_Marie_Claire_Korea_2_%28derived%29.jpg/220px-Lee_Sunmi_Marie_Claire_Korea_2_%28derived%29.jpg"
+    },
+    {
+        name: "Hyuna",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Hyuna_at_fansigning_on_July_21%2C_2018.jpg/220px-Hyuna_at_fansigning_on_July_21%2C_2018.jpg"
+    },
+    {
+        name: "Sohee",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/20220519%E2%80%94Ahn_So-hee%2C_Interview%2C_Marie_Claire_Korea_%2800m32s%29.jpg/220px-20220519%E2%80%94Ahn_So-hee%2C_Interview%2C_Marie_Claire_Korea_%2800m32s%29.jpg"
+    },
+    {
+        name: "Hyerim",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Woo_Hye-rim_at_a_fanmeet_in_July_2016_03.jpg/220px-Woo_Hye-rim_at_a_fanmeet_in_July_2016_03.jpg"
+    }
+]
+
+# wonder_girls_members.map do |member| 
+#     new_member = Member.create(member) 
+#     Artist.find_by(name: "Wonder Girls").members << new_member
+# end
+
 puts 'Seeding done'
