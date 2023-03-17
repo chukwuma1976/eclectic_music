@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 // import Login from "./Login";
 // import HomePage from "./HomePage";
-import ArtistDisplay from "./ArtistDisplay";
+import DisplayArtist from "./DisplayArtist";
 
 
 function App() {
@@ -37,8 +37,8 @@ function App() {
   return (
     <div>
         {/* <HomePage user={user} />
-        <ArtistDisplay user={user} /> */}
-        <ArtistDisplay />
+        <DisplayArtist user={user} /> */}
+        <DisplayArtist />
     </div>
   );
 }
