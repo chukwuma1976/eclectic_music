@@ -1,26 +1,23 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Login from "./Login";
-import HomePage from "./HomePage";
+// import Login from "./Login";
+// import HomePage from "./HomePage";
+import ArtistDisplay from "./ArtistDisplay";
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
 
   // useEffect(() => {
   //   // auto-login
   //   fetch("/me").then((r) => {
   //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
+  //       r.json().then((user) => {console.log(user);
+  //         setUser(user)});
   //     }
   //   });
   // }, []);
 
-  useEffect(() => {
-    fetch("/artists")
-    .then(res => res.json())
-    .then(data => {console.log(data)})
-  }, []);
   useEffect(() => {
     fetch("/albums")
     .then(res => res.json())
@@ -39,8 +36,9 @@ function App() {
 
   return (
     <div>
-        {/* <HomePage user={user} /> */}
-        <HomePage />
+        {/* <HomePage user={user} />
+        <ArtistDisplay user={user} /> */}
+        <ArtistDisplay />
     </div>
   );
 }
