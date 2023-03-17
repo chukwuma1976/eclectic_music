@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 // import Login from "./Login";
 // import HomePage from "./HomePage";
-import DisplayArtist from "./DisplayArtist";
+import DisplayArtists from "./DisplayArtists";
+import DisplayAlbums from "./DisplayAlbums";
 
 
 function App() {
@@ -19,14 +20,11 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    fetch("/albums")
-    .then(res => res.json())
-    .then(data => {console.log(data)})
-  }, []);  useEffect(() => {
     fetch("/songs")
     .then(res => res.json())
     .then(data => {console.log(data)})
-  }, []);  useEffect(() => {
+  }, []);  
+  useEffect(() => {
     fetch("/members")
     .then(res => res.json())
     .then(data => {console.log(data)})
@@ -38,7 +36,8 @@ function App() {
     <div>
         {/* <HomePage user={user} />
         <DisplayArtist user={user} /> */}
-        <DisplayArtist />
+        <DisplayArtists />
+        <DisplayAlbums />
     </div>
   );
 }
