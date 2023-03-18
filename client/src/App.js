@@ -1,14 +1,17 @@
 import React from "react";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import Login from "./Login";
-// import HomePage from "./HomePage";
+
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./HomePage";
+import NavBar from "./NavBar";
 import DisplayArtists from "./DisplayArtists";
 import DisplayAlbums from "./DisplayAlbums";
 import DisplayMembers from "./DisplayMembers";
 import DisplaySongs from "./DisplaySongs";
 
 function App() {
-  const [user, setUser] = useState([]);
+  // const [user, setUser] = useState([]);
 
   // useEffect(() => {
   //   // auto-login
@@ -24,12 +27,14 @@ function App() {
 
   return (
     <div>
-        {/* <HomePage user={user} />
-        <DisplayArtist user={user} /> */}
-        <DisplayArtists />
-        <DisplayAlbums />
-        <DisplayMembers />
-        <DisplaySongs />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/artists" element={<DisplayArtists />} />
+        <Route path="/members" element={<DisplayMembers />} />
+        <Route path="/albums" element={<DisplayAlbums />} />
+        <Route path="/songs" element={<DisplaySongs />} />
+      </Routes>
     </div>
   );
 }

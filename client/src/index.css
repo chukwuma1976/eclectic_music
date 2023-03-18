@@ -16,6 +16,7 @@ code {
   width: 400px;
   height: auto;
   border: 2px solid blue;
+  border-radius: 1em;
   padding: 10px;
   margin: 5px;
   background: lightblue;
@@ -26,6 +27,7 @@ code {
   width: auto;
   height: auto;
   border: 2px solid grey;
+  border-radius: 1em;
   padding: 10px;
   margin: 5px;
   background: lightgray;
@@ -50,7 +52,7 @@ code {
   margin-right: auto;
   background: yellow;
 }
-/* 
+
 .slide {
   width: 700px;
   height: 350px;
@@ -67,7 +69,7 @@ code {
   margin-right: auto;
 }
 
-h1, h3 {
+h1 {
   text-align: center;
 }
 
@@ -77,7 +79,7 @@ h1, h3 {
 
 ul {
   font-size: 14px;
-} */
+}
 
 .navbar {
   display: inline-block;
@@ -109,11 +111,11 @@ ul {
   font-size: 20px;
 }
 
-/* .title {
+.title {
   color: darkslategrey
 }
 
 .home-page {
   background: whitesmoke;
   text-align: center;
-} */
+}
