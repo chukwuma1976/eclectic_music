@@ -18,13 +18,7 @@ function App() {
   //         setUser(user)});
   //     }
   //   });
-  // }, []);
-
-  useEffect(() => {
-    fetch("/songs")
-    .then(res => res.json())
-    .then(data => {console.log(data)})
-  }, []);  
+  // }, []); 
 
   // if (!user) return <Login onLogin={setUser} />;
 
