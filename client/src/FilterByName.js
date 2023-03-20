@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FilterByName({handleFilterByName}) {
+function FilterByName({category, handleFilterByName}) {
     let name
     // const [name, setName] = useState('')
     function handleChange(event) {
@@ -9,8 +9,10 @@ function FilterByName({handleFilterByName}) {
 
     return (
         <div>
-            <h3>Filter by name</h3>
-            <input type="text" value={name} onChange={handleChange} />
+            <p>
+                Filter by {category} {"  "}
+                <input type="text" placeholder="please enter the category" value={name} onChange={handleChange} />
+            </p>
         </div>
   )
 }

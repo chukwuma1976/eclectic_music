@@ -5,6 +5,9 @@ import FilterByName from './FilterByName';
 function DisplayAlbums() {
     const [albums, setAlbums] = useState([]);
     const [name, setName] = useState('')
+    const [artist, setArtist] = useState('')
+    const [genre, setGenre] = useState("")
+
     useEffect(() => {
         fetch("/albums")
         .then(res => res.json())
@@ -30,12 +33,16 @@ function DisplayAlbums() {
         setAlbums(albums.filter(album=>album.id !== id))
     }
 
-    const filteredAlbums = albums.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));
+    const filteredByGenre = albums.filter(album=>album.genre.toLowerCase().includes(genre.toLowerCase()))
+    const filteredByArtist = filteredByGenre.filter(album=>album.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
+    const filteredAlbums = filteredByArtist.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));
 
     return (
         <div>
             <h1>Albums</h1>
-            <FilterByName handleFilterByName={setName}/>
+            <FilterByName category={"name"}handleFilterByName={setName}/>
+            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
             {filteredAlbums.map(album => 
                 <AlbumDisplay key={album.id} album={album} onUpdate={onUpdate} addSongToAlbum={addSongToAlbum} onDelete={onDelete} />)}
         </div>

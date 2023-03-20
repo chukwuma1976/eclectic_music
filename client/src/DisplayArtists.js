@@ -7,6 +7,7 @@ function DisplayArtists() {
     const [artists, setArtists] = useState([])
     const [name, setName] = useState('')
     const [showAdd, setShowAdd] = useState(false)
+    const [genre, setGenre] = useState("")
 
     useEffect(() => {
         fetch("/artists")
@@ -34,12 +35,14 @@ function DisplayArtists() {
     // }
     // filterbyUser(user)
 
-    const filteredArtists=artists.filter(artist => artist.name.toLowerCase().includes(name.toLowerCase()))
+    const filteredByGenre = artists.filter(artist => artist.genre.toLowerCase().includes(genre.toLowerCase()))
+    const filteredArtists = filteredByGenre.filter(artist => artist.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Artists</h1>
-            <FilterByName handleFilterByName={setName}/>
+            <FilterByName category={"name"} handleFilterByName={setName}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
             <button onClick={() => setShowAdd(!showAdd)}>{!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}</button>
             {!showAdd? null:  <AddArtist artists={artists} setArtists={setArtists}/>}
             <br/>
