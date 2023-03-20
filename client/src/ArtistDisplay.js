@@ -5,52 +5,29 @@ import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
 import ArtistMemberDisplay from './ArtistMemberDisplay';
 
-function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtist, onDelete}) {
+function ArtistDisplay({artist, updateArtist, onDelete}) {
     const {id, name, genre, date_established, interesting_fact, 
         artist_image_url, albums, members, number_of_members} = artist
     const [displayProfile, setDisplayProfile] = useState(false)
     const [displayAddAlbum, setDisplayAddAlbum] = useState(false)
     const [artistAlbums, setArtistAlbums] = useState(albums)
     const [displayAddMember, setDisplayAddMember] = useState(false)
-    const [artistMembers, setArtistMembers] = useState(members)
+    const [artistMembers, setArtistMembers] = useState([...members])
     const [displayUpdate, setDisplayUpdate] = useState(false)
     const [wantToDelete, setWantToDelete] = useState(false)
 
     function addAlbum(album){
         setArtistAlbums([...artistAlbums, album])
-        const newAlbumList = [...albums, album]
-        addAlbumToArtist(id, newAlbumList)
-        // addBlankSongToAlbum(album.id)
+        const newAlbumList = [...artistAlbums, album]
+        const updatedArtist = {...artist, albums: newAlbumList}
+        updateArtist(updatedArtist)
     }
-    // function addBlankSongToAlbum(album_id){
-    //     fetch("/songs", {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify({
-    //             name: "please name this song", 
-    //             artist_id: id, 
-    //             album_id: album_id
-    //         })
-    //     }).then(res=>res.json())
-    //     .then(data=>console.log(data))
-    // }
 
-    function addMember(id, member){
+    function addMember(member){
         setArtistMembers([...artistMembers, member])
-        addMemberToArtist(id, member)
-        linkToArtist(member.id)
-    }
-
-    function linkToArtist(member_id){
-        fetch("/artist_members", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                artist_id: id, 
-                member_id: member_id
-            })
-        }).then(res=>res.json())
-        .then(data=>console.log(data))
+        const newMembers = [...artistMembers, member]
+        const updatedArtist = {...artist, members: newMembers, number_of_members: newMembers.length}
+        updateArtist(updatedArtist)
     }
 
     function deleteArtist(id){
@@ -82,7 +59,7 @@ function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtis
             <button onClick={()=>setDisplayAddMember(!displayAddMember)}>
                 {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
             </button>
-            {!displayAddMember ? null : <AddMember setMembers={addMember}/>}
+            {!displayAddMember ? null : <AddMember setMembers={addMember} artistId={id} />}
             <br/>
             <button onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this artist?" : "Click if you want to keep this artist"}               

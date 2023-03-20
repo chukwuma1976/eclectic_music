@@ -29,6 +29,6 @@ class ArtistSerializer < ActiveModel::Serializer
     self.object.albums.uniq.count
   end
 
-  has_many :members, serializer: ArtistMemberSerializer
+  has_many :members, serializer: CustomMemberSerializer
   
 end

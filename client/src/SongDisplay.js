@@ -26,7 +26,7 @@ function SongDisplay({song, onUpdate, onDelete}) {
         <button onClick={()=>setWantToDelete(!wantToDelete)}>
           {!wantToDelete ? "Do you want to delete this song?" : "Click if you want to keep this song"}               
         </button>
-        {!wantToDelete ? null : <button onClick={()=>deleteSong(id)}>Delete Artist</button>}
+        {!wantToDelete ? null : <button onClick={()=>deleteSong(id)}>Delete Song</button>}
         <br/>
     </div>
   )

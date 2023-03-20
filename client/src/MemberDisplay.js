@@ -33,6 +33,7 @@ function MemberDisplay({member, onUpdate, onDelete}) {
                 </button>
                 <br/>
                 {!displayDelete ? null : <button onClick={()=>deleteMember(id)}>Click to delete</button>}
+                <br/>
                 <img className="member-pic" src={image_url} alt={name}/>
             </section>)}
         </div>

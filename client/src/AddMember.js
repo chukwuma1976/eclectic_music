@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function AddMember({setMembers}) {
+function AddMember({setMembers, artistId}) {
     const [newMember, setNewMember] = useState({
         name: "",
         image_url: ""
@@ -14,14 +14,29 @@ function AddMember({setMembers}) {
         event.preventDefault()
         console.log(newMember)
 
-        // fetch("/members", {
-        //         method: "POST",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newMember)
-        //     })
-        //     .then(res=>res.json())
-        //     .then(member=>setMembers(member))     
+        fetch("/members", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newMember)
+            })
+            .then(res=>res.json())
+            .then(member=>{
+                setMembers(member)
+                linkToArtist(member.id)
+            })  
     }
+    function linkToArtist(memberId){
+        fetch("/artist_members", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                artist_id: artistId, 
+                member_id: memberId
+            })
+        }).then(res=>res.json())
+        .then(data=>console.log(data))
+    }
+
     return (
         <div>
             <h3>Add a Member by entering the information below</h3>

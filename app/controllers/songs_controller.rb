@@ -2,7 +2,7 @@ class SongsController < ApplicationController
     # before_action :authorize
 
     def index
-        songs = Song.all
+        songs = Song.all.order(:name)
         render json: songs, status: :ok
     end
 

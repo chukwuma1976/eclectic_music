@@ -5,19 +5,19 @@ function AddSong({albumId, artistId, setSongs}) {
     const {name} = newSong
 
     function handleChange(event){
-        setNewSong(newSong=>({...newSong, [event.target.name]:event.target.value}))
+        setNewSong(newSong=>({...newSong, name: event.target.value}))
     }
     function handleSubmit(event){
         event.preventDefault()
         console.log(newSong)
 
-        // fetch("/songs", {
-        //         method: "POST",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newSong)
-        //     })
-        //     .then(res=>res.json())
-        //     .then(song=>setSongs(song))     
+        fetch("/songs", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newSong)
+            })
+            .then(res=>res.json())
+            .then(song=>setSongs(song))     
     }
     return (
         <div>

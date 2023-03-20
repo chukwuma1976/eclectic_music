@@ -12,13 +12,9 @@ function DisplayAlbums() {
       }, []);  
 
     function addSongToAlbum(id, songList){
-        console.log(songList)
-        const albumsWithNewSong= albums.map(album => {
-            if (album.id === id){
-                album.songs = [...songList]
-            } else return album
-        })   
-        setAlbums(albumsWithNewSong);
+        const updatedAlbum = albums.find(album=>album.id === id)
+        updatedAlbum.songs = songList
+        onUpdate(updatedAlbum)
     }
     function onUpdate(updatedAlbum){
         console.log(updatedAlbum)
