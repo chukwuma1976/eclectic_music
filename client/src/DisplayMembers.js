@@ -21,13 +21,17 @@ function DisplayMembers() {
         setMembers(updatedMembers)
     }
 
+    function onDelete(id){
+        setMembers(members.filter(member => member.id !== id))
+    }
+
     const filteredMembers = members.filter(member => member.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Members</h1>
             <FilterByName handleFilterByName={setName} />
-            {filteredMembers.map(member => <MemberDisplay key={member.id} member={member} onUpdate={onUpdate} />)}
+            {filteredMembers.map(member => <MemberDisplay key={member.id} member={member} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )
 }

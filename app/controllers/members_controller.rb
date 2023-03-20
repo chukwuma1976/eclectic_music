@@ -29,7 +29,7 @@ class MembersController < ApplicationController
     def destroy
         member = Member.find_by(id: params[:id])
         member.destroy
-        head::no_content
+        head :no_content
     end
 
     private

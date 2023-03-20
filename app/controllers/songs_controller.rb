@@ -22,7 +22,7 @@ class SongsController < ApplicationController
         render json: song, status: :ok
     end
 
-    def delete
+    def destroy
         song = Song.find_by(id: params[:id])
         song.destroy
         render json: {}, status: :no_content

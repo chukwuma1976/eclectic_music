@@ -11,13 +11,13 @@ function UpdateSong({id, song, onUpdate}) {
         event.preventDefault()
         console.log(newSong)
 
-        // fetch("/songs/id", {
-        //         method: "PATCH",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newSong)
-        //     })
-        //     .then(res=>res.json())
-        //     .then(song=>onUpdate(song))     
+        fetch(`/songs/${id}`, {
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newSong)
+            })
+            .then(res=>res.json())
+            .then(song=>onUpdate(song))     
     }
     return (
         <div>

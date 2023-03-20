@@ -54,7 +54,7 @@ function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtis
     }
 
     function deleteArtist(id){
-        fetch(`artists/${id}`, {
+        fetch(`/artists/${id}`, {
             method: "DELETE"
         })
         onDelete(id)

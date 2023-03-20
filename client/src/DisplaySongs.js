@@ -21,13 +21,17 @@ function DisplaySongs() {
         setSongs(updatedSongs)
     }
 
+    function onDelete(id){
+        setSongs(songs.filter(song => song.id !== id))
+    }
+
     const filteredSongs = songs.filter(song => song.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Songs</h1>
             <FilterByName handleFilterByName={setName} />
-            {filteredSongs.map(song => <SongDisplay key={song.id} song={song} onUpdate={onUpdate} />)}
+            {filteredSongs.map(song => <SongDisplay key={song.id} song={song} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )
 }

@@ -14,13 +14,13 @@ function UpdateMember({id, member, onUpdate}) {
         event.preventDefault()
         console.log(newMember)
 
-        // fetch("/members/id", {
-        //         method: "PATCH",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newMember)
-        //     })
-        //     .then(res=>res.json())
-        //     .then(member=>onUpdate(member))     
+        fetch(`/members/${id}`, {
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newMember)
+            })
+            .then(res=>res.json())
+            .then(member=>onUpdate(member))     
     }
     return (
         <div>

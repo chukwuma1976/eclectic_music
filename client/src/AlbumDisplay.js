@@ -19,7 +19,7 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
 
     function deleteAlbum(id){
         console.log(id)
-        fetch(`albums/${id}`, {
+        fetch(`/albums/${id}`, {
             method: "DELETE"
         })
         onDelete(id)
