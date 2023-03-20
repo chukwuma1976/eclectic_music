@@ -15,13 +15,13 @@ function UpdateAlbum({id, album, onUpdate}) {
         event.preventDefault()
         console.log(newAlbum)
 
-        // fetch("/albums/id", {
-        //         method: "PATCH",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newAlbum)
-        //     })
-        //     .then(res=>res.json())
-        //     .then(album=>onUpdate(album))     
+        fetch(`/albums/${id}`, {
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newAlbum)
+            })
+            .then(res=>res.json())
+            .then(album=>onUpdate(album))     
     }
     return (
         <div className="add_body_part">

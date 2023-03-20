@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import AddAlbum from './AddAlbum';
 import AddMember from './AddMember';
-import UpdateArtist from './AddArtist';
+import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
 import ArtistMemberDisplay from './ArtistMemberDisplay';
 
@@ -20,20 +20,20 @@ function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtis
         setArtistAlbums([...artistAlbums, album])
         const newAlbumList = [...albums, album]
         addAlbumToArtist(id, newAlbumList)
-        addBlankSongToAlbum(album.id)
+        // addBlankSongToAlbum(album.id)
     }
-    function addBlankSongToAlbum(album_id){
-        fetch("/songs", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                name: "please name this song", 
-                artist_id: id, 
-                album_id: album_id
-            })
-        }).then(res=>res.json())
-        .then(data=>console.log(data))
-    }
+    // function addBlankSongToAlbum(album_id){
+    //     fetch("/songs", {
+    //         method: "POST",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify({
+    //             name: "please name this song", 
+    //             artist_id: id, 
+    //             album_id: album_id
+    //         })
+    //     }).then(res=>res.json())
+    //     .then(data=>console.log(data))
+    // }
 
     function addMember(id, member){
         setArtistMembers([...artistMembers, member])
@@ -54,10 +54,10 @@ function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtis
     }
 
     function deleteArtist(id){
-        // fetch('artists/id', {
-        //     method: "DELETE"
-        // }).then(res=>res.json())
-        // .then(()=>onDelete(id))
+        fetch(`artists/${id}`, {
+            method: "DELETE"
+        })
+        onDelete(id)
     }
 
     return (
@@ -77,7 +77,7 @@ function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtis
             <button onClick={()=>setDisplayAddAlbum(!displayAddAlbum)}>
                 {!displayAddAlbum ? "Click to add an album" : "Click to hide form to add album"}
             </button>
-            {!displayAddAlbum ? null : <AddAlbum setAlbums={addAlbum}/>}
+            {!displayAddAlbum ? null : <AddAlbum setAlbums={addAlbum} artist_id={id}/>}
             <br/>
             <button onClick={()=>setDisplayAddMember(!displayAddMember)}>
                 {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
@@ -87,7 +87,7 @@ function ArtistDisplay({artist, updateArtist, addAlbumToArtist, addMemberToArtis
             <button onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this artist?" : "Click if you want to keep this artist"}               
             </button>
-            {!wantToDelete ? null : <button onClick={deleteArtist(id)}>Delete Artist</button>}
+            {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}
             <br/>
             {!displayProfile ? null : 
             (<section>

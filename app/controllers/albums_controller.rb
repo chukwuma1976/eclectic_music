@@ -29,8 +29,12 @@ class AlbumsController < ApplicationController
 
     def destroy
         album = Album.find_by(id: params[:id])
-        album.destroy
-        render json: {}, status: :no_content
+        if album
+            album.destroy
+            head :no_content
+        else
+            render json: {errors: ["Album not found"]}, status: :no_content
+        end
     end
 
     private

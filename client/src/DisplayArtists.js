@@ -14,6 +14,16 @@ function DisplayArtists() {
         .then(artists => {setArtists(artists)})
       }, []);
 
+    function updateArtist(updatedArtist){
+        console.log(updatedArtist, updatedArtist.id)
+        const updatedArtists = artists.map(artist => {
+            if (artist.id===updatedArtist.id){
+                return updatedArtist
+            } else return artist
+        })
+        setArtists(updatedArtists)
+    }
+
     function addAlbumToArtist(id, albumList){
         console.log(albumList)
         const artistsWithNewAlbum= artists.map(artist => {
@@ -35,8 +45,7 @@ function DisplayArtists() {
     }
 
     function onDelete(id){
-        const deletedArtist = artists.filter(artist => artist.id === id)
-        setArtists(deletedArtist);
+        setArtists(artists.filter(artist => artist.id !== id));
     }
 
     // function filterbyUser(user){
@@ -57,7 +66,7 @@ function DisplayArtists() {
                 <ArtistDisplay 
                     key={artist.id} 
                     artist={artist} 
-                    updateArtist={setArtists}
+                    updateArtist={updateArtist}
                     addAlbumToArtist={addAlbumToArtist} 
                     addMemberToArtist={addMemberToArtist}
                     onDelete={onDelete}

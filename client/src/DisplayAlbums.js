@@ -24,10 +24,14 @@ function DisplayAlbums() {
         console.log(updatedAlbum)
         const albumWithUpdate = albums.map(album => {
             if (album.id === updatedAlbum.id) {
-                album = updatedAlbum
+                return updatedAlbum
             } else return album
         })
         setAlbums(albumWithUpdate)
+    }
+
+    function onDelete(id){
+        setAlbums(albums.filter(album=>album.id !== id))
     }
 
     const filteredAlbums = albums.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));
@@ -37,7 +41,7 @@ function DisplayAlbums() {
             <h1>Albums</h1>
             <FilterByName handleFilterByName={setName}/>
             {filteredAlbums.map(album => 
-                <AlbumDisplay key={album.id} album={album} onUpdate={onUpdate} addSongToAlbum={addSongToAlbum}/>)}
+                <AlbumDisplay key={album.id} album={album} onUpdate={onUpdate} addSongToAlbum={addSongToAlbum} onDelete={onDelete} />)}
         </div>
     )
 }

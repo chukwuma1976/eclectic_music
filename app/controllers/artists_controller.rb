@@ -17,7 +17,7 @@ class ArtistsController < ApplicationController
         # user = User.find_by(id: session[:user_id])
         # artist = User.artists.create(artist_params)
         artist = Artist.create(artist_params)
-        if recipe.valid?
+        if artist.valid?
             render json: artist, status: :created
         else
             render json: {errors: artist.errors.full_messages}, status: :unprocessable_entity
@@ -31,9 +31,13 @@ class ArtistsController < ApplicationController
     end
 
     def destroy
-        artist = Artist.find(params[:id])
-        artist.destroy
-        render json: {}, status: :no_content
+        artist = Artist.find_by(id: params[:id])
+        if artist
+            artist.destroy
+            head :no_content
+        else
+            render json: {errors: ["Artist not found"]}, status: :not_found
+        end
     end
 
     private
