@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     end
 
     def show
-        member = Member.find_by(id: params[:id])
+        member = Member.find(params[:id])
         render json: member, status: :ok
     end
 
@@ -21,15 +21,18 @@ class MembersController < ApplicationController
     end
 
     def update
-        member = Member.find_by(id: params[:id])
+        member = Member.find(params[:id])
         member.update(member_params)
-        render json: member, status: :ok
+        render json: member, status: :accepted
     end
 
     def destroy
-        member = Member.find_by(id: params[:id])
-        member.destroy
-        head::no_content
+        member = Member.find(params[:id])
+        if member
+            member.destroy
+            head :no_content
+        else
+            render json: {errors: ["Member not found"]}, status: :not_found
     end
 
     private

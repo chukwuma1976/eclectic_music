@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
     end
 
     def show
-        album = Album.find_by(id: params[:id])
+        album = Album.find(params[:id])
         render json: album, status: :ok
     end
 
@@ -22,15 +22,19 @@ class AlbumsController < ApplicationController
     end
 
     def update
-        album = Album.find_by(id: params[:id])
+        album = Album.find(params[:id])
         album.update(album_params)
-        render json: album, status: :ok
+        render json: album, status: :accepted
     end
 
     def destroy
-        album = Album.find_by(id: params[:id])
-        album.destroy
-        render json: {}, status: :no_content
+        album = Album.find(params[:id])
+        if album
+            album.destroy
+            head :no_content
+        else
+            render json: {errors: ["Album not found"]}, status: :no_content
+        end
     end
 
     private

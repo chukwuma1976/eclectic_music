@@ -2,12 +2,12 @@ class SongsController < ApplicationController
     # before_action :authorize
 
     def index
-        songs = Song.all
+        songs = Song.all.order(:name)
         render json: songs, status: :ok
     end
 
     def show
-        song = Song.find_by(id: params[:id])
+        song = Song.find(params[:id])
         render json: song, status: :ok
     end
 
@@ -17,13 +17,13 @@ class SongsController < ApplicationController
     end
 
     def update
-        song = Song.find_by(id: params[:id])
+        song = Song.find(params[:id])
         song.update(song_params)
-        render json: song, status: :ok
+        render json: song, status: :accepted
     end
 
-    def delete
-        song = Song.find_by(id: params[:id])
+    def destroy
+        song = Song.find(params[:id])
         song.destroy
         render json: {}, status: :no_content
     end
