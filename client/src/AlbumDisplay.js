@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
-import ArtistAlbumSongsDisplay from './ArtistAlbumSongsDisplay'
 import AddSong from './AddSong'
 import UpdateAlbum from './UpdateAlbum'
 
-function AlbumDisplay({album, onUpdate, addSongToAlbum}) {
+function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
     const {id, name, genre, year_released, artists, songs, album_cover_url} = album
     const [displayProfile, setDisplayProfile] = useState(false)
     const [displayAddSong, setDisplayAddSong] = useState(false)
@@ -18,10 +17,11 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum}) {
     }
 
     function deleteAlbum(id){
-        // fetch('artists/id', {
-        //     method: "DELETE"
-        // }).then(res=>res.json())
-        // .then(()=>onDelete(id))
+        console.log(id)
+        fetch(`/albums/${id}`, {
+            method: "DELETE"
+        })
+        onDelete(id)
     }
 
     return (
@@ -44,7 +44,7 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum}) {
             <button onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this album?" : "Click if you want to keep this album"}               
             </button>
-            {!wantToDelete ? null : <button onClick={deleteAlbum(id)}>Delete Artist</button>}
+            {!wantToDelete ? null : <button onClick={()=>deleteAlbum(id)}>Delete Album</button>}
             <br/>
             {!displayProfile ? null : 
             (<section>
@@ -57,7 +57,7 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum}) {
                 <img className="profile-image" src={album_cover_url} alt={name}/>
                 <h2>Songs</h2>
                 <ul>
-                    {songs.map(song => <ArtistAlbumSongsDisplay key={song.id} song={song} />)}
+                    {songs.map(song => <p key={song.id}>{song.name}</p>)}
                 </ul>
             </section>)}
         </div>

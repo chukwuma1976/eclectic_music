@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # before_action :authorize
 
     def index
@@ -14,11 +15,7 @@ class AlbumsController < ApplicationController
 
     def create
         album = Album.create(album_params)
-        if album.valid? 
-            render json: album, status: :created
-        else
-            render json: {errors: album.errors.full_messages}, status: :unprocessable_entity
-        end
+        render json: album, status: :created
     end
 
     def update
@@ -29,12 +26,8 @@ class AlbumsController < ApplicationController
 
     def destroy
         album = Album.find(params[:id])
-        if album
-            album.destroy
-            head :no_content
-        else
-            render json: {errors: ["Album not found"]}, status: :no_content
-        end
+        album.destroy
+        head :no_content
     end
 
     private
@@ -47,4 +40,11 @@ class AlbumsController < ApplicationController
         params.permit(:name, :year_released, :album_cover_url)
     end
 
+    def render_unprocessable_entity(invalid)
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+    end
+
+    def render_not_found
+        render json: {error: "Album not found"}, status: :not_found
+    end
 end

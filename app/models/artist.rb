@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
-    validates :name, presence: true
+    validates_presence_of :name, :genre, :user_id
+    validates :name, uniqueness: true
     validates :date_established, numericality: true
 
     has_many :artist_members, dependent: :destroy

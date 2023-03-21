@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # before_action :authorize
 
     def index
@@ -25,7 +27,7 @@ class SongsController < ApplicationController
     def destroy
         song = Song.find(params[:id])
         song.destroy
-        render json: {}, status: :no_content
+        head :no_content
     end
 
     private
@@ -38,4 +40,11 @@ class SongsController < ApplicationController
         params.permit(:name, :artist_id, :album_id)
     end
 
+    def render_unprocessable_entity(invalid)
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+    end
+
+    def render_not_found
+        render json: {error: "Song not found"}, status: :not_found
+    end
 end

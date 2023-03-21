@@ -7,6 +7,7 @@ function DisplayArtists() {
     const [artists, setArtists] = useState([])
     const [name, setName] = useState('')
     const [showAdd, setShowAdd] = useState(false)
+    const [genre, setGenre] = useState("")
 
     useEffect(() => {
         fetch("/artists")
@@ -14,29 +15,18 @@ function DisplayArtists() {
         .then(artists => {setArtists(artists)})
       }, []);
 
-    function addAlbumToArtist(id, albumList){
-        console.log(albumList)
-        const artistsWithNewAlbum= artists.map(artist => {
-            if (artist.id === id){
-                artist.albums = [...albumList]
+    function updateArtist(updatedArtist){
+        console.log(updatedArtist, updatedArtist.id)
+        const updatedArtists = artists.map(artist => {
+            if (artist.id===updatedArtist.id){
+                return updatedArtist
             } else return artist
-        })   
-        setArtists(artistsWithNewAlbum);
-    }
-
-    function addMemberToArtist(id, memberList){
-        console.log(memberList)
-        const artistsWithNewMember= artists.map(artist => {
-            if (artist.id === id){
-                artist.members = memberList
-            } else return artist
-        })   
-        setArtists(artistsWithNewMember);
+        })
+        setArtists(updatedArtists)
     }
 
     function onDelete(id){
-        const deletedArtist = artists.filter(artist => artist.id === id)
-        setArtists(deletedArtist);
+        setArtists(artists.filter(artist => artist.id !== id));
     }
 
     // function filterbyUser(user){
@@ -44,24 +34,21 @@ function DisplayArtists() {
     //     setArtists(usersArtists)
     // }
     // filterbyUser(user)
-    const filteredArtists=artists.filter(artist => artist.name.toLowerCase().includes(name.toLowerCase()))
+
+    const filteredByGenre = artists.filter(artist => artist.genre.toLowerCase().includes(genre.toLowerCase()))
+    const filteredArtists = filteredByGenre.filter(artist => artist.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Artists</h1>
-            <FilterByName handleFilterByName={setName}/>
+            <h3>Number of Artists: {artists.length}</h3>
+            <FilterByName category={"name"} handleFilterByName={setName}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
             <button onClick={() => setShowAdd(!showAdd)}>{!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}</button>
             {!showAdd? null:  <AddArtist artists={artists} setArtists={setArtists}/>}
             <br/>
             {filteredArtists.map(artist => 
-                <ArtistDisplay 
-                    key={artist.id} 
-                    artist={artist} 
-                    updateArtist={setArtists}
-                    addAlbumToArtist={addAlbumToArtist} 
-                    addMemberToArtist={addMemberToArtist}
-                    onDelete={onDelete}
-                />
+                <ArtistDisplay key={artist.id} artist={artist} updateArtist={updateArtist} onDelete={onDelete} />
             )}
         </div>
         

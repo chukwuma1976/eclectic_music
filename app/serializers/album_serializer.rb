@@ -11,7 +11,9 @@ class AlbumSerializer < ActiveModel::Serializer
   end
 
   def user_id
-    self.object.artists.first.user_id
+    if self.object.artists.first
+      self.object.artists.first.user_id
+    end
   end
 
   has_many :songs, serializer: AlbumSongsSerializer

@@ -22,13 +22,13 @@ class ArtistSerializer < ActiveModel::Serializer
   end
 
   def is_solo_artist
-    self.object.members.count == 1
+    self.object.members.count <= 1
   end
 
   def number_of_albums
     self.object.albums.uniq.count
   end
 
-  has_many :members, serializer: ArtistMemberSerializer
+  has_many :members, serializer: CustomMemberSerializer
   
 end

@@ -1,3 +1,3 @@
 class ArtistMemberSerializer < ActiveModel::Serializer
-  attributes :id, :name, :image_url
+  attributes :id, :artist_id, :member_id
 end

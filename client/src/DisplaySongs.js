@@ -5,6 +5,8 @@ import FilterByName from './FilterByName';
 function DisplaySongs() {
     const [songs, setSongs] = useState([])
     const [name, setName] = useState("")
+    const [artist, setArtist] = useState("")
+    const [genre, setGenre] = useState("")
 
     useEffect(() => {
         fetch("/songs")
@@ -21,13 +23,22 @@ function DisplaySongs() {
         setSongs(updatedSongs)
     }
 
-    const filteredSongs = songs.filter(song => song.name.toLowerCase().includes(name.toLowerCase()))
+    function onDelete(id){
+        setSongs(songs.filter(song => song.id !== id))
+    }
+
+    const filteredByGenre = songs.filter(song =>song.genre.toLowerCase().includes(genre.toLowerCase()))
+    const filteredByArtist = filteredByGenre.filter(song=>song.artist_name.toLowerCase().includes(artist.toLowerCase()))
+    const filteredSongs = filteredByArtist.filter(song => song.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Songs</h1>
-            <FilterByName handleFilterByName={setName} />
-            {filteredSongs.map(song => <SongDisplay key={song.id} song={song} onUpdate={onUpdate} />)}
+            <h3>Number of songs: {songs.length}</h3>
+            <FilterByName category={"name"} handleFilterByName={setName} />
+            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+            {filteredSongs.map(song => <SongDisplay key={song.id} song={song} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )
 }

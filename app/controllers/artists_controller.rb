@@ -1,4 +1,6 @@
 class ArtistsController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # before_action :authorize
 
     def index
@@ -17,11 +19,7 @@ class ArtistsController < ApplicationController
         # user = User.find_by(id: session[:user_id])
         # artist = User.artists.create(artist_params)
         artist = Artist.create(artist_params)
-        if artist.valid?
-            render json: artist, status: :created
-        else
-            render json: {errors: artist.errors.full_messages}, status: :unprocessable_entity
-        end
+        render json: artist, status: :created
     end
 
     def update
@@ -32,12 +30,8 @@ class ArtistsController < ApplicationController
 
     def destroy
         artist = Artist.find(params[:id])
-        if artist
-            artist.destroy
-            head :no_content
-        else
-            render json: {errors: ["Artist not found"]}, status: :not_found
-        end
+        artist.destroy
+        head :no_content
     end
 
     private
@@ -50,4 +44,11 @@ class ArtistsController < ApplicationController
         params.permit(:name, :genre, :date_established, :interesting_fact, :artist_image_url, :user_id)
     end
 
+    def render_unprocessable_entity(invalid)
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+    end
+
+    def render_not_found
+        render json: {error: "Artist not found"}, status: :not_found
+    end
 end

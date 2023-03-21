@@ -5,6 +5,8 @@ import FilterByName from './FilterByName';
 function DisplayMembers() {
     const [members, setMembers] = useState([])
     const [name, setName] = useState("")
+    const [artist, setArtist] = useState("")
+    const [genre, setGenre] = useState("")
 
     useEffect(() => {
         fetch("/members")
@@ -21,13 +23,22 @@ function DisplayMembers() {
         setMembers(updatedMembers)
     }
 
-    const filteredMembers = members.filter(member => member.name.toLowerCase().includes(name.toLowerCase()))
+    function onDelete(id){
+        setMembers(members.filter(member => member.id !== id))
+    }
+
+    const filteredByGenre = members.filter(member=>member.artists[0].genre.toLowerCase().includes(genre.toLowerCase()))
+    const filteredByArtist = filteredByGenre.filter(member=>member.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
+    const filteredMembers = filteredByArtist.filter(member => member.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Members</h1>
-            <FilterByName handleFilterByName={setName} />
-            {filteredMembers.map(member => <MemberDisplay key={member.id} member={member} onUpdate={onUpdate} />)}
+            <h3>Total number of members: {members.length}</h3>
+            <FilterByName category={"name"} handleFilterByName={setName} />
+            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+            {filteredMembers.map(member => <MemberDisplay key={member.id} member={member} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )
 }

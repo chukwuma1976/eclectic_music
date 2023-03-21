@@ -1,16 +1,17 @@
 import React, {useState} from 'react'
 import UpdateSong from './UpdateSong'
 
-function SongDisplay({song, onUpdate}) {
+function SongDisplay({song, onUpdate, onDelete}) {
     const {id, name, artist_name, genre, release_date, album_name} = song
     const [displayUpdate, setDisplayUpdate] = useState(false)
     const [wantToDelete, setWantToDelete] = useState(false)
 
     function deleteSong(id){
-      // fetch('artists/id', {
-      //     method: "DELETE"
-      // }).then(res=>res.json())
-      // .then(()=>onDelete(id))
+      fetch(`/songs/${id}`, {
+          method: "DELETE"
+      })
+      console.log(song, id)
+      onDelete(id)
     }
 
   return (
@@ -25,7 +26,7 @@ function SongDisplay({song, onUpdate}) {
         <button onClick={()=>setWantToDelete(!wantToDelete)}>
           {!wantToDelete ? "Do you want to delete this song?" : "Click if you want to keep this song"}               
         </button>
-        {!wantToDelete ? null : <button onClick={deleteSong(id)}>Delete Artist</button>}
+        {!wantToDelete ? null : <button onClick={()=>deleteSong(id)}>Delete Song</button>}
         <br/>
     </div>
   )

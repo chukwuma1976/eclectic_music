@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 
-function AddAlbum({setAlbums}) {
+function AddAlbum({setAlbums, artist_id}) {
         const [newAlbum, setNewAlbum] = useState({
             name: "",
             year_released: 0,
-            album_cover_url: ""
+            album_cover_url: "",
+            artist_id: artist_id
         })
         const {name, year_released, album_cover_url} = newAlbum
     
@@ -15,13 +16,26 @@ function AddAlbum({setAlbums}) {
             event.preventDefault()
             console.log(newAlbum)
     
-            // fetch("/albums", {
-            //         method: "POST",
-            //         headers: {"Content-Type": "application/json"},
-            //         body: JSON.stringify(newAlbum)
-            //     })
-            //     .then(res=>res.json())
-            //     .then(album=>setAlbums(album))     
+            fetch("/albums", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(newAlbum)
+                })
+                .then(res=>res.json())
+                .then(album=>{
+                    setAlbums(album)
+                    addBlankSongToAlbum(album.id)
+                })     
+        }
+
+        function addBlankSongToAlbum(album_id){
+            const name="Please name this song"
+            fetch("/songs", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({name, artist_id, album_id})
+            }).then(res=>res.json())
+            .then(data=>console.log(data))
         }
         return (
             <div className="add_body_part">

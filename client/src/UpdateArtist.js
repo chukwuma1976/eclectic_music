@@ -1,29 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function UpdateArtist({id, artist, setArtist}) {
-    const [newArtist, setNewArtist] = useState({
-        name: artist.name,
-        genre: artist.genre,
-        date_established: artist.date_established,
-        interesting_fact: artist.interesting_fact,
-        arist_image_url: artist.arist_image_url
-    })
-    const {name, genre, date_established, interesting_fact, arist_image_url} = newArtist
 
-    function handleChange(event){
-        setNewArtist(newArtist=>({...newArtist, [event.target.name]:event.target.value}))
+    const [name, setName] = useState(artist.name)
+    const [genre, setGenre] = useState(artist.genre)
+    const [dateEstablished, setDateEstablished] = useState(artist.date_established)
+    const [interestingFact, setInterestingFact] = useState(artist.interesting_fact)
+    const [artistImageUrl, setArtistImageUrl] = useState(artist.artist_image_url)
+
+    const newArtist = {
+        name, 
+        genre, 
+        date_established: dateEstablished, 
+        interesting_fact: interestingFact, 
+        artist_image_url: artistImageUrl
     }
+
     function handleSubmit(event){
         event.preventDefault()
         console.log(newArtist)
 
-    //     fetch("/artists/id", {
-    //             method: "PATCH",
-    //             headers: {"Content-Type": "application/json"},
-    //             body: JSON.stringify(newArtist)
-    //         })
-    //         .then(res=>res.json())
-    //         .then(artist=>setArtists([...artists, artist]))     
+        fetch(`/artists/${id}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newArtist)
+            })
+                .then(res=>res.json())
+                .then(artist=>setArtist(artist))     
     }
     return (
         <div>
@@ -34,9 +37,9 @@ function UpdateArtist({id, artist, setArtist}) {
                 <input 
                     type="text" 
                     name="name" 
-                    placeholder="name" 
+                    placeholder={"name"} 
                     value={name} 
-                    onChange={handleChange} 
+                    onChange={(event)=>setName(event.target.value)} 
                 />
                 <br/>
                 <label>Genre </label>
@@ -45,7 +48,7 @@ function UpdateArtist({id, artist, setArtist}) {
                     name="genre" 
                     placeholder="genre" 
                     value={genre} 
-                    onChange={handleChange}
+                    onChange={(event)=>setGenre(event.target.value)}
                 />
                 <br/>
                 <label>Date established </label>
@@ -53,8 +56,8 @@ function UpdateArtist({id, artist, setArtist}) {
                     type="text" 
                     name="date_established" 
                     placeholder="date_established" 
-                    value={date_established} 
-                    onChange={handleChange}
+                    value={dateEstablished} 
+                    onChange={(event)=>setDateEstablished(event.target.value)}
                 />
                 <br/>
                 <label>Interesting fact about artist</label>
@@ -62,17 +65,17 @@ function UpdateArtist({id, artist, setArtist}) {
                     type="text" 
                     name="interesting_fact" 
                     placeholder="interesting_fact" 
-                    value={interesting_fact} 
-                    onChange={handleChange}
+                    value={interestingFact} 
+                    onChange={(event)=>setInterestingFact(event.target.value)}
                 />
                 <br/>
                 <label>Image URL </label>
                 <input 
                     type="text" 
-                    name="arist_image_url" 
-                    placeholder="arist_image_url" 
-                    value={arist_image_url} 
-                    onChange={handleChange}
+                    name="artist_image_url" 
+                    placeholder="artist_image_url" 
+                    value={artistImageUrl} 
+                    onChange={(event)=>setArtistImageUrl(event.target.value)}
                 />
                 <br/>
                 <button type="submit">Submit</button>

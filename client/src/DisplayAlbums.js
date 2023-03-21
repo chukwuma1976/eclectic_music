@@ -5,6 +5,9 @@ import FilterByName from './FilterByName';
 function DisplayAlbums() {
     const [albums, setAlbums] = useState([]);
     const [name, setName] = useState('')
+    const [artist, setArtist] = useState('')
+    const [genre, setGenre] = useState("")
+
     useEffect(() => {
         fetch("/albums")
         .then(res => res.json())
@@ -12,32 +15,37 @@ function DisplayAlbums() {
       }, []);  
 
     function addSongToAlbum(id, songList){
-        console.log(songList)
-        const albumsWithNewSong= albums.map(album => {
-            if (album.id === id){
-                album.songs = [...songList]
-            } else return album
-        })   
-        setAlbums(albumsWithNewSong);
+        const updatedAlbum = albums.find(album=>album.id === id)
+        updatedAlbum.songs = songList
+        onUpdate(updatedAlbum)
     }
     function onUpdate(updatedAlbum){
         console.log(updatedAlbum)
         const albumWithUpdate = albums.map(album => {
             if (album.id === updatedAlbum.id) {
-                album = updatedAlbum
+                return updatedAlbum
             } else return album
         })
         setAlbums(albumWithUpdate)
     }
 
-    const filteredAlbums = albums.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));
+    function onDelete(id){
+        setAlbums(albums.filter(album=>album.id !== id))
+    }
+
+    const filteredByGenre = albums.filter(album=>album.genre.toLowerCase().includes(genre.toLowerCase()))
+    const filteredByArtist = filteredByGenre.filter(album=>album.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
+    const filteredAlbums = filteredByArtist.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));
 
     return (
         <div>
             <h1>Albums</h1>
-            <FilterByName handleFilterByName={setName}/>
+            <h3>Number of albums: {albums.length}</h3>
+            <FilterByName category={"name"}handleFilterByName={setName}/>
+            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
             {filteredAlbums.map(album => 
-                <AlbumDisplay key={album.id} album={album} onUpdate={onUpdate} addSongToAlbum={addSongToAlbum}/>)}
+                <AlbumDisplay key={album.id} album={album} onUpdate={onUpdate} addSongToAlbum={addSongToAlbum} onDelete={onDelete} />)}
         </div>
     )
 }

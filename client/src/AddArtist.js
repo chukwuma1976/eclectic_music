@@ -16,7 +16,6 @@ function AddArtist({artists, setArtists}) {
     }
     function handleSubmit(event){
         event.preventDefault()
-        console.log(newArtist)
 
         fetch("/artists", {
                 method: "POST",
@@ -24,7 +23,7 @@ function AddArtist({artists, setArtists}) {
                 body: JSON.stringify(newArtist)
             })
             .then(res=>res.json())
-            .then(artist=>setArtists([...artists, artist]))     
+            .then(artist=>setArtists([...artists, artist])) 
     }
     return (
         <div className="add_body_part">
