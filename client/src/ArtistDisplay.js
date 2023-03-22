@@ -5,7 +5,11 @@ import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
 
 function ArtistDisplay({artist, updateArtist, onDelete}) {
+<<<<<<< HEAD
     const {id, name, genre, date_established, interesting_fact, is_solo_artist, 
+=======
+    const {id, name, genre, date_established, interesting_fact, 
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
         artist_image_url, albums, members, number_of_members} = artist
     const [displayProfile, setDisplayProfile] = useState(false)
     const [displayAddAlbum, setDisplayAddAlbum] = useState(false)
@@ -38,6 +42,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
 
     return (
         <div className={!displayProfile? "profile" : "profile-display"} key={id}>
+<<<<<<< HEAD
             <body className={!displayProfile? null : "artist-pic-container"}>
                 <button onClick={() => setDisplayProfile(!displayProfile)}>
                     {!displayProfile ? "Click to expand" : "Click to collapse"}
@@ -71,6 +76,35 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                     {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}
                     <br/>
                 </body>
+=======
+            <button onClick={() => setDisplayProfile(!displayProfile)}>
+                {!displayProfile ? "Click to expand" : "Click to collapse"}
+            </button>            
+            <h1>{name}</h1>
+            <p>Genre: {genre}</p>
+            <img className="profile-image" src={artist_image_url} alt={name}/>
+            <br/>
+            <button onClick={()=>setDisplayUpdate(!displayUpdate)}>
+                {!displayUpdate ? "Click to update this artist" : "Click to hide form to update this artist"}
+            </button>
+            {!displayUpdate ? null : <UpdateArtist id={id} artist={artist} setArtist={updateArtist}/>}
+            <br/>
+            <button onClick={()=>setDisplayAddAlbum(!displayAddAlbum)}>
+                {!displayAddAlbum ? "Click to add an album" : "Click to hide form to add album"}
+            </button>
+            {!displayAddAlbum ? null : <AddAlbum setAlbums={addAlbum} artist_id={id}/>}
+            <br/>
+            <button onClick={()=>setDisplayAddMember(!displayAddMember)}>
+                {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
+            </button>
+            {!displayAddMember ? null : <AddMember setMembers={addMember} artistId={id} />}
+            <br/>
+            <button onClick={()=>setWantToDelete(!wantToDelete)}>
+                {!wantToDelete ? "Do you want to delete this artist?" : "Click if you want to keep this artist"}               
+            </button>
+            {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}
+            <br/>
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
             {!displayProfile ? null : 
             (<section>
                 <h4 className='text-box'>{interesting_fact}</h4>

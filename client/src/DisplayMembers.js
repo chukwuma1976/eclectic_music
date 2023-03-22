@@ -34,12 +34,18 @@ function DisplayMembers() {
     return (
         <div>
             <h1>Members</h1>
+<<<<<<< HEAD
             <h3>Total number of members: {members.length}</h3>
             <div className="filtering-form">
                 <FilterByName category={"name"} handleFilterByName={setName} />
                 <FilterByName category={"artist"} handleFilterByName={setArtist}/>
                 <FilterByName category={"genre"} handleFilterByName={setGenre}/>
             </div>
+=======
+            <FilterByName category={"name"} handleFilterByName={setName} />
+            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
             {filteredMembers.map(member => <MemberDisplay key={member.id} member={member} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )

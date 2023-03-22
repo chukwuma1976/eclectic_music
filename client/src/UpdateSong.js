@@ -17,6 +17,7 @@ function UpdateSong({id, song, onUpdate}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newSong)
             })
+<<<<<<< HEAD
             .then ((res)=>{
                 if (res.ok) {
                     res.json().then(song=>onUpdate(song))
@@ -27,6 +28,10 @@ function UpdateSong({id, song, onUpdate}) {
                 })
             // .then(res=>res.json())
             // .then(song=>onUpdate(song))     
+=======
+            .then(res=>res.json())
+            .then(song=>onUpdate(song))     
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     }
     return (
         <div className='form'>

@@ -21,6 +21,7 @@ function UpdateAlbum({id, album, onUpdate}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newAlbum)
             })
+<<<<<<< HEAD
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(album=>onUpdate(album))
@@ -31,6 +32,10 @@ function UpdateAlbum({id, album, onUpdate}) {
             })
             // .then(res=>res.json())
             // .then(album=>onUpdate(album))     
+=======
+            .then(res=>res.json())
+            .then(album=>onUpdate(album))     
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     }
     return (
         <div className="form">

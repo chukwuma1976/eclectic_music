@@ -20,6 +20,7 @@ function UpdateMember({id, member, onUpdate}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newMember)
             })
+<<<<<<< HEAD
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(member=>onUpdate(member))
@@ -28,6 +29,10 @@ function UpdateMember({id, member, onUpdate}) {
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
                 }
             })    
+=======
+            .then(res=>res.json())
+            .then(member=>onUpdate(member))     
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     }
     return (
         <div className='form'>

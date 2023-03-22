@@ -22,7 +22,11 @@ class SongsController < ApplicationController
     end
 
     def destroy
+<<<<<<< HEAD
         song = Song.find(params[:id])
+=======
+        song = Song.find_by(id: params[:id])
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
         song.destroy
         head :no_content
     end

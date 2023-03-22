@@ -17,6 +17,7 @@ function AddSong({albumId, artistId, setSongs}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newSong)
             })
+<<<<<<< HEAD
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(song=>setSongs(song))
@@ -27,6 +28,10 @@ function AddSong({albumId, artistId, setSongs}) {
             })
             // .then(res=>res.json())
             // .then(song=>setSongs(song))     
+=======
+            .then(res=>res.json())
+            .then(song=>setSongs(song))     
+>>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     }
     return (
         <div class="form">
