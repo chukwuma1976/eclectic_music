@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 function UpdateSong({id, song, onUpdate}) {
+    const [errors, setErrors] = useState(null)
     const [newSong, setNewSong] = useState({name: song.name})
     const {name} = newSong
 
@@ -16,12 +17,21 @@ function UpdateSong({id, song, onUpdate}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newSong)
             })
-            .then(res=>res.json())
-            .then(song=>onUpdate(song))     
+            .then ((res)=>{
+                if (res.ok) {
+                    res.json().then(song=>onUpdate(song))
+                } else {
+                    res.json().then(data=>
+                        setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
+                    }
+                })
+            // .then(res=>res.json())
+            // .then(song=>onUpdate(song))     
     }
     return (
-        <div>
+        <div className='form'>
             <h3>Update a Song by entering the information below</h3>
+            {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>          
                 <label>Song name </label>
                 <input 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 function AddMember({setMembers, artistId}) {
+    const [errors, setErrors] = useState(null)
     const [newMember, setNewMember] = useState({
         name: "",
         image_url: ""
@@ -12,18 +13,23 @@ function AddMember({setMembers, artistId}) {
     }
     function handleSubmit(event){
         event.preventDefault()
-        console.log(newMember)
 
         fetch("/members", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newMember)
             })
-            .then(res=>res.json())
-            .then(member=>{
-                setMembers(member)
-                linkToArtist(member.id)
-            })  
+        .then ((res)=>{
+            if (res.ok) {
+                res.json().then(member=>{
+                    setMembers(member)
+                    linkToArtist(member.id)
+                })
+            } else {
+                res.json().then(data=>
+                    setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
+                }
+            })
     }
     function linkToArtist(memberId){
         fetch("/artist_members", {
@@ -34,12 +40,13 @@ function AddMember({setMembers, artistId}) {
                 member_id: memberId
             })
         }).then(res=>res.json())
-        .then(data=>console.log(data))
+        .then(data=>console.log(data, "artist linked"))
     }
 
     return (
-        <div>
+        <div class="form">
             <h3>Add a Member by entering the information below</h3>
+            {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                
                 <label>Member name </label>

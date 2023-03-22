@@ -18,13 +18,13 @@ class ArtistsController < ApplicationController
     def create
         # user = User.find_by(id: session[:user_id])
         # artist = User.artists.create(artist_params)
-        artist = Artist.create(artist_params)
+        artist = Artist.create!(artist_params)
         render json: artist, status: :created
     end
 
     def update
         artist = Artist.find(params[:id])
-        artist.update(artist_params)
+        artist.update!(artist_params)
         render json: artist, status: :accepted
     end
 

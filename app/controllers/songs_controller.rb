@@ -14,13 +14,13 @@ class SongsController < ApplicationController
     end
 
     def create
-        song = Song.create(song_params)
+        song = Song.create!(song_params)
         render json: song, status: :created
     end
 
     def update
         song = Song.find(params[:id])
-        song.update(song_params)
+        song.update!(song_params)
         render json: song, status: :accepted
     end
 

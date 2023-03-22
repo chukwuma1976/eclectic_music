@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 function UpdateAlbum({id, album, onUpdate}) {
+    const [errors, setErrors] = useState(null)
     const [newAlbum, setNewAlbum] = useState({
         name: album.name,
         year_released: album.year_released,
@@ -20,12 +21,21 @@ function UpdateAlbum({id, album, onUpdate}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newAlbum)
             })
-            .then(res=>res.json())
-            .then(album=>onUpdate(album))     
+        .then ((res)=>{
+            if (res.ok) {
+                res.json().then(album=>onUpdate(album))
+                } else {
+                    res.json().then(data=>
+                        setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
+                }
+            })
+            // .then(res=>res.json())
+            // .then(album=>onUpdate(album))     
     }
     return (
-        <div className="add_body_part">
+        <div className="form">
             <h3>Update an Album by entering the information below</h3>
+            {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                
                 <label>Album name </label>

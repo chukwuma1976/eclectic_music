@@ -24,8 +24,6 @@ code {
 }
 
 .profile-display {
-  /* display: inline-block; */
-  /* width: auto; */
   height: auto;
   border: 2px solid grey;
   border-radius: 1em;
@@ -53,7 +51,6 @@ code {
   display: inline-block; 
   width: 200px;
   height: auto;
-  /* border: 2px solid blue; */
   border-radius: 1em;
   padding: 10px;
   margin: 5px;
@@ -94,6 +91,7 @@ code {
   background: white;
   text-align: center;
   justify-content: space-between;
+  border-radius: 1em;
 }
 
 .profile-image {
@@ -111,7 +109,18 @@ code {
 }
 .text-box {
   background: white;
-  border: 1px solid grey;
+  width: auto;
+  height: auto
+}
+.form {
+  background: white;
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 1em;
+}
+.form p {color: red;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 button.button-clicked {

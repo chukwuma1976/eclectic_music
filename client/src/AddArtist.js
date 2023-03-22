@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 function AddArtist({artists, setArtists}) {
+    const [errors, setErrors] = useState(null)
     const [newArtist, setNewArtist] = useState({
         name: "",
         genre: "",
@@ -22,12 +23,19 @@ function AddArtist({artists, setArtists}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newArtist)
             })
-            .then(res=>res.json())
-            .then(artist=>setArtists([...artists, artist])) 
+        .then ((res)=>{
+            if (res.ok) {
+                res.json().then(artist=>setArtists([...artists, artist]))
+            } else {
+                res.json().then(data=>
+                    setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
+                }
+            })            
     }
     return (
-        <div className="add_body_part">
+        <div className="form">
             <h3>Add an Artist by entering the information below</h3>
+            {errors ? errors.map(error=><p>{error}</p>): null}
             <form onSubmit={handleSubmit}>
                 <br/>                
                 <label>Artist name </label>

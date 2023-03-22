@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # before_action :authorize
 
@@ -14,13 +14,13 @@ class AlbumsController < ApplicationController
     end
 
     def create
-        album = Album.create(album_params)
+        album = Album.create!(album_params)
         render json: album, status: :created
     end
 
     def update
         album = Album.find(params[:id])
-        album.update(album_params)
+        album.update!(album_params)
         render json: album, status: :accepted
     end
 

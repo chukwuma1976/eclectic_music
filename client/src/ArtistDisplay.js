@@ -73,9 +73,9 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                 </body>
             {!displayProfile ? null : 
             (<section>
-                <p className='text-box'>Fact: {interesting_fact}</p>
+                <h4 className='text-box'>{interesting_fact}</h4>
                 <body className='albums-container'>
-                    <h4>Members ({number_of_members}) </h4>
+                    <h3>Members ({number_of_members}) </h3>
                     <div className='artist-container'>
                         {artist.members.map(member => <p key={member.id}>{member.name}</p>)} 
                     </div>
