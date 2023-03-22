@@ -16,10 +16,7 @@ function DisplayArtists() {
       }, []);
 
     function updateArtist(updatedArtist){
-<<<<<<< HEAD
-=======
         console.log(updatedArtist, updatedArtist.id)
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
         const updatedArtists = artists.map(artist => {
             if (artist.id===updatedArtist.id){
                 return updatedArtist
@@ -44,7 +41,6 @@ function DisplayArtists() {
     return (
         <div>
             <h1>Artists</h1>
-<<<<<<< HEAD
             <h3>Number of Artists: {artists.length}</h3>
             <div className='filtering-form'>
                 <FilterByName category={"name"} handleFilterByName={setName}/>
@@ -53,11 +49,6 @@ function DisplayArtists() {
                     {!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}
                 </button>
             </div>
-=======
-            <FilterByName category={"name"} handleFilterByName={setName}/>
-            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
-            <button onClick={() => setShowAdd(!showAdd)}>{!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}</button>
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
             {!showAdd? null:  <AddArtist artists={artists} setArtists={setArtists}/>}
             <br/>
             {filteredArtists.map(artist => 

@@ -14,18 +14,9 @@ class ArtistsController < ApplicationController
 
     def create
         # user = User.find_by(id: session[:user_id])
-        # artist = User.artists.create(artist_params)
-<<<<<<< HEAD
+        # artist = User.artists.create!(artist_params)
         artist = Artist.create!(artist_params)
         render json: artist, status: :created
-=======
-        artist = Artist.create(artist_params)
-        if artist.valid?
-            render json: artist, status: :created
-        else
-            render json: {errors: artist.errors.full_messages}, status: :unprocessable_entity
-        end
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     end
 
     def update
@@ -35,19 +26,9 @@ class ArtistsController < ApplicationController
     end
 
     def destroy
-<<<<<<< HEAD
         artist = Artist.find(params[:id])
         artist.destroy
         head :no_content
-=======
-        artist = Artist.find_by(id: params[:id])
-        if artist
-            artist.destroy
-            head :no_content
-        else
-            render json: {errors: ["Artist not found"]}, status: :not_found
-        end
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     end
 
     private

@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
 
 function AddMember({setMembers, artistId}) {
-<<<<<<< HEAD
     const [errors, setErrors] = useState(null)
-=======
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     const [newMember, setNewMember] = useState({
         name: "",
         image_url: ""
@@ -22,8 +19,7 @@ function AddMember({setMembers, artistId}) {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newMember)
             })
-<<<<<<< HEAD
-        .then ((res)=>{
+       .then ((res)=>{
             if (res.ok) {
                 res.json().then(member=>{
                     setMembers(member)
@@ -34,13 +30,11 @@ function AddMember({setMembers, artistId}) {
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
                 }
             })
-=======
             .then(res=>res.json())
             .then(member=>{
                 setMembers(member)
                 linkToArtist(member.id)
             })  
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     }
     function linkToArtist(memberId){
         fetch("/artist_members", {
@@ -51,11 +45,8 @@ function AddMember({setMembers, artistId}) {
                 member_id: memberId
             })
         }).then(res=>res.json())
-<<<<<<< HEAD
         .then(data=>console.log(data, "artist linked"))
-=======
         .then(data=>console.log(data))
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
     }
 
     return (

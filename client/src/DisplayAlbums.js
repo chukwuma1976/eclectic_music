@@ -40,18 +40,12 @@ function DisplayAlbums() {
     return (
         <div>
             <h1>Albums</h1>
-<<<<<<< HEAD
             <h3>Number of albums: {albums.length}</h3>
             <div className='filtering-form'>
                 <FilterByName category={"name"}handleFilterByName={setName}/>
                 <FilterByName category={"artist"} handleFilterByName={setArtist}/>
                 <FilterByName category={"genre"} handleFilterByName={setGenre}/>
             </div>
-=======
-            <FilterByName category={"name"}handleFilterByName={setName}/>
-            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
-            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
             {filteredAlbums.map(album => 
                 <AlbumDisplay key={album.id} album={album} onUpdate={onUpdate} addSongToAlbum={addSongToAlbum} onDelete={onDelete} />)}
         </div>

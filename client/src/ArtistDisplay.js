@@ -5,11 +5,7 @@ import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
 
 function ArtistDisplay({artist, updateArtist, onDelete}) {
-<<<<<<< HEAD
     const {id, name, genre, date_established, interesting_fact, is_solo_artist, 
-=======
-    const {id, name, genre, date_established, interesting_fact, 
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
         artist_image_url, albums, members, number_of_members} = artist
     const [displayProfile, setDisplayProfile] = useState(false)
     const [displayAddAlbum, setDisplayAddAlbum] = useState(false)
@@ -42,7 +38,6 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
 
     return (
         <div className={!displayProfile? "profile" : "profile-display"} key={id}>
-<<<<<<< HEAD
             <body className={!displayProfile? null : "artist-pic-container"}>
                 <button onClick={() => setDisplayProfile(!displayProfile)}>
                     {!displayProfile ? "Click to expand" : "Click to collapse"}
@@ -76,7 +71,6 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                     {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}
                     <br/>
                 </body>
-=======
             <button onClick={() => setDisplayProfile(!displayProfile)}>
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>            
@@ -104,7 +98,6 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
             </button>
             {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}
             <br/>
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
             {!displayProfile ? null : 
             (<section>
                 <h4 className='text-box'>{interesting_fact}</h4>

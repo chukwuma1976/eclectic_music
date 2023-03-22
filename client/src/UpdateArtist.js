@@ -1,11 +1,7 @@
 import React, {useState} from 'react'
 
 function UpdateArtist({id, artist, setArtist}) {
-<<<<<<< HEAD
     const [errors, setErrors] = useState(null)
-=======
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
-
     const [name, setName] = useState(artist.name)
     const [genre, setGenre] = useState(artist.genre)
     const [dateEstablished, setDateEstablished] = useState(artist.date_established)
@@ -29,7 +25,6 @@ function UpdateArtist({id, artist, setArtist}) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newArtist)
             })
-<<<<<<< HEAD
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(artist=>setArtist(artist))
@@ -37,13 +32,7 @@ function UpdateArtist({id, artist, setArtist}) {
                 res.json().then(data=>
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
                 }
-            })
-                // .then(res=>res.json())
-                // .then(artist=>setArtist(artist))     
-=======
-                .then(res=>res.json())
-                .then(artist=>setArtist(artist))     
->>>>>>> 21ff6903f350e670d3c813f55e82810ffc271f75
+            }) 
     }
     return (
         <div className='form'>
