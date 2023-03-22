@@ -26,7 +26,7 @@ function LoginForm({onLogin}) {
     }
         
   return (
-    <div>
+    <div className="form">
         <form onSubmit={handleSubmit}>
           <label>username</label>
           <input 
@@ -34,16 +34,16 @@ function LoginForm({onLogin}) {
             placeholder="enter username" 
             autoComplete="off"
             value={username}
-            onchange={(e)=>setUsername(e.target.value)} 
+            onChange={(e)=>setUsername(e.target.value)} 
           />
           <br/>
           <label>password</label>
             <input 
-            type="text" 
+            type="password" 
             placeholder="enter password" 
             autoComplete="current-password"
             value={password}
-            onchange={(e)=>setPassword(e.target.value)} 
+            onChange={(e)=>setPassword(e.target.value)} 
             />
           <br/>
           <button type="submit">

@@ -39,6 +39,13 @@ function NavBar() {
           >
             Songs
           </NavLink>
+          <NavLink
+            to="/signout"
+            style={({isActive}) => ({background: isActive ? 'red' : ''})}
+            className="navbar"
+          >
+            Log Out
+          </NavLink>
         </div>
       );
 }

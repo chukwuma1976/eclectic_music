@@ -41,9 +41,13 @@ function DisplayArtists() {
         <div>
             <h1>Artists</h1>
             <h3>Number of Artists: {artists.length}</h3>
-            <FilterByName category={"name"} handleFilterByName={setName}/>
-            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
-            <button onClick={() => setShowAdd(!showAdd)}>{!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}</button>
+            <div className='filtering-form'>
+                <FilterByName category={"name"} handleFilterByName={setName}/>
+                <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+                <button className={!showAdd ? "" : "button-clicked"}onClick={() => setShowAdd(!showAdd)}>
+                    {!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}
+                </button>
+            </div>
             {!showAdd? null:  <AddArtist artists={artists} setArtists={setArtists}/>}
             <br/>
             {filteredArtists.map(artist => 

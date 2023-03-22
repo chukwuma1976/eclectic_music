@@ -35,9 +35,11 @@ function DisplayMembers() {
         <div>
             <h1>Members</h1>
             <h3>Total number of members: {members.length}</h3>
-            <FilterByName category={"name"} handleFilterByName={setName} />
-            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
-            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+            <div className="filtering-form">
+                <FilterByName category={"name"} handleFilterByName={setName} />
+                <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+                <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+            </div>
             {filteredMembers.map(member => <MemberDisplay key={member.id} member={member} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )

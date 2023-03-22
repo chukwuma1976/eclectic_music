@@ -19,11 +19,11 @@ function SongDisplay({song, onUpdate, onDelete}) {
         <h3>{name}</h3>
         <p>Genre: {genre}</p>
         <p>This song was released in {release_date} by {artist_name} from the album {album_name}.</p>   
-        <button onClick={()=>setDisplayUpdate(!displayUpdate)}>
+        <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
           {!displayUpdate ? "Click to update this songs name" : "Click to hide update form"}
         </button>
         {!displayUpdate ? null : <UpdateSong id={id} song={song} onUpdate={onUpdate} />}
-        <button onClick={()=>setWantToDelete(!wantToDelete)}>
+        <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
           {!wantToDelete ? "Do you want to delete this song?" : "Click if you want to keep this song"}               
         </button>
         {!wantToDelete ? null : <button onClick={()=>deleteSong(id)}>Delete Song</button>}

@@ -35,9 +35,11 @@ function DisplaySongs() {
         <div>
             <h1>Songs</h1>
             <h3>Number of songs: {songs.length}</h3>
-            <FilterByName category={"name"} handleFilterByName={setName} />
-            <FilterByName category={"artist"} handleFilterByName={setArtist}/>
-            <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+            <div className='filtering-form'>
+                <FilterByName category={"name"} handleFilterByName={setName} />
+                <FilterByName category={"artist"} handleFilterByName={setArtist}/>
+                <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+            </div>
             {filteredSongs.map(song => <SongDisplay key={song.id} song={song} onUpdate={onUpdate} onDelete={onDelete} />)}
         </div>
     )

@@ -2,7 +2,6 @@ import React from 'react'
 
 function FilterByName({category, handleFilterByName}) {
     let name
-    // const [name, setName] = useState('')
     function handleChange(event) {
         handleFilterByName(event.target.value)
     }

@@ -36,7 +36,7 @@ code {
   position: absolute;
 
   left: 5%;
-  top: 10%;
+  top: 5%;
 
   width: 90%;
 
@@ -113,14 +113,21 @@ code {
   height: auto
 }
 .form {
-  background: white;
+  background: seashell;
   width: auto;
   height: auto;
   border: 1px solid black;
   border-radius: 1em;
+  text-align: center;
 }
 .form p {color: red;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.filtering-form {
+  background: white;
+  width: auto;
+  height: auto;
+  text-align: center;
 }
 
 button.button-clicked {

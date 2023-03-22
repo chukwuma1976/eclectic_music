@@ -31,17 +31,17 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
             </button>
             <h3>{name} ({year_released})</h3>
             <br/>
-            <button onClick={()=>setDisplayUpdate(!displayUpdate)}>
+            <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                 {!displayUpdate ? "Click to update album" : "Click to collapse form to update album"}
             </button>
             {!displayUpdate ? null : <UpdateAlbum id={id} album={album} onUpdate={onUpdate}/>}
             <br />
-            <button onClick={() => setDisplayAddSong(!displayAddSong)}>
+            <button className={!displayAddSong ? "" : "button-clicked"}onClick={() => setDisplayAddSong(!displayAddSong)}>
                 {!displayAddSong ? "Click to add a new song" : "Click to collapse form to add a new song"}
             </button>
             {!displayAddSong ? null: <AddSong albumId={id} artistId={artists[0].id} setSongs={addSong} />}
             <br />
-            <button onClick={()=>setWantToDelete(!wantToDelete)}>
+            <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this album?" : "Click if you want to keep this album"}               
             </button>
             {!wantToDelete ? null : <button onClick={()=>deleteAlbum(id)}>Delete Album</button>}

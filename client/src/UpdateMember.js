@@ -27,9 +27,7 @@ function UpdateMember({id, member, onUpdate}) {
                 res.json().then(data=>
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
                 }
-            })
-            // .then(res=>res.json())
-            // .then(member=>onUpdate(member))     
+            })    
     }
     return (
         <div className='form'>

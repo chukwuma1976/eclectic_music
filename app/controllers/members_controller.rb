@@ -1,7 +1,4 @@
 class MembersController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-    # before_action: authorize
 
     def index
         members = Member.all.order(:name)
@@ -31,17 +28,9 @@ class MembersController < ApplicationController
     end
 
     private
-
-    # def authorize
-    #     return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
-    # end
     
     def member_params
         params.permit(:name, :image_url)
-    end
-
-    def render_unprocessable_entity(invalid)
-        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def render_not_found

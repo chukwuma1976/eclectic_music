@@ -15,7 +15,7 @@ function MemberDisplay({member, onUpdate, onDelete}) {
     }
     
     return (
-        <div class="profile">
+        <div className={!displayProfile? "profile" : "profile-display"} class="profile">
             <button onClick={() => setDisplayProfile(!displayProfile)}>
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>
@@ -23,12 +23,12 @@ function MemberDisplay({member, onUpdate, onDelete}) {
             {artists.map(artist => <p>{artist.name}</p>)}
             {!displayProfile ? null : 
             (<section>
-                <button onClick={()=>setDisplayUpdate(!displayUpdate)}>
+                <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                     {!displayUpdate ? "Click to update member" : "Click to close update form"}
                 </button>
                 <br/>
                 {!displayUpdate ? null : <UpdateMember id={id} member={member} onUpdate={onUpdate} />}
-                <button onClick={()=>setDisplayDelete(!displayDelete)}>
+                <button className={!displayDelete ? "" : "button-clicked"}onClick={()=>setDisplayDelete(!displayDelete)}>
                     {!displayDelete ? "Click to delete member" : "Click to keep form"}
                 </button>
                 <br/>
