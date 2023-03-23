@@ -38,39 +38,6 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
 
     return (
         <div className={!displayProfile? "profile" : "profile-display"} key={id}>
-            <body className={!displayProfile? null : "artist-pic-container"}>
-                <button onClick={() => setDisplayProfile(!displayProfile)}>
-                    {!displayProfile ? "Click to expand" : "Click to collapse"}
-                </button>            
-                <h1>{name}</h1>
-                <p>
-                    {is_solo_artist? "Solo Artist" : "Group Artists"} | Genre: {genre} | Established: {date_established}
-                </p>
-                <img className={!displayProfile ? "profile-image" : "enlarged-image"} src={artist_image_url} alt={name}/>
-                <br/>
-            </body>
-            <body >
-                    <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
-                        {!displayUpdate ? "Click to update this artist" : "Click to hide form to update this artist"}
-                    </button>
-                    {!displayUpdate ? null : <UpdateArtist id={id} artist={artist} setArtist={updateArtist}/>}
-                    <br/>
-                    <button className={!displayAddAlbum ? "" : "button-clicked"} onClick={()=>setDisplayAddAlbum(!displayAddAlbum)}>
-                        {!displayAddAlbum ? "Click to add an album" : "Click to hide form to add album"}
-                    </button>
-                    {!displayAddAlbum ? null : <AddAlbum setAlbums={addAlbum} artist_id={id}/>}
-                    <br/>
-                    <button className={!displayAddMember ? "" : "button-clicked"} onClick={()=>setDisplayAddMember(!displayAddMember)}>
-                        {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
-                    </button>
-                    {!displayAddMember ? null : <AddMember setMembers={addMember} artistId={id} />}
-                    <br/>
-                    <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
-                        {!wantToDelete ? "Do you want to delete this artist?" : "Click if you want to keep this artist"}               
-                    </button>
-                    {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}
-                    <br/>
-                </body>
             <button onClick={() => setDisplayProfile(!displayProfile)}>
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>            
@@ -78,22 +45,22 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
             <p>Genre: {genre}</p>
             <img className="profile-image" src={artist_image_url} alt={name}/>
             <br/>
-            <button onClick={()=>setDisplayUpdate(!displayUpdate)}>
+            <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                 {!displayUpdate ? "Click to update this artist" : "Click to hide form to update this artist"}
             </button>
             {!displayUpdate ? null : <UpdateArtist id={id} artist={artist} setArtist={updateArtist}/>}
             <br/>
-            <button onClick={()=>setDisplayAddAlbum(!displayAddAlbum)}>
+            <button className={!displayAddAlbum ? "" : "button-clicked"} onClick={()=>setDisplayAddAlbum(!displayAddAlbum)}>
                 {!displayAddAlbum ? "Click to add an album" : "Click to hide form to add album"}
             </button>
             {!displayAddAlbum ? null : <AddAlbum setAlbums={addAlbum} artist_id={id}/>}
             <br/>
-            <button onClick={()=>setDisplayAddMember(!displayAddMember)}>
+            <button className={!displayAddMember ? "" : "button-clicked"} onClick={()=>setDisplayAddMember(!displayAddMember)}>
                 {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
             </button>
             {!displayAddMember ? null : <AddMember setMembers={addMember} artistId={id} />}
             <br/>
-            <button onClick={()=>setWantToDelete(!wantToDelete)}>
+            <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this artist?" : "Click if you want to keep this artist"}               
             </button>
             {!wantToDelete ? null : <button onClick={()=>deleteArtist(id)}>Delete Artist</button>}

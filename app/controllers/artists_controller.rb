@@ -1,9 +1,9 @@
 class ArtistsController < ApplicationController
 
     def index
-        # user = User.find_by(id: session[:user_id])
-        # artists = user.artists.order(:name)
-        artists = Artist.all.order(:name)
+        user = User.find_by(id: session[:user_id])
+        artists = user.artists.order(:name)
+        # artists = Artist.all.order(:name)
         render json: artists, status: :ok
     end
 
@@ -13,9 +13,9 @@ class ArtistsController < ApplicationController
     end
 
     def create
-        # user = User.find_by(id: session[:user_id])
-        # artist = User.artists.create!(artist_params)
-        artist = Artist.create!(artist_params)
+        user = User.find_by(id: session[:user_id])
+        artist = User.artists.create!(artist_params)
+        # artist = Artist.create!(artist_params)
         render json: artist, status: :created
     end
 

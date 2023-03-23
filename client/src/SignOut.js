@@ -3,10 +3,10 @@ import React, {useState} from 'react'
 function SignOut({setUser}) {
     const [wantToLogOut, setWantToLogOut] = useState(false)
     function LogOut() {
-        // fetch('/logout', {
-        //     method: 'DELETE'
-        // })
-        // then(()=>setUser(null))
+        fetch('/logout', {
+            method: 'DELETE'
+        })
+        .then(()=>console.log("logged out"))
     }
 
     return (
@@ -16,7 +16,7 @@ function SignOut({setUser}) {
             {wantToLogOut? 
              (<div>
                 <h1>Are you sure?</h1>
-                <button onClick={()=>LogOut}>Yes</button>
+                <button onClick={()=>LogOut()}>Yes</button>
                 <button onClick={()=>setWantToLogOut(!wantToLogOut)}>No</button>
             </div>) 
             : null}
