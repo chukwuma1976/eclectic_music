@@ -3,6 +3,7 @@ import AddAlbum from './AddAlbum';
 import AddMember from './AddMember';
 import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
+import {NavLink} from 'react-router-dom';
 
 function ArtistDisplay({artist, updateArtist, onDelete}) {
     const {id, name, genre, date_established, interesting_fact, is_solo_artist, 
@@ -58,6 +59,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
             <button className={!displayAddMember ? "" : "button-clicked"} onClick={()=>setDisplayAddMember(!displayAddMember)}>
                 {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
             </button>
+
             {!displayAddMember ? null : <AddMember setMembers={addMember} artistId={id} />}
             <br/>
             <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
@@ -80,6 +82,18 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                         {artist.albums.map(album => <ArtistAlbumDisplay key={album.id} album={album}/>)}
                     </ul>
                 </body>
+                <br/>
+                <div className='redirect'>
+                    <NavLink to="/albums" style={{color: 'blue'}}>
+                        Edit, Update Album, Add Songs |   |
+                    </NavLink>              
+                    <NavLink to="/songs" style={{color: 'blue'}}>
+                        Edit and Delete Songs |   |
+                    </NavLink>               
+                    <NavLink to="/members" style={{color: 'blue'}}>
+                        Edit and Delete Members {"    "}
+                    </NavLink>
+                </div>
             </section>)}
         </div>
     )

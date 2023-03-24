@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import AddSong from './AddSong'
 import UpdateAlbum from './UpdateAlbum'
+import { NavLink } from 'react-router-dom'
 
 function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
     const {id, name, genre, year_released, artists, songs, album_cover_url} = album
@@ -56,8 +57,14 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
                 <br/>
                 <img className={!displayProfile? "profile-image" : "enlarged-image"} src={album_cover_url} alt={name}/>
                 <h3>Songs</h3>
-                <div>
+                <div className='artist-container'>
                     {songs.map(song => <p key={song.id}>{song.name}</p>)}
+                </div>
+                <br/>
+                <div className='redirect'>             
+                    <NavLink to="/songs" style={{color: 'blue'}}>
+                        Edit and Delete Songs
+                    </NavLink>               
                 </div>
             </section>)}
         </div>
