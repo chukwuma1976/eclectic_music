@@ -42,8 +42,8 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>            
             <h1>{name}</h1>
-            <p>Genre: {genre}</p>
-            <img className="profile-image" src={artist_image_url} alt={name}/>
+            <h4>Genre: {genre}</h4>
+            <img className={!displayProfile? "profile-image" : "enlarged-image"} src={artist_image_url} alt={name}/>
             <br/>
             <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                 {!displayUpdate ? "Click to update this artist" : "Click to hide form to update this artist"}

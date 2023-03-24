@@ -68,13 +68,17 @@ function AddArtist({artists, setArtists}) {
                 />
                 <br/>
                 <label>Interesting fact about artist</label>
-                <input 
+                <br/>
+                <textarea
                     type="text" 
                     name="interesting_fact" 
-                    placeholder="interesting_fact" 
+                    rows="4"
+                    cols="50"
+                    id = "interesting_fact"
                     value={interesting_fact} 
                     onChange={handleChange}
-                />
+                >
+                </textarea>
                 <br/>
                 <label>Image URL </label>
                 <input 

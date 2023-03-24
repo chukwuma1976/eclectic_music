@@ -32,7 +32,6 @@ function DisplayAlbums() {
     function onDelete(id){
         setAlbums(albums.filter(album=>album.id !== id))
     }
-
     const filteredByGenre = albums.filter(album=>album.genre.toLowerCase().includes(genre.toLowerCase()))
     const filteredByArtist = filteredByGenre.filter(album=>album.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
     const filteredAlbums = filteredByArtist.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));

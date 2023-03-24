@@ -48,17 +48,17 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
             <br/>
             {!displayProfile ? null : 
             (<section>
-                <p>Artist(s):</p>
-                <ul>
+                <h3>Artist(s):</h3>
+                <div>
                     {artists.map(artist => <p key={artist.id}>{artist.name}</p>)} 
-                </ul>
-                <p>Genre: {genre}</p>
+                </div>
+                <h3>Genre: {genre}</h3>
                 <br/>
-                <img className="profile-image" src={album_cover_url} alt={name}/>
-                <h2>Songs</h2>
-                <ul>
+                <img className={!displayProfile? "profile-image" : "enlarged-image"} src={album_cover_url} alt={name}/>
+                <h3>Songs</h3>
+                <div>
                     {songs.map(song => <p key={song.id}>{song.name}</p>)}
-                </ul>
+                </div>
             </section>)}
         </div>
     )

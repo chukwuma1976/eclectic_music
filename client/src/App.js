@@ -17,8 +17,7 @@ function App() {
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => {console.log(user);
-          setUser(user)});
+        r.json().then((user) => setUser(user));
       }
     });
   }, []); 
@@ -33,7 +32,7 @@ function App() {
         <Route path="/members" element={<DisplayMembers />} />
         <Route path="/albums" element={<DisplayAlbums />} />
         <Route path="/songs" element={<DisplaySongs />} />
-        <Route path="/signout" element={<SignOut />} />
+        <Route path="/signout" element={<SignOut setUser={setUser}/>} />
       </Routes>
     </div>
   );

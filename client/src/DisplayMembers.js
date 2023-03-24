@@ -26,7 +26,7 @@ function DisplayMembers() {
     function onDelete(id){
         setMembers(members.filter(member => member.id !== id))
     }
-
+    
     const filteredByGenre = members.filter(member=>member.artists[0].genre.toLowerCase().includes(genre.toLowerCase()))
     const filteredByArtist = filteredByGenre.filter(member=>member.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
     const filteredMembers = filteredByArtist.filter(member => member.name.toLowerCase().includes(name.toLowerCase()))
