@@ -117,7 +117,7 @@ code {
   width: auto;
   height: auto;
   border: 1px solid black;
-  border-radius: 1em;
+  /* border-radius: 1em; */
   text-align: center;
 }
 .form p {color: red;

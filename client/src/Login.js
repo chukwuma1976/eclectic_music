@@ -8,6 +8,7 @@ function Login({ onLogin }) {
   return (
     <div>
       <h1>Eclectic Music</h1>
+      <h3>Please Log In</h3>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
