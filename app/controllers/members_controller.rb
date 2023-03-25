@@ -1,7 +1,11 @@
 class MembersController < ApplicationController
 
     def index
-        members = Member.all.order(:name)
+        array = []
+        User.find_by(id: session[:user_id]).artists.each do |artist|
+            array << artist.members.uniq
+        end
+        members = array.flatten
         render json: members, status: :ok
     end
 

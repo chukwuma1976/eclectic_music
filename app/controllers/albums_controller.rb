@@ -1,7 +1,11 @@
 class AlbumsController < ApplicationController
 
     def index
-        albums = Album.all.order(:name)
+        array = []
+        User.find_by(id: session[:user_id]).artists.each do |artist|
+            array << artist.albums.uniq
+        end
+        albums = array.flatten
         render json: albums, status: :ok
     end
 
