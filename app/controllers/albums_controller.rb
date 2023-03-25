@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
 
     def index
         array = []
-        User.find_by(id: session[:user_id]).artists.each do |artist|
+        current_user.artists.each do |artist|
             array << artist.albums.uniq
         end
         albums = array.flatten

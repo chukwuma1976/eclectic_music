@@ -13,8 +13,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        user = User.find_by(id: session[:user_id])
-        if user
+        if current_user
             session.delete(:user_id)
             head :no_content
         else
