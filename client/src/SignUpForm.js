@@ -26,7 +26,7 @@ function SignUpForm({ onLogin }) {
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((data) => setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)));
       }
     });
   }
