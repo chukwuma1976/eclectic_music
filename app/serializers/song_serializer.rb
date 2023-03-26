@@ -11,7 +11,7 @@ class SongSerializer < ActiveModel::Serializer
   end
 
   def release_date
-    self.object.artist.date_established
+    self.object.album.year_released
   end
 
   def album_name
