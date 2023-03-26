@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
     end
 
     def show
-        artist = Artist.find(params[:id])
+        artist = current_user.artists.find(params[:id])
         render json: artist, status: :ok
     end
 
@@ -16,13 +16,13 @@ class ArtistsController < ApplicationController
     end
 
     def update
-        artist = Artist.find(params[:id])
+        artist = current_user.artists.find(params[:id])
         artist.update!(artist_params)
         render json: artist, status: :accepted
     end
 
     def destroy
-        artist = Artist.find(params[:id])
+        artist = current_user.artists.find(params[:id])
         artist.destroy
         head :no_content
     end

@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { UserContext } from './User'
 
-function SignOut({setUser}) {
+function SignOut() {
+    const {setUser} = useContext(UserContext)
     const [wantToLogOut, setWantToLogOut] = useState(false)
     function LogOut() {
         fetch('/logout', {

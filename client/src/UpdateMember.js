@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function UpdateMember({id, member, onUpdate}) {
+function UpdateMember({id, member, onUpdate, setDisplayUpdate}) {
     const [errors, setErrors] = useState(null)
     const [newMember, setNewMember] = useState({
         name: member.name,
@@ -23,6 +23,7 @@ function UpdateMember({id, member, onUpdate}) {
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(member=>onUpdate(member))
+                setDisplayUpdate(false)
             } else {
                 res.json().then(data=>
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
@@ -31,7 +32,7 @@ function UpdateMember({id, member, onUpdate}) {
     }
     return (
         <div className='form'>
-            <h3>Update a Member by entering the information below</h3>
+            <h4>Update a Member by entering the information below</h4>
             {errors ? errors.map(error => <p>{errors}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                

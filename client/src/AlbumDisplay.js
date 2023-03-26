@@ -26,27 +26,24 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
     }
 
     return (
-        <div className={!displayProfile? "profile" : "profile-display"} key={id}>
+        <div className={!displayProfile? "album-profile" : "album-profile-display"} key={id}>
             <button onClick={() => setDisplayProfile(!displayProfile)}>
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>
             <h3>{name} ({year_released})</h3>
-            <br/>
             <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                 {!displayUpdate ? "Click to update album" : "Click to collapse form to update album"}
             </button>
-            {!displayUpdate ? null : <UpdateAlbum id={id} album={album} onUpdate={onUpdate}/>}
-            <br />
+            {!displayUpdate ? null : <UpdateAlbum id={id} album={album} onUpdate={onUpdate} setDisplayUpdate={setDisplayUpdate}/>}
             <button className={!displayAddSong ? "" : "button-clicked"}onClick={() => setDisplayAddSong(!displayAddSong)}>
                 {!displayAddSong ? "Click to add a new song" : "Click to collapse form to add a new song"}
             </button>
-            {!displayAddSong ? null: <AddSong albumId={id} artistId={artists[0].id} setSongs={addSong} />}
-            <br />
+            {!displayAddSong ? 
+                null: <AddSong albumId={id} artistId={artists[0].id} setSongs={addSong} setDisplayAddSong={setDisplayAddSong}/>}
             <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this album?" : "Click if you want to keep this album"}               
             </button>
             {!wantToDelete ? null : <button onClick={()=>deleteAlbum(id)}>Delete Album</button>}
-            <br/>
             {!displayProfile ? null : 
             (<section>
                 <h3>Artist(s):</h3>

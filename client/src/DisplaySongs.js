@@ -34,7 +34,7 @@ function DisplaySongs() {
     return (
         <div>
             <h1>Songs</h1>
-            <h3>Number of songs: {songs.length}</h3>
+            <h3>Total songs: {songs.length}</h3>
             <div className='filtering-form'>
                 <FilterByName category={"name"} handleFilterByName={setName} />
                 <FilterByName category={"artist"} handleFilterByName={setArtist}/>

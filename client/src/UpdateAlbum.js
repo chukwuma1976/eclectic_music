@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function UpdateAlbum({id, album, onUpdate}) {
+function UpdateAlbum({id, album, onUpdate, setDisplayUpdate}) {
     const [errors, setErrors] = useState(null)
     const [newAlbum, setNewAlbum] = useState({
         name: album.name,
@@ -24,19 +24,18 @@ function UpdateAlbum({id, album, onUpdate}) {
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(album=>onUpdate(album))
+                setDisplayUpdate(false)
                 } else {
                     res.json().then(data=>
                         setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
                 }
-            })
-            // .then(res=>res.json())
-            // .then(album=>onUpdate(album))     
+            }) 
             .then(res=>res.json())
             .then(album=>onUpdate(album))     
     }
     return (
         <div className="form">
-            <h3>Update an Album by entering the information below</h3>
+            <h4>Update an Album by entering the information below</h4>
             {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                

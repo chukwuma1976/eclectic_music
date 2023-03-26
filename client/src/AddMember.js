@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function AddMember({setMembers, artistId}) {
+function AddMember({setMembers, artistId, setDisplayAddMember}) {
     const [errors, setErrors] = useState(null)
     const [newMember, setNewMember] = useState({
         name: "",
@@ -24,6 +24,7 @@ function AddMember({setMembers, artistId}) {
                 res.json().then(member=>{
                     setMembers(member)
                     linkToArtist(member.id)
+                    setDisplayAddMember(false)
                 })
             } else {
                 res.json().then(data=>
@@ -51,7 +52,7 @@ function AddMember({setMembers, artistId}) {
 
     return (
         <div class="form">
-            <h3>Add a Member by entering the information below</h3>
+            <h4>Add a Member by entering the information below</h4>
             {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                

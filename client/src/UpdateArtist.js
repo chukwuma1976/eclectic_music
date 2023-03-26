@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function UpdateArtist({id, artist, setArtist}) {
+function UpdateArtist({id, artist, setArtist, setDisplayUpdate}) {
     const [errors, setErrors] = useState(null)
     const [name, setName] = useState(artist.name)
     const [genre, setGenre] = useState(artist.genre)
@@ -28,6 +28,7 @@ function UpdateArtist({id, artist, setArtist}) {
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(artist=>setArtist(artist))
+                setDisplayUpdate(false)
             } else {
                 res.json().then(data=>
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
@@ -36,7 +37,7 @@ function UpdateArtist({id, artist, setArtist}) {
     }
     return (
         <div className='form'>
-            <h3>Update an Artist by entering the information below</h3>
+            <h4>Update an Artist by entering the information below</h4>
             {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                

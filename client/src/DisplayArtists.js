@@ -29,19 +29,13 @@ function DisplayArtists() {
         setArtists(artists.filter(artist => artist.id !== id));
     }
 
-    // function filterbyUser(user){
-    //     const usersArtists = artists.filter(artist => artist.user_id === user.id)
-    //     setArtists(usersArtists)
-    // }
-    // filterbyUser(user)
-
     const filteredByGenre = artists.filter(artist => artist.genre.toLowerCase().includes(genre.toLowerCase()))
     const filteredArtists = filteredByGenre.filter(artist => artist.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
         <div>
             <h1>Artists</h1>
-            <h3>Number of Artists: {artists.length}</h3>
+            <h3>Total Artists: {artists.length}</h3>
             <div className='filtering-form'>
                 <FilterByName category={"name"} handleFilterByName={setName}/>
                 <FilterByName category={"genre"} handleFilterByName={setGenre}/>
@@ -49,7 +43,7 @@ function DisplayArtists() {
                     {!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}
                 </button>
             </div>
-            {!showAdd? null:  <AddArtist artists={artists} setArtists={setArtists}/>}
+            {!showAdd? null:  <AddArtist artists={artists} setArtists={setArtists} setShowAdd={setShowAdd}/>}
             <br/>
             {filteredArtists.map(artist => 
                 <ArtistDisplay key={artist.id} artist={artist} updateArtist={updateArtist} onDelete={onDelete} />

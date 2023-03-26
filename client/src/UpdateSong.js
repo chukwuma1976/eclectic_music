@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function UpdateSong({id, song, onUpdate}) {
+function UpdateSong({id, song, onUpdate, setDisplayUpdate}) {
     const [errors, setErrors] = useState(null)
     const [newSong, setNewSong] = useState({name: song.name})
     const {name} = newSong
@@ -20,6 +20,7 @@ function UpdateSong({id, song, onUpdate}) {
             .then ((res)=>{
                 if (res.ok) {
                     res.json().then(song=>onUpdate(song))
+                    setDisplayUpdate(false)
                 } else {
                     res.json().then(data=>
                         setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
@@ -28,7 +29,7 @@ function UpdateSong({id, song, onUpdate}) {
     }
     return (
         <div className='form'>
-            <h3>Update a Song by entering the information below</h3>
+            <h4>Update a Song by entering the information below</h4>
             {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>          
                 <label>Song name </label>

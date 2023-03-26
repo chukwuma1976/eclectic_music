@@ -34,7 +34,7 @@ function DisplayMembers() {
     return (
         <div>
             <h1>Members</h1>
-            <h3>Total number of members: {members.length}</h3>
+            <h3>Total members: {members.length}</h3>
             <div className="filtering-form">
                 <FilterByName category={"name"} handleFilterByName={setName} />
                 <FilterByName category={"artist"} handleFilterByName={setArtist}/>

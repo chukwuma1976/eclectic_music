@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { UserContext } from './User'
 
-function AddArtist({artists, setArtists}) {
+function AddArtist({artists, setArtists, setShowAdd}) {
+    const {user} = useContext(UserContext)
     const [errors, setErrors] = useState(null)
     const [newArtist, setNewArtist] = useState({
         name: "",
@@ -8,7 +10,7 @@ function AddArtist({artists, setArtists}) {
         date_established: 0,
         interesting_fact: "",
         arist_image_url: "",
-        user_id: 1
+        user_id: user.id
     })
     const {name, genre, date_established, interesting_fact, arist_image_url} = newArtist
 
@@ -26,6 +28,7 @@ function AddArtist({artists, setArtists}) {
         .then ((res)=>{
             if (res.ok) {
                 res.json().then(artist=>setArtists([...artists, artist]))
+                setShowAdd(false)
             } else {
                 res.json().then(data=>
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
@@ -36,7 +39,7 @@ function AddArtist({artists, setArtists}) {
     }
     return (
         <div className="form">
-            <h3>Add an Artist by entering the information below</h3>
+            <h4>Add an Artist by entering the information below</h4>
             {errors ? errors.map(error=><p>{error}</p>): null}
             <form onSubmit={handleSubmit}>
                 <br/>                

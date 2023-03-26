@@ -23,4 +23,4 @@ function UserProvider({children}) {
     )
 }
 
-export default {UserContext, UserProvider}
+export {UserContext, UserProvider}

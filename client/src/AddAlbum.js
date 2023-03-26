@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function AddAlbum({setAlbums, artist_id}) {
+function AddAlbum({setAlbums, artist_id, setDisplayAddAlbum}) {
     const [errors, setErrors] = useState(null)
     const [newAlbum, setNewAlbum] = useState({
         name: "",
@@ -26,6 +26,7 @@ function AddAlbum({setAlbums, artist_id}) {
                 res.json().then(album=>{
                     setAlbums(album)
                     addBlankSongToAlbum(album.id)
+                    setDisplayAddAlbum(false)
                 })
                 } else {
                     res.json().then(data=>
@@ -35,7 +36,7 @@ function AddAlbum({setAlbums, artist_id}) {
     }
 
     function addBlankSongToAlbum(album_id){
-        const name="Please name this song"
+        const name="Please name or delete this song"
         fetch("/songs", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -45,7 +46,7 @@ function AddAlbum({setAlbums, artist_id}) {
     }
     return (
         <div className="form">
-            <h3>Add an Album by entering the information below</h3>
+            <h4>Add an Album by entering the information below</h4>
             {errors ? errors.map(error =><p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                

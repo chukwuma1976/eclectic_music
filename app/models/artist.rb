@@ -1,7 +1,7 @@
 class Artist < ApplicationRecord
     validates_presence_of :name, :genre, :user_id, :date_established
-    validates :name, uniqueness: true
-    validates :date_established, numericality: {greater_than: 0}
+    validates :name, uniqueness: {scope: :user_id, message: "You can only use this name once"}
+    validates :date_established, numericality: {greater_than: 1000}
 
     has_many :artist_members, dependent: :destroy
     has_many :members, through: :artist_members
