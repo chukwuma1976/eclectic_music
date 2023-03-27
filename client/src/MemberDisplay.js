@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import UpdateMember from './UpdateMember'
+import GoSolo from './GoSolo';
 
 function MemberDisplay({member, onUpdate, onDelete}) {
     const {id, name, image_url, artists}=member;
     const [displayUpdate, setDisplayUpdate] = useState(false)
     const [displayProfile, setDisplayProfile] = useState(false)
     const [displayDelete, setDisplayDelete] = useState(false)
+    const [displayWantSolo, setDisplayWantSolo] = useState(false)
 
     function deleteMember(id){
         fetch(`/members/${id}`, {
@@ -28,7 +30,15 @@ function MemberDisplay({member, onUpdate, onDelete}) {
                 </button>
                 <br/>
                 {!displayUpdate ? 
-                    null : <UpdateMember id={id} member={member} onUpdate={onUpdate} setDisplayUpdate={setDisplayUpdate}/>}
+                    null : <UpdateMember member={member} onUpdate={onUpdate} setDisplayUpdate={setDisplayUpdate}/>}
+                
+                <button className={!displayWantSolo ? "" : "button-clicked"} onClick={()=>setDisplayWantSolo(!displayWantSolo)}>
+                    {!displayWantSolo ? "Click to go solo" : "Click to close"}
+                </button>
+                <br/>
+                {!displayWantSolo ? 
+                    null : <GoSolo member={member}/>}
+                
                 <button className={!displayDelete ? "" : "button-clicked"}onClick={()=>setDisplayDelete(!displayDelete)}>
                     {!displayDelete ? "Click to delete member" : "Click to keep form"}
                 </button>

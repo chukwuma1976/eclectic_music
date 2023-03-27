@@ -3,9 +3,9 @@ class MembersController < ApplicationController
     def index
         array = []
         current_user.artists.each do |artist|
-            array << artist.members.uniq
+            array << artist.members
         end
-        members = array.flatten
+        members = array.flatten.uniq
         render json: members, status: :ok
     end
 

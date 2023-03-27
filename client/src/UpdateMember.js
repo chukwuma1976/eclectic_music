@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function UpdateMember({id, member, onUpdate, setDisplayUpdate}) {
+function UpdateMember({member, onUpdate, setDisplayUpdate}) {
     const [errors, setErrors] = useState(null)
     const [newMember, setNewMember] = useState({
         name: member.name,
@@ -15,7 +15,7 @@ function UpdateMember({id, member, onUpdate, setDisplayUpdate}) {
         event.preventDefault()
         console.log(newMember)
 
-        fetch(`/members/${id}`, {
+        fetch(`/members/${member.id}`, {
                 method: "PATCH",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newMember)
@@ -33,7 +33,7 @@ function UpdateMember({id, member, onUpdate, setDisplayUpdate}) {
     return (
         <div className='form'>
             <h4>Update a Member by entering the information below</h4>
-            {errors ? errors.map(error => <p>{errors}</p>) : null}
+            {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>
                 <br/>                
                 <label>Member name </label>

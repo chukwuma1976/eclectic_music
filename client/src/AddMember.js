@@ -46,8 +46,6 @@ function AddMember({setMembers, artistId, setDisplayAddMember}) {
                 member_id: memberId
             })
         }).then(res=>res.json())
-        .then(data=>console.log(data, "artist linked"))
-        .then(data=>console.log(data))
     }
 
     return (

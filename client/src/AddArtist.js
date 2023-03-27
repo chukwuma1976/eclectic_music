@@ -34,8 +34,6 @@ function AddArtist({artists, setArtists, setShowAdd}) {
                     setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
                 }
             })            
-            .then(res=>res.json())
-            .then(artist=>setArtists([...artists, artist])) 
     }
     return (
         <div className="form">

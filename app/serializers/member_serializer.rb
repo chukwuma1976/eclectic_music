@@ -1,15 +1,9 @@
 class MemberSerializer < ActiveModel::Serializer
-  attributes :id, :name, :image_url, :artists, :user_id
+  attributes :id, :name, :image_url, :artists
 
   def artists
     artists=self.object.artists.uniq
     artists.map { |artist| {id: artist.id, name: artist.name, genre: artist.genre} }
-  end
-
-  def user_id
-    if self.object.artists.first
-      self.object.artists.first.user_id
-    end
   end
 
 end

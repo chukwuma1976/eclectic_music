@@ -7,13 +7,13 @@ class ArtistSerializer < ActiveModel::Serializer
     albums.map do |album| 
       songs=album.songs.map {|song| 
         {id: song.id, name: song.name, artist_id: song.artist_id, album_id: song.album_id}}
-        {
-          id: album.id, 
-          name: album.name, 
-          year_released: album.year_released, 
-          album_cover_url: album.album_cover_url, 
-          songs: songs
-        }
+      {
+        id: album.id, 
+        name: album.name, 
+        year_released: album.year_released, 
+        album_cover_url: album.album_cover_url, 
+        songs: songs
+      }
     end
   end
 

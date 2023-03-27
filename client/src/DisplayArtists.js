@@ -16,7 +16,6 @@ function DisplayArtists() {
       }, []);
 
     function updateArtist(updatedArtist){
-        console.log(updatedArtist, updatedArtist.id)
         const updatedArtists = artists.map(artist => {
             if (artist.id===updatedArtist.id){
                 return updatedArtist
