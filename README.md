@@ -2,7 +2,7 @@ Welcome to Eclectic Music
 
 This application focuses on allowing the user to express their musical tastes by adding different artists, albums, and songs to their personal database.
 
-There are five main parts to this application.
+There are several parts to this application.
 
 1. Login Page
     
@@ -26,11 +26,11 @@ This consists of a collection of albums with an expandible display.  Here the us
 
 This consists of a collection of members from different artists with an expandible display.  Here the user can sort the members by name, artists, and genre.  A member can be updated, or removed here.
 
-5. Songs
+6. Songs
 
 This consists of a collection of songs from different albums by different artists.  A song can be updated, or removed here.
 
-5. Logout
+7. Logout
 
 This section signs out the user
 

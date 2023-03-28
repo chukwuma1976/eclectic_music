@@ -191,7 +191,7 @@ button.button-clicked {
   background: yellow;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   text-align: center;
 }
 
@@ -276,4 +276,7 @@ ul {
   margin: 5px;
   background: azure;
   text-align: center;
+}
+.instructions {
+  text-align: left;
 }
