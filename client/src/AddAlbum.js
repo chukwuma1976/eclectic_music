@@ -4,7 +4,7 @@ function AddAlbum({setAlbums, artist_id, setDisplayAddAlbum}) {
     const [errors, setErrors] = useState(null)
     const [newAlbum, setNewAlbum] = useState({
         name: "",
-        year_released: 0,
+        year_released: 1900,
         album_cover_url: "",
         artist_id: artist_id
     })

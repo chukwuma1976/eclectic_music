@@ -79,7 +79,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                     </div>
                 </body>
                 <body className='albums-container'>
-                    <h3>Albums</h3>
+                    <h3>Albums ({artist.albums.length})</h3>
                     <ul>
                         {artist.albums.map(album => <ArtistAlbumDisplay key={album.id} album={album}/>)}
                     </ul>

@@ -7,12 +7,12 @@ function AddArtist({artists, setArtists, setShowAdd}) {
     const [newArtist, setNewArtist] = useState({
         name: "",
         genre: "",
-        date_established: 0,
+        date_established: 1900,
         interesting_fact: "",
         arist_image_url: "",
         user_id: user.id
     })
-    const {name, genre, date_established, interesting_fact, arist_image_url} = newArtist
+    const {name, genre, date_established, interesting_fact, artist_image_url} = newArtist
 
     function handleChange(event){
         setNewArtist(newArtist=>({...newArtist, [event.target.name]:event.target.value}))
@@ -86,7 +86,7 @@ function AddArtist({artists, setArtists, setShowAdd}) {
                     type="text" 
                     name="arist_image_url" 
                     placeholder="arist_image_url" 
-                    value={arist_image_url} 
+                    value={artist_image_url} 
                     onChange={handleChange}
                 />
                 <br/>

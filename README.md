@@ -24,7 +24,7 @@ This consists of a collection of albums with an expandible display.  Here the us
 
 5. Members
 
-This consists of a collection of members from different artists with an expandible display.  Here the user can sort the members by name, artists, and genre.  A member can be updated, or removed here.
+This consists of a collection of members from different artists with an expandible display.  Here the user can sort the members by name, artists, and genre.  A member can be updated, or removed here.  Furthermore, any member in a group can become a solo artist by simply clicking a go solo button
 
 6. Songs
 
