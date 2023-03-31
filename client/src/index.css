@@ -243,6 +243,7 @@ ul {
 .home-page {
   background: whitesmoke;
   text-align: center;
+  padding: 20px
 }
 .album-profile {
   display: inline-block;

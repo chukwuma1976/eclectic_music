@@ -6,10 +6,11 @@ function HomePage() {
     const {user} = useContext(UserContext)
     const [displayInstructions, setDisplayInstructions] = useState(false)
     const today = new Date()
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return (
         <div className='home-page'>
             <p className='date'>
-                Date: {today.getMonth() + 1}/{today.getDate()}/{today.getFullYear()}{" "}
+                Date: {days[today.getDay()]} {today.getMonth() + 1}/{today.getDate()}/{today.getFullYear()}{" "}
                 Time: {today.getHours()}:{today.getMinutes()}
             </p>
             <h1>Hello DJ {user.username} Welcome to the Eclectic Music Database</h1>

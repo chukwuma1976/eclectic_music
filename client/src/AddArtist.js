@@ -84,8 +84,8 @@ function AddArtist({artists, setArtists, setShowAdd}) {
                 <label>Image URL </label>
                 <input 
                     type="text" 
-                    name="arist_image_url" 
-                    placeholder="arist_image_url" 
+                    name="artist_image_url" 
+                    placeholder="artist_image_url" 
                     value={artist_image_url} 
                     onChange={handleChange}
                 />

@@ -33,7 +33,4 @@ class ArtistsController < ApplicationController
         params.permit(:name, :genre, :date_established, :interesting_fact, :artist_image_url, :user_id)
     end
 
-    def render_not_found
-        render json: {error: "Artist not found"}, status: :not_found
-    end
 end

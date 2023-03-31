@@ -37,7 +37,4 @@ class SongsController < ApplicationController
         params.permit(:name, :artist_id, :album_id)
     end
 
-    def render_not_found
-        render json: {error: "Song not found"}, status: :not_found
-    end
 end

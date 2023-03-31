@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-    validates_presence_of :name, :year_released
+    validates :name, :year_released, presence: true
     validates :year_released, numericality: {greater_than: 1000}
 
     has_many :songs, dependent: :destroy

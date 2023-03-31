@@ -37,7 +37,4 @@ class AlbumsController < ApplicationController
         params.permit(:name, :year_released, :album_cover_url)
     end
 
-    def render_not_found
-        render json: {error: "Album not found"}, status: :not_found
-    end
 end

@@ -37,7 +37,4 @@ class MembersController < ApplicationController
         params.permit(:name, :image_url)
     end
 
-    def render_not_found
-        render json: {error: "Member not found"}, status: :not_found
-    end
 end

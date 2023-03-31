@@ -37,15 +37,24 @@ This section signs out the user
 To launch this application:
 
     git clone git@github.com:chukwuma1976/eclectic_music.git
-    cd into appropriate folder
+    cd into appropriate folder (eclectic_music)
 
     In separate console //this launches the frontend client
-    npm install --prefix client
-    npm start --prefix client
+        npm install --prefix client
+        npm start --prefix client
 
     In separate console //this launches the backend server
-    bundle install
-    rails s
+        bundle install
+        rails s
+
+    make sure PostgreSQL is installed and started
+        sudo apt update
+        sudo apt install postgresql postgresql-contrib libpq-dev
+        psql --version //confirm installation
+        sudo service postgresql start //starts the postgresql server
+        whoami //checks user
+        sudo -u postgres -i
+        createuser -sr <username>
 
 Link to the demo for this application: https://youtu.be/16OKBCuvjVk
 

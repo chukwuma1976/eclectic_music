@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import { UserContext } from './User'
 import { NavLink } from 'react-router-dom'
 
-function GoSolo({member}) {
+function GoSolo({member, onUpdate}) {
     const {user} = useContext(UserContext)
     const [errors, setErrors] = useState(null)
     const {id, name, artists, image_url} = member
@@ -36,6 +36,9 @@ function GoSolo({member}) {
                 res.json().then((artist)=>{
                     addSelftoArtist(artist)
                     setNowSoloArtist(true)
+                    const artistsArray = [...member.artists, {id: artist.id, name: artist.name, genre: artist.genre}]
+                    const updatedMember = {...member, artists: artistsArray}
+                    onUpdate(updatedMember)
                 })
             } else {
                 res.json().then(data=>
