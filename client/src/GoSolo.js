@@ -3,10 +3,9 @@ import { UserContext } from './User'
 import { NavLink } from 'react-router-dom'
 
 function GoSolo({member, onUpdate}) {
-    const {user} = useContext(UserContext)
+    const {user, today} = useContext(UserContext)
     const [errors, setErrors] = useState(null)
     const {id, name, artists, image_url} = member
-    const today = new Date()
     const [nowSoloArtist, setNowSoloArtist] = useState(false)
     const newSoloArtist= {
         name: name,

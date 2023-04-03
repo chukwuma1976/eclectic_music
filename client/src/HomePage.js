@@ -3,9 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { UserContext } from './User';
 
 function HomePage() {
-    const {user} = useContext(UserContext)
+    const {user, today} = useContext(UserContext)
     const [displayInstructions, setDisplayInstructions] = useState(false)
-    const today = new Date()
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return (
         <div className='home-page'>
