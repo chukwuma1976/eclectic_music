@@ -1,5 +1,24 @@
 class ArtistsController < ApplicationController
 
+    def interesting
+        # array = []
+        # Artist.all.each do |artist|
+        #     if artist.interesting_fact.include?(params[:key_value])
+        #         array << artist
+        #     end
+        # end
+        # artist = array
+        artists=Artist.all.filter do |artist|
+            artist.interesting_fact.include?(params[:key_value])
+        end
+
+        if artists.length > 0
+            render json: artist_members(artists), status: :created
+        else
+            render json: {error: "no artists found"}, status: :not_found
+        end
+    end
+    
     def index
         artists = current_user.artists.order(:name)
         render json: artists, status: :ok
@@ -31,6 +50,12 @@ class ArtistsController < ApplicationController
 
     def artist_params
         params.permit(:name, :genre, :date_established, :interesting_fact, :artist_image_url, :user_id)
+    end
+
+    def artist_members(artists)
+        artists.map do |artist|
+            artist.members
+        end.flatten
     end
 
 end

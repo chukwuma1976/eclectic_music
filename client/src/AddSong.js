@@ -21,13 +21,8 @@ function AddSong({albumId, artistId, setSongs, setDisplayAddSong}) {
             if (res.ok) {
                 res.json().then(song=>setSongs(song))
                 setDisplayAddSong(false)
-            } else {
-                res.json().then(data=>
-                    setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-                }
+            } else {res.json().then(data=>setErrors(data.errors))}
             })
-            // .then(res=>res.json())
-            // .then(song=>setSongs(song))     
     }
     return (
         <div class="form">

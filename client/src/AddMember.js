@@ -26,10 +26,7 @@ function AddMember({setMembers, artistId, setDisplayAddMember}) {
                     linkToArtist(member.id)
                     setDisplayAddMember(false)
                 })
-            } else {
-                res.json().then(data=>
-                    setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-                }
+            } else {res.json().then(data=>setErrors(data.errors))}
             })
             .then(res=>res.json())
             .then(member=>{

@@ -29,10 +29,7 @@ function AddArtist({artists, setArtists, setShowAdd}) {
             if (res.ok) {
                 res.json().then(artist=>setArtists([...artists, artist]))
                 setShowAdd(false)
-            } else {
-                res.json().then(data=>
-                    setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-                }
+            } else {res.json().then(data=>setErrors(data.errors))}
             })            
     }
     return (

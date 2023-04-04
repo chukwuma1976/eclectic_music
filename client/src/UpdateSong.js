@@ -21,10 +21,7 @@ function UpdateSong({id, song, onUpdate, setDisplayUpdate}) {
                 if (res.ok) {
                     res.json().then(song=>onUpdate(song))
                     setDisplayUpdate(false)
-                } else {
-                    res.json().then(data=>
-                        setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-                    }
+                } else {res.json().then(data=>setErrors(data.errors))}
                 })
     }
     return (
