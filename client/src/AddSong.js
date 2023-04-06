@@ -10,7 +10,6 @@ function AddSong({albumId, artistId, setSongs, setDisplayAddSong}) {
     }
     function handleSubmit(event){
         event.preventDefault()
-        console.log(newSong)
 
         fetch("/songs", {
                 method: "POST",

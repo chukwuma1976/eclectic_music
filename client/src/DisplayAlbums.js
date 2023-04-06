@@ -20,7 +20,6 @@ function DisplayAlbums() {
         onUpdate(updatedAlbum)
     }
     function onUpdate(updatedAlbum){
-        console.log(updatedAlbum)
         const albumWithUpdate = albums.map(album => {
             if (album.id === updatedAlbum.id) {
                 return updatedAlbum

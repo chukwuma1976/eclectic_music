@@ -37,7 +37,7 @@ function MemberDisplay({member, onUpdate, onDelete}) {
                 </button>
                 <br/>
                 {!displayWantSolo ? 
-                    null : <GoSolo member={member} onUpdate={onUpdate} />}
+                    null : <GoSolo member={member} />}
                 
                 <button className={!displayDelete ? "" : "button-clicked"}onClick={()=>setDisplayDelete(!displayDelete)}>
                     {!displayDelete ? "Click to delete member" : "Click to keep form"}

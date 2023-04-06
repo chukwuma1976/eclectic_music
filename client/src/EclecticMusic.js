@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
 import DisplayArtists from "./DisplayArtists";
+import DisplaySoloArtist from "./DisplaySoloArtist";
 import DisplayAlbums from "./DisplayAlbums";
 import DisplayMembers from "./DisplayMembers";
 import DisplaySongs from "./DisplaySongs";
@@ -26,6 +27,7 @@ function EclecticMusic() {
         <Route path="/albums" element={<DisplayAlbums />} />
         <Route path="/songs" element={<DisplaySongs />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/solo_artist/:artist_id" element={<DisplaySoloArtist />} />
       </Routes>
     </div>
   );

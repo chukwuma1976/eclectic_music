@@ -38,8 +38,9 @@ function AddAlbum({setAlbums, artist_id, setDisplayAddAlbum}) {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({name, artist_id, album_id})
-        }).then(res=>res.json())
-        .then(data=>console.log(data, "blank song added"))
+        })
+        // .then(res=>res.json())
+        // .then(console.log)
     }
     return (
         <div className="form">

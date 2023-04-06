@@ -1,12 +1,12 @@
 import React, {useState, useContext} from 'react'
 import { UserContext } from './User'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function GoSolo({member, onUpdate}) {
+function GoSolo({member}) {
     const {user, today} = useContext(UserContext)
+    const navigate = useNavigate()
     const [errors, setErrors] = useState(null)
     const {id, name, artists, image_url} = member
-    const [nowSoloArtist, setNowSoloArtist] = useState(false)
     const newSoloArtist= {
         name: name,
         genre: artists[0].genre,
@@ -15,66 +15,26 @@ function GoSolo({member, onUpdate}) {
         artist_image_url: image_url,
         user_id: user.id
     }
-    // function addSelftoArtist(artist){
-    //     fetch("/artist_members", {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify({artist_id: artist.id, member_id: id})
-    //     }).then(res=>res.json())
-    //     .then(connection=>console.log(connection))
-    // }
     
-    function createSoloArtist(){
-        // fetch("/artists", {
-        //         method: "POST",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newSoloArtist)
-        //     })
-        // .then ((res)=>{
-        //     if (res.ok) {
-        //         res.json().then((artist)=>{
-        //             addSelftoArtist(artist)
-        //             setNowSoloArtist(true)
-        //             const artistsArray = [...member.artists, {id: artist.id, name: artist.name, genre: artist.genre}]
-        //             const updatedMember = {...member, artists: artistsArray}
-        //             onUpdate(updatedMember)
-        //         })
-        //     } else {
-        //         res.json().then(data=>
-        //             setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-        //         }
-        //     })     
+    function createSoloArtist(){   
         fetch(`/gosolo/${id}`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newSoloArtist)
         })
         .then ((res)=>{
-        if (res.ok) {
-            res.json().then((artist)=>{
-                // addSelftoArtist(artist)
-                setNowSoloArtist(true)
-                const artistsArray = [...member.artists, {id: artist.id, name: artist.name, genre: artist.genre}]
-                const updatedMember = {...member, artists: artistsArray}
-                onUpdate(updatedMember)
+            if (res.ok) {
+                res.json().then((artist)=>{
+                    console.log(artist.id)
+                    navigate(`/solo_artist/${artist.id}`)
             })
-        } else {
-            res.json().then(data=>
-                setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-            }
+            } else {res.json().then(data=> setErrors(data.errors))}
         })        
     }
     return (
         <div className="form">
             <button onClick={createSoloArtist}>Make Solo Debut</button>
             {errors ? errors.map(error=><p>{error}</p>): null}
-            {nowSoloArtist ? 
-                (<div>
-                    <h5>{member.name} has made a Solo Debut!</h5>
-                    <NavLink to="/artists" style={{color: 'blue'}}>
-                        Click to witness Solo Debut
-                    </NavLink>
-                </div>) : null}
         </div>
     )
 }
