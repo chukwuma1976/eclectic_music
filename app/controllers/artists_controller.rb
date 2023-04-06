@@ -1,23 +1,4 @@
 class ArtistsController < ApplicationController
-
-    def interesting
-        # array = []
-        # Artist.all.each do |artist|
-        #     if artist.interesting_fact.include?(params[:key_value])
-        #         array << artist
-        #     end
-        # end
-        # artist = array
-        artists=Artist.all.filter do |artist|
-            artist.interesting_fact.include?(params[:key_value])
-        end
-
-        if artists.length > 0
-            render json: artist_members(artists), status: :created
-        else
-            render json: {error: "no artists found"}, status: :not_found
-        end
-    end
     
     def index
         artists = current_user.artists.order(:name)
@@ -44,6 +25,25 @@ class ArtistsController < ApplicationController
         artist = current_user.artists.find(params[:id])
         artist.destroy
         head :no_content
+    end
+
+    def gosolo
+        artist = current_user.artists.create!(artist_params)
+        member = Member.find(params[:member_id])
+        artist.members << member
+        render json: artist, status: :created
+    end
+    
+    def interesting
+        artists=Artist.all.filter do |artist|
+            artist.interesting_fact.include?(params[:key_value])
+        end
+
+        if artists.length > 0
+            render json: artist_members(artists), status: :created
+        else
+            render json: {error: "no artists found"}, status: :not_found
+        end
     end
 
     private

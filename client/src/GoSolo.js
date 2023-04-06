@@ -15,35 +15,54 @@ function GoSolo({member, onUpdate}) {
         artist_image_url: image_url,
         user_id: user.id
     }
-    function addSelftoArtist(artist){
-        fetch("/artist_members", {
+    // function addSelftoArtist(artist){
+    //     fetch("/artist_members", {
+    //         method: "POST",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify({artist_id: artist.id, member_id: id})
+    //     }).then(res=>res.json())
+    //     .then(connection=>console.log(connection))
+    // }
+    
+    function createSoloArtist(){
+        // fetch("/artists", {
+        //         method: "POST",
+        //         headers: {"Content-Type": "application/json"},
+        //         body: JSON.stringify(newSoloArtist)
+        //     })
+        // .then ((res)=>{
+        //     if (res.ok) {
+        //         res.json().then((artist)=>{
+        //             addSelftoArtist(artist)
+        //             setNowSoloArtist(true)
+        //             const artistsArray = [...member.artists, {id: artist.id, name: artist.name, genre: artist.genre}]
+        //             const updatedMember = {...member, artists: artistsArray}
+        //             onUpdate(updatedMember)
+        //         })
+        //     } else {
+        //         res.json().then(data=>
+        //             setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
+        //         }
+        //     })     
+        fetch(`/gosolo/${id}`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({artist_id: artist.id, member_id: id})
-        }).then(res=>res.json())
-        .then(connection=>console.log(connection))
-    }
-    
-    function createSoloArtist(event){
-        fetch("/artists", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(newSoloArtist)
-            })
+            body: JSON.stringify(newSoloArtist)
+        })
         .then ((res)=>{
-            if (res.ok) {
-                res.json().then((artist)=>{
-                    addSelftoArtist(artist)
-                    setNowSoloArtist(true)
-                    const artistsArray = [...member.artists, {id: artist.id, name: artist.name, genre: artist.genre}]
-                    const updatedMember = {...member, artists: artistsArray}
-                    onUpdate(updatedMember)
-                })
-            } else {
-                res.json().then(data=>
-                    setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
-                }
-            })            
+        if (res.ok) {
+            res.json().then((artist)=>{
+                // addSelftoArtist(artist)
+                setNowSoloArtist(true)
+                const artistsArray = [...member.artists, {id: artist.id, name: artist.name, genre: artist.genre}]
+                const updatedMember = {...member, artists: artistsArray}
+                onUpdate(updatedMember)
+            })
+        } else {
+            res.json().then(data=>
+                setErrors(Object.entries(data.errors).map(error=>`${error[0]} ${error[1]}`)))
+            }
+        })        
     }
     return (
         <div className="form">
