@@ -18,7 +18,7 @@ function SongDisplay({song, onUpdate, onDelete}) {
     <div className="song-profile">
         <h3>{name}</h3>
         <p>Genre: {genre}</p>
-        <p>This song was released in {release_date} by {artist_name} from the album {album_name}.</p>   
+        <p>This song was released in {release_date} by {artist_name} from the album {album_name}.</p>  
         <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
           {!displayUpdate ? "Click to update this songs name" : "Click to hide update form"}
         </button>

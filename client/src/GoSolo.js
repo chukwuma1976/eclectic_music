@@ -24,10 +24,7 @@ function GoSolo({member}) {
         })
         .then ((res)=>{
             if (res.ok) {
-                res.json().then((artist)=>{
-                    console.log(artist.id)
-                    navigate(`/solo_artist/${artist.id}`)
-            })
+                res.json().then(artist=>navigate(`/solo_artist/${artist.id}`))
             } else {res.json().then(data=> setErrors(data.errors))}
         })        
     }
