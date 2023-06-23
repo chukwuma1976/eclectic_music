@@ -86,13 +86,13 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                 </body>
                 <br/>
                 <div className='redirect'>
-                    <NavLink to="/albums" style={{color: 'blue'}}>
+                    <NavLink to="/albums_" style={{color: 'blue'}}>
                         Edit, Update Album, Add Songs |   |
                     </NavLink>              
-                    <NavLink to="/songs" style={{color: 'blue'}}>
+                    <NavLink to="/songs_" style={{color: 'blue'}}>
                         Edit and Delete Songs |   |
                     </NavLink>               
-                    <NavLink to="/members" style={{color: 'blue'}}>
+                    <NavLink to="/members_" style={{color: 'blue'}}>
                         Edit and Delete Members {"    "}
                     </NavLink>
                 </div>

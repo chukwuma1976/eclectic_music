@@ -1,19 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import ArtistDisplay from './ArtistDisplay'
 import FilterByName from './FilterByName';
 import AddArtist from './AddArtist';
+import FilterSoloArtist from './FilterSoloArtist';
+import { UserContext } from './User';
 
 function DisplayArtists() {
-    const [artists, setArtists] = useState([])
+    const {artists, setArtists} = useContext(UserContext)
+
     const [name, setName] = useState('')
     const [showAdd, setShowAdd] = useState(false)
     const [genre, setGenre] = useState("")
-
-    useEffect(() => {
-        fetch("/artists")
-        .then(res => res.json())
-        .then(artists => {setArtists(artists)})
-      }, []);
+    const [displaySolo, setDisplaySolo] = useState(false)
 
     function updateArtist(updatedArtist){
         const updatedArtists = artists.map(artist => {
@@ -27,8 +25,11 @@ function DisplayArtists() {
     function onDelete(id){
         setArtists(artists.filter(artist => artist.id !== id));
     }
-
-    const filteredByGenre = artists.filter(artist => artist.genre.toLowerCase().includes(genre.toLowerCase()))
+    const soloArtists = artists.filter(artist => {
+        if (displaySolo) return artist.is_solo_artist
+            else return artist
+    })
+    const filteredByGenre = soloArtists.filter(artist => artist.genre.toLowerCase().includes(genre.toLowerCase()))
     const filteredArtists = filteredByGenre.filter(artist => artist.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
@@ -38,6 +39,10 @@ function DisplayArtists() {
             <div className='filtering-form'>
                 <FilterByName category={"name"} handleFilterByName={setName}/>
                 <FilterByName category={"genre"} handleFilterByName={setGenre}/>
+                <FilterSoloArtist setDisplaySolo={setDisplaySolo} />
+
+            </div>
+            <div className='album-add-button'>
                 <button className={!showAdd ? "" : "button-clicked"}onClick={() => setShowAdd(!showAdd)}>
                     {!showAdd? "Click to Add Artist":"Click to Hide Form to Add Artist"}
                 </button>

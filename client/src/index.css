@@ -171,10 +171,18 @@ code {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .filtering-form {
+  display: flex;
+  justify-content: center;
   background: white;
   width: auto;
   height: auto;
   text-align: center;
+  padding: 0px 10px;
+}
+
+.album-add-button {
+  display: flex;
+  justify-content: center;
 }
 
 button.button-clicked {
@@ -248,20 +256,20 @@ ul {
 .album-profile {
   display: inline-block;
   width: 300px;
-  height: auto;
+  min-height: 300px;
   border: 2px solid black;
-  border-radius: 8em;
+  border-radius: 25%;
   padding: 10px;
   margin: 5px;
-  background: grey;
+  background: silver;
   text-align: center;
 }
 .member-profile {
   display: inline-block;
   width: 300px;
-  height: auto;
+  height: 300px;
   border: 2px solid blue;
-  border-radius: 6em;
+  border-radius: 20%;
   padding: 10px;
   margin: 5px;
   background: lightblue;
@@ -270,9 +278,9 @@ ul {
 .song-profile {
   display: inline-block;
   width: 300px;
-  height: auto;
+  min-height: 300px;
   border: 2px solid navajowhite;
-  border-radius: 4em;
+  border-radius: 20%;
   padding: 10px;
   margin: 5px;
   background: azure;
@@ -283,6 +291,8 @@ ul {
 }
 .date{
   text-align: right;
+  font-family: "Stencil Std", fantasy;
+  color: blueviolet
 }
 .PopUp{
   position: fixed;

@@ -1,18 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import AlbumDisplay from './AlbumDisplay';
 import FilterByName from './FilterByName';
+import { UserContext } from './User';
 
 function DisplayAlbums() {
-    const [albums, setAlbums] = useState([]);
+    const { albums, setAlbums } = useContext(UserContext)
     const [name, setName] = useState('')
     const [artist, setArtist] = useState('')
     const [genre, setGenre] = useState("")
-
-    useEffect(() => {
-        fetch("/albums")
-        .then(res => res.json())
-        .then(albums => {setAlbums(albums)})
-      }, []);  
 
     function addSongToAlbum(id, songList){
         const updatedAlbum = albums.find(album=>album.id === id)
@@ -34,7 +29,7 @@ function DisplayAlbums() {
     const filteredByGenre = albums.filter(album=>album.genre.toLowerCase().includes(genre.toLowerCase()))
     const filteredByArtist = filteredByGenre.filter(album=>album.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
     const filteredAlbums = filteredByArtist.filter(album => album.name.toLowerCase().includes(name.toLowerCase()));
-
+    
     return (
         <div>
             <h1>Albums</h1>

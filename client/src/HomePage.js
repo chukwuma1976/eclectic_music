@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import { NavLink } from 'react-router-dom';
 import { UserContext } from './User';
-import DateAndClock from './DateAndClock';
+import DateAndClock from './DateAndClock.js';
 
 function HomePage() {
     const {user} = useContext(UserContext)
@@ -56,13 +56,13 @@ function HomePage() {
             }
             <h2>Hey DJ! Please feel free to navigate to other parts of this app and start spinning some records!</h2>
             <br/>
-            <NavLink to="/artists" style={{color: 'blue'}}>Artists </NavLink>
+            <NavLink to="/artists_" style={{color: 'blue'}}>Artists </NavLink>
             <br/>
-            <NavLink to="/albums" style={{color: 'blue'}}>Albums </NavLink>
+            <NavLink to="/albums_" style={{color: 'blue'}}>Albums </NavLink>
             <br/>
-            <NavLink to="/members" style={{color: 'blue'}}>Members </NavLink>
+            <NavLink to="/members_" style={{color: 'blue'}}>Members </NavLink>
             <br/>
-            <NavLink to="/songs" style={{color: 'blue'}}>Songs </NavLink>
+            <NavLink to="/songs_" style={{color: 'blue'}}>Songs </NavLink>
             <br/>
             <NavLink to="/signout" style={{color: 'blue'}}>Log Out </NavLink>
         </div>

@@ -23,13 +23,6 @@ function DateAndClock() {
         return `${days[today.getDay()]} ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
     }
 
-    // function displayTime (thisDate){
-    //     const date = new Date(thisDate)
-    //     const hours = date.getHours()%12===0 ? "12":date.getHours()%12
-    //     const minutes = date.getMinutes() < 10? `0${date.getMinutes()}` : date.getMinutes()
-    //     const amOrPm =date.getHours()>12 ? "PM":"AM"
-    //     return `${hours}:${minutes} ${amOrPm}`
-    // }
     function tickingTime (thisDate){
       const date = new Date(thisDate)
       const hours = date.getHours()%12===0 ? "12":date.getHours()%12

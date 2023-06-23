@@ -7,7 +7,7 @@ function FilterByName({category, handleFilterByName}) {
     }
 
     return (
-        <div>
+        <div className='filter'>
             <p>
                 Filter by {category} {"  "}
                 <input type="text" placeholder="please enter the category" value={name} onChange={handleChange} />

@@ -1,18 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState, useContext} from 'react'
 import SongDisplay from './SongDisplay';
 import FilterByName from './FilterByName';
+import { UserContext } from './User';
 
 function DisplaySongs() {
-    const [songs, setSongs] = useState([])
+    const {songs, setSongs} = useContext(UserContext)
     const [name, setName] = useState("")
     const [artist, setArtist] = useState("")
     const [genre, setGenre] = useState("")
-
-    useEffect(() => {
-        fetch("/songs")
-        .then(res => res.json())
-        .then(songs => {setSongs(songs)})
-      }, []); 
 
     function onUpdate(updatedSong){
         const updatedSongs = songs.map(song => {

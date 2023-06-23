@@ -1,18 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import MemberDisplay from './MemberDisplay';
 import FilterByName from './FilterByName';
+import { UserContext } from './User';
 
 function DisplayMembers() {
-    const [members, setMembers] = useState([])
+    const {members, setMembers} = useContext(UserContext)
     const [name, setName] = useState("")
     const [artist, setArtist] = useState("")
     const [genre, setGenre] = useState("")
-
-    useEffect(() => {
-        fetch("/members")
-        .then(res => res.json())
-        .then(members => {setMembers(members)})
-      }, []);
 
     function onUpdate(updatedMember){
         const updatedMembers = members.map(member => {

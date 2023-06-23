@@ -59,7 +59,7 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
                 </div>
                 <br/>
                 <div className='redirect'>             
-                    <NavLink to="/songs" style={{color: 'blue'}}>
+                    <NavLink to="/songs_" style={{color: 'blue'}}>
                         Edit and Delete Songs
                     </NavLink>               
                 </div>
