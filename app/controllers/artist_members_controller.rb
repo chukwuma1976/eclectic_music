@@ -1,8 +1,8 @@
 class ArtistMembersController < ApplicationController
 
     def create
-        link = ArtistMember.create(artist_member_params)
-        render json: link, status: :created
+        artist_member = ArtistMember.create(artist_member_params)
+        render json: artist_member, status: :created
     end
 
     private

@@ -33,18 +33,6 @@ class ArtistsController < ApplicationController
         artist.members << member
         render json: artist, status: :created
     end
-    
-    def interesting
-        artists=Artist.all.filter do |artist|
-            artist.interesting_fact.include?(params[:key_value])
-        end
-
-        if artists.length > 0
-            render json: artist_members(artists), status: :created
-        else
-            render json: {error: "no artists found"}, status: :not_found
-        end
-    end
 
     private
 

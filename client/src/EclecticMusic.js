@@ -22,10 +22,10 @@ function EclecticMusic() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/artists" element={<DisplayArtists />} />
-        <Route path="/members" element={<DisplayMembers />} />
-        <Route path="/albums" element={<DisplayAlbums />} />
-        <Route path="/songs" element={<DisplaySongs />} />
+        <Route path="/artists_" element={<DisplayArtists />} />
+        <Route path="/members_" element={<DisplayMembers />} />
+        <Route path="/albums_" element={<DisplayAlbums />} />
+        <Route path="/songs_" element={<DisplaySongs />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="/solo_artist/:artist_id" element={<DisplaySoloArtist />} />
       </Routes>

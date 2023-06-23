@@ -30,6 +30,7 @@
 #     artist_id: nil,
 #     member_id: nil
 # }
+User.create("CASmooth", "EyeOfAHero", "EyeOfAHero")
 
 blackpink = {
     name: "Blackpink",

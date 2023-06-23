@@ -13,10 +13,10 @@ function UserProvider({children}) {
         })
     }, [])
 
-    const today = new Date()
+    // const today = new Date()
 
     return (
-        <UserContext.Provider value={{user, setUser, today}}>
+        <UserContext.Provider value={{user, setUser}}>
             {children}
         </UserContext.Provider>
     )

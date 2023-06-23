@@ -12,28 +12,28 @@ function NavBar() {
             Home Page
           </NavLink>
           <NavLink
-            to="/artists"
+            to="/artists_"
             style={({isActive}) => ({background: isActive ? 'red' : ''})}
             className="navbar"
           >
             Artists
           </NavLink>
           <NavLink
-            to="/albums"
+            to="/albums_"
             style={({isActive}) => ({background: isActive ? 'red' : ''})}
             className="navbar"
           >
             Albums
           </NavLink>
           <NavLink
-            to="/members"
+            to="/members_"
             style={({isActive}) => ({background: isActive ? 'red' : ''})}
             className="navbar"
           >
             Members
           </NavLink>
           <NavLink
-            to="/songs"
+            to="/songs_"
             style={({isActive}) => ({background: isActive ? 'red' : ''})}
             className="navbar"
           >
