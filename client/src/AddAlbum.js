@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { UserContext } from './User'
 
 function AddAlbum({setAlbums, artist_id, setDisplayAddAlbum}) {
     const [errors, setErrors] = useState(null)
+    const {setSongs} = useContext(UserContext)
     const [newAlbum, setNewAlbum] = useState({
         name: "",
         year_released: 1900,
@@ -39,8 +41,8 @@ function AddAlbum({setAlbums, artist_id, setDisplayAddAlbum}) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({name, artist_id, album_id})
         })
-        // .then(res=>res.json())
-        // .then(console.log)
+        .then(res=>res.json())
+        .then(setSongs)
     }
     return (
         <div className="form">

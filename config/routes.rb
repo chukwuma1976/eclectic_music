@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :artists
   post 'gosolo/:member_id', to: 'artists#gosolo'
+  post 'add_existing_member_to_artist', to: 'artists#add_existing_member_to_artist'
 
   post '/login', to: 'sessions#create'
   post '/signup', to: 'users#create'

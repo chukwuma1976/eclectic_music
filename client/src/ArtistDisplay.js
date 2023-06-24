@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import AddAlbum from './AddAlbum';
 import AddMember from './AddMember';
+import AddExistingMember from './AddExistingMember';
 import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
 import {NavLink} from 'react-router-dom';
@@ -12,6 +13,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
     const [displayAddAlbum, setDisplayAddAlbum] = useState(false)
     const [artistAlbums, setArtistAlbums] = useState(albums)
     const [displayAddMember, setDisplayAddMember] = useState(false)
+    const [displayAddExistingMember, setDisplayAddExistingMember] = useState(false)
     const [artistMembers, setArtistMembers] = useState([...members])
     const [displayUpdate, setDisplayUpdate] = useState(false)
     const [wantToDelete, setWantToDelete] = useState(false)
@@ -59,10 +61,16 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                 null : <AddAlbum setAlbums={addAlbum} artist_id={id} setDisplayAddAlbum={setDisplayAddAlbum}/>}
             <br/>
             <button className={!displayAddMember ? "" : "button-clicked"} onClick={()=>setDisplayAddMember(!displayAddMember)}>
-                {!displayAddMember ? "Click to add a member" : "Click to hide form to add member"}
+                {!displayAddMember ? "Click to add a new member" : "Click to hide form to add new member"}
             </button>
             {!displayAddMember ? 
                 null : <AddMember setMembers={addMember} artistId={id} setDisplayAddMember={setDisplayAddMember}/>}
+            <br/>
+            <button className={!displayAddExistingMember ? "" : "button-clicked"} onClick={()=>setDisplayAddExistingMember(!displayAddExistingMember)}>
+                {!displayAddExistingMember ? "Click to add an existing member" : "Click to hide form to add an existing member"}
+            </button>
+            {!displayAddExistingMember ? 
+                null : <AddExistingMember addMember={addMember} artistId={id} setDisplayAddMember={setDisplayAddExistingMember}/>}
             <br/>
             <button className={!wantToDelete ? "" : "button-clicked"} onClick={()=>setWantToDelete(!wantToDelete)}>
                 {!wantToDelete ? "Do you want to delete this artist?" : "Click if you want to keep this artist"}               

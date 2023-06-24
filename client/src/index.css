@@ -145,6 +145,13 @@ code {
 .profile-image {
   height: 200px;
   width: 300px;
+  object-fit: cover;
+}
+
+.album-thumbnail {
+  width: 200px;
+  height: 200px;
+  object-fit: cover
 }
 
 .enlarged-image {
@@ -180,6 +187,11 @@ code {
   padding: 0px 10px;
 }
 
+.filter {
+  text-align: center;
+  padding: 0px 10px;
+}
+
 .album-add-button {
   display: flex;
   justify-content: center;
@@ -200,10 +212,6 @@ button.button-clicked {
 }
 
 h1, h2, h3, h4 {
-  text-align: center;
-}
-
-.filter {
   text-align: center;
 }
 
@@ -258,18 +266,25 @@ ul {
   width: 300px;
   min-height: 300px;
   border: 2px solid black;
-  border-radius: 25%;
+  border-radius: 10%;
   padding: 10px;
   margin: 5px;
   background: silver;
   text-align: center;
+  object-fit: cover
+}
+.member-thumbnail {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  object-fit: cover
 }
 .member-profile {
   display: inline-block;
   width: 300px;
-  height: 300px;
+  min-height: 300px;
   border: 2px solid blue;
-  border-radius: 20%;
+  border-radius: 10%;
   padding: 10px;
   margin: 5px;
   background: lightblue;
@@ -292,7 +307,7 @@ ul {
 .date{
   text-align: right;
   font-family: "Stencil Std", fantasy;
-  color: blueviolet
+  color: darkblue
 }
 .PopUp{
   position: fixed;

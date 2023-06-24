@@ -34,6 +34,17 @@ class ArtistsController < ApplicationController
         render json: artist, status: :created
     end
 
+    def add_existing_member_to_artist
+        artist = Artist.find(params[:artist_id])
+        if !!artist.members.find_by(id: params[:member_id])
+            render json: {errors: ["Member already exists"]}, status: :unprocessable_entity
+        else
+            member = Member.find(params[:member_id])
+            artist.members << member
+            render json: member, status: :created
+        end
+    end
+
     private
 
     def artist_params
@@ -44,6 +55,10 @@ class ArtistsController < ApplicationController
         artists.map do |artist|
             artist.members
         end.flatten
+    end
+
+    def member_found(artist, member_id)
+        artist.members.find(member_id)
     end
 
 end

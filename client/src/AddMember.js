@@ -28,11 +28,6 @@ function AddMember({setMembers, artistId, setDisplayAddMember}) {
                 })
             } else {res.json().then(data=>setErrors(data.errors))}
             })
-            .then(res=>res.json())
-            .then(member=>{
-                setMembers(member)
-                linkToArtist(member.id)
-            })  
     }
     function linkToArtist(memberId){
         fetch("/artist_members", {
@@ -46,7 +41,7 @@ function AddMember({setMembers, artistId, setDisplayAddMember}) {
     }
 
     return (
-        <div class="form">
+        <div className="form">
             <h4>Add a Member by entering the information below</h4>
             {errors ? errors.map(error => <p>{error}</p>) : null}
             <form onSubmit={handleSubmit}>

@@ -33,7 +33,7 @@ function DisplayAlbums() {
     return (
         <div>
             <h1>Albums</h1>
-            <h3>Total albums: {albums.length}</h3>
+            <h3>Total albums: {albums.length}  ||  Displayed albums: {filteredAlbums.length}</h3>
             <div className='filtering-form'>
                 <FilterByName category={"name"}handleFilterByName={setName}/>
                 <FilterByName category={"artist"} handleFilterByName={setArtist}/>

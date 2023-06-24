@@ -31,6 +31,9 @@ function AlbumDisplay({album, onUpdate, addSongToAlbum, onDelete}) {
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>
             <h3>{name} ({year_released})</h3>
+            {displayProfile ? null: 
+                <img className="album-thumbnail" src={album_cover_url} alt={name}/>
+            }
             <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                 {!displayUpdate ? "Click to update album" : "Click to collapse form to update album"}
             </button>

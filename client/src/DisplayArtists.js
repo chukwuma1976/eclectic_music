@@ -35,7 +35,7 @@ function DisplayArtists() {
     return (
         <div>
             <h1>Artists</h1>
-            <h3>Total Artists: {artists.length}</h3>
+            <h3>Total Artists: {artists.length} || Displayed Artists: {filteredArtists.length}</h3>
             <div className='filtering-form'>
                 <FilterByName category={"name"} handleFilterByName={setName}/>
                 <FilterByName category={"genre"} handleFilterByName={setGenre}/>

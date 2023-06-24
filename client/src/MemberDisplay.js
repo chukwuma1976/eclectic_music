@@ -22,9 +22,10 @@ function MemberDisplay({member, onUpdate, onDelete}) {
                 {!displayProfile ? "Click to expand" : "Click to collapse"}
             </button>
             <h1>{name}</h1>
-            {artists.map(artist => <p key={artist.id}>{artist.name}</p>)}
+            <img className={displayProfile? "member-pic": "member-thumbnail"} src={image_url} alt={name}/>
             {!displayProfile ? null : 
             (<section>
+                {artists.map(artist => <p key={artist.id}>{artist.name}</p>)}
                 <button className={!displayUpdate ? "" : "button-clicked"} onClick={()=>setDisplayUpdate(!displayUpdate)}>
                     {!displayUpdate ? "Click to update member" : "Click to close update form"}
                 </button>
@@ -40,12 +41,11 @@ function MemberDisplay({member, onUpdate, onDelete}) {
                     null : <GoSolo member={member} />}
                 
                 <button className={!displayDelete ? "" : "button-clicked"}onClick={()=>setDisplayDelete(!displayDelete)}>
-                    {!displayDelete ? "Click to delete member" : "Click to keep form"}
+                    {!displayDelete ? "Click to delete member" : "Click to keep member"}
                 </button>
                 <br/>
                 {!displayDelete ? null : <button onClick={()=>deleteMember(id)}>Click to delete</button>}
                 <br/>
-                <img className="member-pic" src={image_url} alt={name}/>
             </section>)}
     </div>
     )
