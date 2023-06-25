@@ -3,7 +3,7 @@ import { UserContext } from './User'
 import { useNavigate } from 'react-router-dom'
 
 function GoSolo({member}) {
-    const {user} = useContext(UserContext)
+    const {user, resetArtists} = useContext(UserContext)
     const navigate = useNavigate()
     const [errors, setErrors] = useState(null)
     const {id, name, artists, image_url} = member
@@ -27,7 +27,8 @@ function GoSolo({member}) {
             if (res.ok) {
                 res.json().then(artist=>navigate(`/solo_artist/${artist.id}`))
             } else {res.json().then(data=> setErrors(data.errors))}
-        })        
+        }) 
+        resetArtists()       
     }
     return (
         <div className="form">
