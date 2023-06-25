@@ -13,7 +13,6 @@ function DisplayAlbums() {
         const updatedAlbum = albums.find(album=>album.id === id)
         updatedAlbum.songs = songList
         onUpdate(updatedAlbum)
-        resetSongs()
     }
     function onUpdate(updatedAlbum){
         const albumWithUpdate = albums.map(album => {
@@ -23,6 +22,7 @@ function DisplayAlbums() {
         })
         setAlbums(albumWithUpdate)
         resetArtists()
+        resetSongs()
     }
 
     function onDelete(id){

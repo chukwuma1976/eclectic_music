@@ -4,7 +4,7 @@ import FilterByName from './FilterByName';
 import { UserContext } from './User';
 
 function DisplaySongs() {
-    const {songs, setSongs} = useContext(UserContext)
+    const {songs, setSongs, resetAlbums, resetArtists} = useContext(UserContext)
     const [name, setName] = useState("")
     const [artist, setArtist] = useState("")
     const [genre, setGenre] = useState("")
@@ -16,10 +16,14 @@ function DisplaySongs() {
             } else return song
         })
         setSongs(updatedSongs)
+        resetAlbums()
+        resetArtists()
     }
 
     function onDelete(id){
         setSongs(songs.filter(song => song.id !== id))
+        resetAlbums()
+        resetArtists()
     }
 
     const filteredByGenre = songs.filter(song =>song.genre.toLowerCase().includes(genre.toLowerCase()))
