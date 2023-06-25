@@ -39,13 +39,11 @@ To launch this application:
     git clone git@github.com:chukwuma1976/eclectic_music.git
     cd into appropriate folder (eclectic_music)
 
-    In separate console //this launches the frontend client
-        npm install --prefix client
-        npm start --prefix client
-
-    In separate console //this launches the backend server
+    Run on local server via the following commands
         bundle install
         rails s
+
+    One can also access the application on Render through this link: https://eclectic-music-database.onrender.com/
 
     make sure PostgreSQL is installed and started
         sudo apt update
@@ -56,6 +54,6 @@ To launch this application:
         sudo -u postgres -i
         createuser -sr <username>
 
-Link to the demo for this application: https://youtu.be/16OKBCuvjVk
+Link to the demo for this application: https://youtu.be/b0sZSVU_Dlo
 
 Images were obtained from the internet via google.com.
