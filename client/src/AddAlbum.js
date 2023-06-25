@@ -3,7 +3,7 @@ import { UserContext } from './User'
 
 function AddAlbum({addAlbum, artistId, setDisplayAddAlbum}) {
     const [errors, setErrors] = useState(null)
-    const {albums, setAlbums, songs, setSongs} = useContext(UserContext)
+    const {resetSongs, resetAlbums} = useContext(UserContext)
     const [newAlbum, setNewAlbum] = useState({
         name: "",
         year_released: 1980,
@@ -26,7 +26,6 @@ function AddAlbum({addAlbum, artistId, setDisplayAddAlbum}) {
             if (res.ok) {
                 res.json().then(album=>{
                     addAlbum(album)
-                    setAlbums([...albums, album])
                     setDisplayAddAlbum(false)
                     addBlankSongToAlbum(album.id)
                 })
@@ -41,8 +40,8 @@ function AddAlbum({addAlbum, artistId, setDisplayAddAlbum}) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({name, artist_id: artistId, album_id})
         })
-        .then(res=>res.json())
-        .then(song => setSongs([...songs, song]))
+        resetAlbums()
+        resetSongs()
     }
     return (
         <div className="form">

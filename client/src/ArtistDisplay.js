@@ -8,7 +8,7 @@ import {NavLink} from 'react-router-dom';
 import { UserContext } from './User';
 
 function ArtistDisplay({artist, updateArtist, onDelete}) {
-    const {resetAlbums, resetAll} = useContext(UserContext)
+    const {resetAll} = useContext(UserContext)
     const {id, name, genre, date_established, interesting_fact, 
         artist_image_url, albums, members, number_of_members} = artist
     const [displayProfile, setDisplayProfile] = useState(false)
@@ -25,7 +25,6 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
         const newAlbumList = [...artistAlbums, album]
         const updatedArtist = {...artist, albums: newAlbumList}
         updateArtist(updatedArtist)
-        resetAlbums()
     }
 
     function addMember(member){

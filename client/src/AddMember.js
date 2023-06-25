@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import { UserContext } from './User'
 
 function AddMember({addMember, artistId, setDisplayAddMember}) {
-    const {members, setMembers} = useContext(UserContext)
+    const {members, setMembers, resetMembers} = useContext(UserContext)
     const [errors, setErrors] = useState(null)
     const [newMember, setNewMember] = useState({
         name: "",
@@ -25,7 +25,8 @@ function AddMember({addMember, artistId, setDisplayAddMember}) {
             if (res.ok) {
                 res.json().then(member=>{
                     addMember(member)
-                    setMembers([...members, member])
+                    // setMembers([...members, member])
+                    resetMembers()
                     setDisplayAddMember(false)
                 })
             } else {res.json().then(data=>setErrors(data.errors))}

@@ -3,7 +3,7 @@ import FilterByName from './FilterByName'
 import { UserContext } from './User'
 
 function AddExistingMember({addMember, artistId, setDisplayAddMember}) {
-    const {members, setMembers} = useContext(UserContext)
+    const {members, resetMembers} = useContext(UserContext)
     const [memberName, setMemberName] = useState("")
     const [errors, setErrors] = useState(null)
     const [memberId, setMemberId] = useState(null)
@@ -25,10 +25,7 @@ function AddExistingMember({addMember, artistId, setDisplayAddMember}) {
             if (res.ok) {
                 res.json().then(member=>{
                     addMember(member)
-                    setMembers(members.map(singer => {
-                        if (singer.id === member.id) return member
-                            else return singer
-                    }))
+                    resetMembers()
                     setDisplayAddMember(false)
                 })
             } else {res.json().then(data=>setErrors(data.errors))}

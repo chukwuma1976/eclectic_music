@@ -4,7 +4,7 @@ import FilterByName from './FilterByName';
 import { UserContext } from './User';
 
 function DisplayMembers() {
-    const {members, setMembers} = useContext(UserContext)
+    const {members, setMembers, resetArtists} = useContext(UserContext)
     const [name, setName] = useState("")
     const [artist, setArtist] = useState("")
     const [genre, setGenre] = useState("")
@@ -20,10 +20,16 @@ function DisplayMembers() {
 
     function onDelete(id){
         setMembers(members.filter(member => member.id !== id))
+        resetArtists()
+    }
+
+    function findMatch(array, attribute, filter){
+        const match = array.find(element=> element[attribute].toLowerCase().includes(filter.toLowerCase()))
+        return !!match
     }
     
-    const filteredByGenre = members.filter(member=>member.artists[0].genre.toLowerCase().includes(genre.toLowerCase()))
-    const filteredByArtist = filteredByGenre.filter(member=>member.artists[0].name.toLowerCase().includes(artist.toLowerCase()))
+    const filteredByGenre = members.filter(member=> findMatch(member.artists, "genre", genre))
+    const filteredByArtist = filteredByGenre.filter(member=> findMatch(member.artists, "name", artist))
     const filteredMembers = filteredByArtist.filter(member => member.name.toLowerCase().includes(name.toLowerCase()))
 
     return (
