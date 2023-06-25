@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import AddAlbum from './AddAlbum';
 import AddMember from './AddMember';
 import AddExistingMember from './AddExistingMember';
 import UpdateArtist from './UpdateArtist';
 import ArtistAlbumDisplay from './ArtistAlbumDisplay';
 import {NavLink} from 'react-router-dom';
+import { UserContext } from './User';
 
 function ArtistDisplay({artist, updateArtist, onDelete}) {
+    const {resetAlbums, resetAll} = useContext(UserContext)
     const {id, name, genre, date_established, interesting_fact, 
         artist_image_url, albums, members, number_of_members} = artist
     const [displayProfile, setDisplayProfile] = useState(false)
@@ -23,6 +25,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
         const newAlbumList = [...artistAlbums, album]
         const updatedArtist = {...artist, albums: newAlbumList}
         updateArtist(updatedArtist)
+        resetAlbums()
     }
 
     function addMember(member){
@@ -37,6 +40,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
             method: "DELETE"
         })
         onDelete(id)
+        resetAll()
     }
 
     return (
@@ -58,13 +62,13 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                 {!displayAddAlbum ? "Click to add an album" : "Click to hide form to add album"}
             </button>
             {!displayAddAlbum ? 
-                null : <AddAlbum setAlbums={addAlbum} artist_id={id} setDisplayAddAlbum={setDisplayAddAlbum}/>}
+                null : <AddAlbum addAlbum={addAlbum} artist_id={id} setDisplayAddAlbum={setDisplayAddAlbum}/>}
             <br/>
             <button className={!displayAddMember ? "" : "button-clicked"} onClick={()=>setDisplayAddMember(!displayAddMember)}>
                 {!displayAddMember ? "Click to add a new member" : "Click to hide form to add new member"}
             </button>
             {!displayAddMember ? 
-                null : <AddMember setMembers={addMember} artistId={id} setDisplayAddMember={setDisplayAddMember}/>}
+                null : <AddMember addMember={addMember} artistId={id} setDisplayAddMember={setDisplayAddMember}/>}
             <br/>
             <button className={!displayAddExistingMember ? "" : "button-clicked"} onClick={()=>setDisplayAddExistingMember(!displayAddExistingMember)}>
                 {!displayAddExistingMember ? "Click to add an existing member" : "Click to hide form to add an existing member"}

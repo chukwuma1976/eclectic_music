@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { UserContext } from './User'
 
-function AddMember({setMembers, artistId, setDisplayAddMember}) {
+function AddMember({addMember, artistId, setDisplayAddMember}) {
+    const {members, setMembers} = useContext(UserContext)
     const [errors, setErrors] = useState(null)
     const [newMember, setNewMember] = useState({
         name: "",
@@ -14,7 +16,7 @@ function AddMember({setMembers, artistId, setDisplayAddMember}) {
     function handleSubmit(event){
         event.preventDefault()
 
-        fetch("/members", {
+        fetch(`/artists/${artistId}/members`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newMember)
@@ -22,22 +24,12 @@ function AddMember({setMembers, artistId, setDisplayAddMember}) {
        .then ((res)=>{
             if (res.ok) {
                 res.json().then(member=>{
-                    setMembers(member)
-                    linkToArtist(member.id)
+                    addMember(member)
+                    setMembers([...members, member])
                     setDisplayAddMember(false)
                 })
             } else {res.json().then(data=>setErrors(data.errors))}
             })
-    }
-    function linkToArtist(memberId){
-        fetch("/artist_members", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                artist_id: artistId, 
-                member_id: memberId
-            })
-        }).then(res=>res.json())
     }
 
     return (

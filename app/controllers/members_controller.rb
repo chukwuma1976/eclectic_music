@@ -15,7 +15,8 @@ class MembersController < ApplicationController
     end
 
     def create
-        member = Member.create!(member_params)
+        artist = Artist.find(params[:artist_id])
+        member=artist.members.create!(member_params)
         render json: member, status: :created
     end
 

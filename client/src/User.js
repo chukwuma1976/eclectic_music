@@ -42,9 +42,46 @@ function UserProvider({children}) {
         .then(songs => {setSongs(songs)})
       }, []); 
 
+    function resetAlbums(){
+        fetch("/albums")
+        .then(res => res.json())
+        .then(albums => {setAlbums(albums)})
+    }
+
+    function resetMembers(){
+        fetch("/members")
+        .then(res => res.json())
+        .then(members => {setMembers(members)})
+    }
+
+    function resetSongs(){
+        fetch("/songs")
+        .then(res => res.json())
+        .then(songs => {setSongs(songs)})
+    }
+
+    function resetAll(){
+        fetch("/albums")
+        .then(res => res.json())
+        .then(albums => {setAlbums(albums)})
+
+        fetch("/members")
+        .then(res => res.json())
+        .then(members => {setMembers(members)})
+
+        fetch("/songs")
+        .then(res => res.json())
+        .then(songs => {setSongs(songs)})
+    }
+
     return (
         <UserContext.Provider value={{
-            user, setUser, artists, setArtists, albums, setAlbums, members, setMembers, songs, setSongs
+            user, setUser, 
+            artists, setArtists, 
+            albums, setAlbums, 
+            members, setMembers, 
+            songs, setSongs, 
+            resetAlbums, resetMembers, resetSongs, resetAll
         }}>
             {children}
         </UserContext.Provider>

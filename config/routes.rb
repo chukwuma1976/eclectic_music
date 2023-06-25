@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :members
-  resources :artist_members, only: [:create]
-  resources :albums
+  resources :members, only: [:index, :show, :update, :destroy]
+  resources :artist_members, only: :create
+  resources :albums, only: [:index, :show, :update, :destroy]
   resources :songs
-  resources :artists
+  resources :artists do
+    resources :members, only: :create
+    resources :albums, only: :create
+  end
   post 'gosolo/:member_id', to: 'artists#gosolo'
   post 'add_existing_member_to_artist', to: 'artists#add_existing_member_to_artist'
 
