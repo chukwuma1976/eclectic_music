@@ -15,9 +15,7 @@ class AlbumsController < ApplicationController
     end
 
     def create
-        artist = Artist.find(params[:artist_id])
-        byebug
-        album=artist.albums.create!(album_params)
+        album = Album.create(album_params)
         render json: album, status: :created
     end
 

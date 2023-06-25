@@ -1,12 +1,12 @@
 import React, {useState, useContext} from 'react'
 import { UserContext } from './User'
 
-function AddAlbum({addAlbum, artist_id, setDisplayAddAlbum}) {
+function AddAlbum({addAlbum, artistId, setDisplayAddAlbum}) {
     const [errors, setErrors] = useState(null)
-    const {albums, setAlbums, setSongs} = useContext(UserContext)
+    const {albums, setAlbums, songs, setSongs} = useContext(UserContext)
     const [newAlbum, setNewAlbum] = useState({
         name: "",
-        year_released: 1900,
+        year_released: 1980,
         album_cover_url: ""
     })
     const {name, year_released, album_cover_url} = newAlbum
@@ -17,7 +17,7 @@ function AddAlbum({addAlbum, artist_id, setDisplayAddAlbum}) {
     function handleSubmit(event){
         event.preventDefault()
     
-        fetch(`/artists/${artist_id}/albums`, {
+        fetch(`/albums`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newAlbum)
@@ -27,8 +27,8 @@ function AddAlbum({addAlbum, artist_id, setDisplayAddAlbum}) {
                 res.json().then(album=>{
                     addAlbum(album)
                     setAlbums([...albums, album])
-                    addBlankSongToAlbum(album.id)
                     setDisplayAddAlbum(false)
+                    addBlankSongToAlbum(album.id)
                 })
                 } else {res.json().then(data=>setErrors(data.errors))}
             })    
@@ -39,10 +39,10 @@ function AddAlbum({addAlbum, artist_id, setDisplayAddAlbum}) {
         fetch("/songs", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({name, artist_id, album_id})
+            body: JSON.stringify({name, artist_id: artistId, album_id})
         })
         .then(res=>res.json())
-        .then(setSongs)
+        .then(song => setSongs([...songs, song]))
     }
     return (
         <div className="form">

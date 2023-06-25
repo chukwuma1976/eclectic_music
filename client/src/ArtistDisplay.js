@@ -62,7 +62,7 @@ function ArtistDisplay({artist, updateArtist, onDelete}) {
                 {!displayAddAlbum ? "Click to add an album" : "Click to hide form to add album"}
             </button>
             {!displayAddAlbum ? 
-                null : <AddAlbum addAlbum={addAlbum} artist_id={id} setDisplayAddAlbum={setDisplayAddAlbum}/>}
+                null : <AddAlbum addAlbum={addAlbum} artistId={id} setDisplayAddAlbum={setDisplayAddAlbum}/>}
             <br/>
             <button className={!displayAddMember ? "" : "button-clicked"} onClick={()=>setDisplayAddMember(!displayAddMember)}>
                 {!displayAddMember ? "Click to add a new member" : "Click to hide form to add new member"}
