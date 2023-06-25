@@ -30,7 +30,7 @@
 #     artist_id: nil,
 #     member_id: nil
 # }
-User.create("CASmooth", "EyeOfAHero", "EyeOfAHero")
+User.create(username: "CASmooth", password: "EyeOfAHero", password_confirmation: "EyeOfAHero")
 
 blackpink = {
     name: "Blackpink",
@@ -40,7 +40,7 @@ blackpink = {
     artist_image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/20190106_%28NEWSEN%29_%EB%B8%94%EB%9E%99%ED%95%91%ED%81%AC_%28BLACKPINK%29%2C_%EC%88%98%EC%A4%8D%EC%9D%80_%EB%A7%8E%EC%9D%80_%EC%86%8C%EB%85%80%EC%A7%80%EB%A7%8C_%EB%8F%8B%EB%B3%B4%EC%9D%B4%EB%8A%94_%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4_%EB%AF%B8%EB%AA%A8_%28Golden_Disc_Awards_2019%29_%282%29.jpg/800px-20190106_%28NEWSEN%29_%EB%B8%94%EB%9E%99%ED%95%91%ED%81%AC_%28BLACKPINK%29%2C_%EC%88%98%EC%A4%8D%EC%9D%80_%EB%A7%8E%EC%9D%80_%EC%86%8C%EB%85%80%EC%A7%80%EB%A7%8C_%EB%8F%8B%EB%B3%B4%EC%9D%B4%EB%8A%94_%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4_%EB%AF%B8%EB%AA%A8_%28Golden_Disc_Awards_2019%29_%282%29.jpg",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(blackpink)
+Artist.create(blackpink)
 
 blackpink_albums = [
     {
@@ -59,7 +59,7 @@ blackpink_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/e/e7/Born_Pink_Digital.jpeg"
     }, 
 ]
-# blackpink_albums.map {|album| Album.create(album)}
+blackpink_albums.map {|album| Album.create(album)}
 
 blackpink_songs = [
     {
@@ -138,7 +138,7 @@ blackpink_songs = [
         album_id: Album.find_by(name: "Born Pink").id
     }
 ]
-# blackpink_songs.map {|song| Song.create(song)}
+blackpink_songs.map {|song| Song.create(song)}
 
 blackpink_members = [
     {
@@ -158,7 +158,7 @@ blackpink_members = [
         image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Blackpink_Lisa_at_Bvulgari_Avrora_Awards_2022.png/330px-Blackpink_Lisa_at_Bvulgari_Avrora_Awards_2022.png"
     }
 ]
-# blackpink_members.map {|member| Member.create(member)}
+blackpink_members.map {|member| Member.create(member)}
 
 blackpink_artist_member = [
     {
@@ -178,7 +178,7 @@ blackpink_artist_member = [
         member_id: Member.find_by(name: "Jisoo").id
     }
 ]
-# blackpink_artist_member.map {|artist_member| ArtistMember.create(artist_member)}
+blackpink_artist_member.map {|artist_member| ArtistMember.create(artist_member)}
 
 twice = {
     name: "Twice",
@@ -188,7 +188,7 @@ twice = {
     artist_image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Twice_210615.png/220px-Twice_210615.png",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(twice)
+Artist.create(twice)
 
 twice_albums = [
     {
@@ -217,7 +217,7 @@ twice_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Twice_-_Formula_of_Love.png/220px-Twice_-_Formula_of_Love.png"
     }
 ]
-# twice_albums.map {|twice_album| Album.create(twice_album)}
+twice_albums.map {|twice_album| Album.create(twice_album)}
 
 twice_songs = [
     {
@@ -251,7 +251,7 @@ twice_songs = [
         album_id: Album.find_by(name: "Formula of Love: O+T=<3").id
     }
 ]
-# twice_songs.map {|twice_song| Song.create(twice_song)}
+twice_songs.map {|twice_song| Song.create(twice_song)}
 
 twice_members = [
     {
@@ -291,7 +291,7 @@ twice_members = [
         image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/20220121%E2%80%94Tzuyu_Campaign_Film%2C_Pearlygates_x_Twice_2022.jpg/250px-20220121%E2%80%94Tzuyu_Campaign_Film%2C_Pearlygates_x_Twice_2022.jpg"
     }
 ]
-# twice_members.map {|twice_member| Member.create(twice_member) }
+twice_members.map {|twice_member| Member.create(twice_member) }
 
 twice_artist_members = [
     {
@@ -331,7 +331,7 @@ twice_artist_members = [
         member_id: Member.find_by(name: "Momo").id
     }
 ]
-# twice_artist_members.map {|twice_artist_member| ArtistMember.create(twice_artist_member) }
+twice_artist_members.map {|twice_artist_member| ArtistMember.create(twice_artist_member) }
 
 red_velvet = {
     name: "Red Velvet",
@@ -341,7 +341,7 @@ red_velvet = {
     artist_image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Red_Velvet_at_The_Shilla_Duty_Free_Beauty%26You%E2%80%99s_first_anniversary_on_July_30%2C_2019.png/800px-Red_Velvet_at_The_Shilla_Duty_Free_Beauty%26You%E2%80%99s_first_anniversary_on_July_30%2C_2019.png",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(red_velvet)
+Artist.create(red_velvet)
 
 red_velvet_albums = [
     {
@@ -370,7 +370,7 @@ red_velvet_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/6/60/Red_Velvet_-_The_ReVe_Festival_2022_-_Birthday.png"
     },
 ]
-# red_velvet_albums.map {|red_velvet_album| Album.create(red_velvet_album)}
+red_velvet_albums.map {|red_velvet_album| Album.create(red_velvet_album)}
 
 red_velvet_songs = [
     {
@@ -409,7 +409,7 @@ red_velvet_songs = [
         album_id: Album.find_by(name: "The ReVe Festival 2022 Birthday").id
     },
 ]
-# red_velvet_songs.map {|red_velvet_song| Song.create(red_velvet_song)}
+red_velvet_songs.map {|red_velvet_song| Song.create(red_velvet_song)}
 
 red_velvet_members = [
     {
@@ -433,7 +433,7 @@ red_velvet_members = [
         image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Yeri_modeling_for_Marie_Claire_Korea_on_March_22%2C_2022_08_%28cropped%29.jpg/220px-Yeri_modeling_for_Marie_Claire_Korea_on_March_22%2C_2022_08_%28cropped%29.jpg"
     }
 ]
-# red_velvet_members.map {|red_velvet_member| Member.create(red_velvet_member)}
+red_velvet_members.map {|red_velvet_member| Member.create(red_velvet_member)}
 
 red_velvet_artist_members = [
     {
@@ -457,7 +457,7 @@ red_velvet_artist_members = [
         member_id: Member.find_by(name: "Irene").id
     }
 ]
-# red_velvet_artist_members.map {|red_velvet_artist_member| ArtistMember.create(red_velvet_artist_member)}
+red_velvet_artist_members.map {|red_velvet_artist_member| ArtistMember.create(red_velvet_artist_member)}
 
 xg = {
     name: "XG",
@@ -467,7 +467,7 @@ xg = {
     artist_image_url: "https://media1.giphy.com/media/nRSvklP9dS93yklj2P/giphy.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(xg)
+Artist.create(xg)
 
 xg_albums = [
     {
@@ -481,7 +481,7 @@ xg_albums = [
         album_cover_url: "https://img.imageimg.net/artist/xg/img/product_1034520.jpg"
     }
 ]
-# xg_albums.map {|xg_album| Album.create(xg_album) }
+xg_albums.map {|xg_album| Album.create(xg_album) }
 
 xg_songs = [
     {
@@ -495,7 +495,7 @@ xg_songs = [
         album_id: Album.find_by(name: "Mascara").id
     }
 ]
-# xg_songs.map {|xg_song| Song.create(xg_song) }
+xg_songs.map {|xg_song| Song.create(xg_song) }
 
 xg_members = [
     {
@@ -527,7 +527,7 @@ xg_members = [
         image_url: "https://img.imageimg.net/artist/xg/img/member_1002402.png"
     }
 ]
-# xg_members.map {|xg_member| Member.create(xg_member) }
+xg_members.map {|xg_member| Member.create(xg_member) }
 
 xg_artist_members = [
     {
@@ -559,7 +559,7 @@ xg_artist_members = [
         member_id: Member.find_by(name: "Cocona").id
     }
 ]
-# xg_artist_members.map {|xg_member| ArtistMember.create(xg_member) }
+xg_artist_members.map {|xg_member| ArtistMember.create(xg_member) }
 
 le_sserafim = {
     name: "Le Sserafim",
@@ -569,7 +569,7 @@ le_sserafim = {
     artist_image_url: "https://64.media.tumblr.com/d692914b6363466d2d5d07090b6da0d6/5fa9270cb94e3feb-62/s540x810/18e5a31026ee9b4cd32338f95da2ddc72ba1e8d0.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(le_sserafim)
+Artist.create(le_sserafim)
 
 le_sserafim_albums = [
     {
@@ -583,7 +583,7 @@ le_sserafim_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/e/e6/Le_Sserafim_-_Antifragile.png"
     }
 ]
-# le_sserafim_albums.map {|le_sserafim_album| Album.create(le_sserafim_album) }
+le_sserafim_albums.map {|le_sserafim_album| Album.create(le_sserafim_album) }
 
 le_sserafim_songs = [
     {
@@ -597,7 +597,7 @@ le_sserafim_songs = [
         album_id: Album.find_by(name: "Antifragile").id
     }
 ]
-# le_sserafim_songs.map {|le_sserafim_song| Song.create(le_sserafim_song) }
+le_sserafim_songs.map {|le_sserafim_song| Song.create(le_sserafim_song) }
 
 le_sserafim_members = [
     {
@@ -621,7 +621,7 @@ le_sserafim_members = [
         image_url: "https://1409791524.rsc.cdn77.org/data/images/full/608432/le-sserafim-hong-eunchae.jpg?w=620"
     }
 ]
-# le_sserafim_members.map {|le_sserafim_member| Member.create(le_sserafim_member)}
+le_sserafim_members.map {|le_sserafim_member| Member.create(le_sserafim_member)}
 
 le_sserafim_artist_members = [
     {
@@ -645,7 +645,7 @@ le_sserafim_artist_members = [
         member_id: Member.find_by(name: "Eunchae").id
     }
 ]
-# le_sserafim_artist_members.map {|le_sserafim_artist_member| ArtistMember.create(le_sserafim_artist_member)}
+le_sserafim_artist_members.map {|le_sserafim_artist_member| ArtistMember.create(le_sserafim_artist_member)}
 
 newjeans = {
     name: "NewJeans",
@@ -655,7 +655,7 @@ newjeans = {
     artist_image_url: "https://media.tenor.com/YCq2sjq1OJcAAAAC/haerin-new-jeans.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(newjeans)
+Artist.create(newjeans)
 
 newjeans_albums = [
     {
@@ -669,7 +669,7 @@ newjeans_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/thumb/1/10/NewJeans_OMG_cover.jpg/220px-NewJeans_OMG_cover.jpg"
     }
 ]
-# newjeans_albums.map {|newjeans_album| Album.create(newjeans_album)}
+newjeans_albums.map {|newjeans_album| Album.create(newjeans_album)}
 
 newjeans_songs = [
     {
@@ -698,7 +698,7 @@ newjeans_songs = [
         album_id: Album.find_by(name: "OMG").id
     }
 ]
-# newjeans_songs.map {|newjeans_song| Song.create(newjeans_song)}
+newjeans_songs.map {|newjeans_song| Song.create(newjeans_song)}
 
 newjeans_members = [
     {
@@ -722,7 +722,7 @@ newjeans_members = [
         image_url: "data:image/jpeg;base64,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"
     }
 ]
-# newjeans_members.map {|newjeans_member| Member.create(newjeans_member)}
+newjeans_members.map {|newjeans_member| Member.create(newjeans_member)}
 
 newjeans_artist_member = [
     {
@@ -746,7 +746,7 @@ newjeans_artist_member = [
         member_id: Member.find_by(name: "Minji").id
     }
 ]
-# newjeans_artist_member.map {|newjeans_artist_member| ArtistMember.create(newjeans_artist_member)}
+newjeans_artist_member.map {|newjeans_artist_member| ArtistMember.create(newjeans_artist_member)}
 
 fela_kuti = {
     name: "Fela Kuti",
@@ -756,14 +756,14 @@ fela_kuti = {
     artist_image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Bh74nZq1WvWEItrq5A7TUBU8-zrdV9I-lQ&usqp=CAU",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(fela_kuti)
+Artist.create(fela_kuti)
 
 fela_kuti_album = {
     name: "The Best Best of Fela Kuti",
     year_released: 1999,
     album_cover_url: "https://upload.wikimedia.org/wikipedia/en/f/f4/The_Best_Best_of_Fela_Kuti.jpg"
 }
-# Album.create(fela_kuti_album)
+Album.create(fela_kuti_album)
 
 fela_kuti_songs = [
     {
@@ -792,20 +792,20 @@ fela_kuti_songs = [
         album_id: Album.find_by(name: "The Best Best of Fela Kuti").id
     }
 ]
-# fela_kuti_songs.map {|fela_kuti_song| Song.create(fela_kuti_song)}
+fela_kuti_songs.map {|fela_kuti_song| Song.create(fela_kuti_song)}
 
 fela_kuti_member = {
     name: "Fela Kuti",
     image_url: "data:image/jpeg;base64,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"
 }
-# clear
+clear
 
 
 fela_kuti_artist_member = {
     artist_id: Artist.find_by(name: 'Fela Kuti').id,
     member_id: Member.find_by(name: 'Fela Kuti').id
 }
-# ArtistMember.create(fela_kuti_artist_member)
+ArtistMember.create(fela_kuti_artist_member)
 
 prince_nico_mbarga = {
     name: "Prince Nico Mbarga",
@@ -815,33 +815,33 @@ prince_nico_mbarga = {
     artist_image_url: "https://www.myjoyonline.com/wp-content/uploads/2022/05/mbarga2-583x424.jpg",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(prince_nico_mbarga)
+Artist.create(prince_nico_mbarga)
 
 prince_nico_mbarga_album = {
     name: "Sweet Mother",
     year_released: 1976,
     album_cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWnenqNiYDzzaNs1ZyE8XFpng5FG54K4T64Bs0QmkGD_HNmty6024eI5YOmgOnNCB69A0&usqp=CAU"
 }
-# Album.create(prince_nico_mbarga_album)
+Album.create(prince_nico_mbarga_album)
 
 sweet_mother_song = {
     name: "Sweet Mother",
     artist_id: Artist.find_by(name: "Prince Nico Mbarga").id,
     album_id: Album.find_by(name: "Sweet Mother").id
 }
-# Song.create(sweet_mother_song)
+Song.create(sweet_mother_song)
 
 prince_nico_mbarga_member = {
     name: "Prince Nico Mbarga",
     image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzkITm9dIVSifRYnmLWi03eWVDmWyvEOdI2A&usqp=CAU"
 }
-# Member.create(prince_nico_mbarga_member)
+Member.create(prince_nico_mbarga_member)
 
 prince_nico_mbarga_artist_member = {
     artist_id: Artist.find_by(name: "Prince Nico Mbarga").id,
     member_id: Member.find_by(name: "Prince Nico Mbarga").id
 }
-# ArtistMember.create(prince_nico_mbarga_artist_member)
+ArtistMember.create(prince_nico_mbarga_artist_member)
 
 GG = {
     name: "Girl's Generation",
@@ -851,7 +851,7 @@ GG = {
     artist_image_url: "https://media.tenor.com/uHAOszetpkMAAAAC/snsd-girls-generation.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(GG)
+Artist.create(GG)
 
 gg_album = [
     {
@@ -860,7 +860,7 @@ gg_album = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/7/70/The_Boys_%28Girls%27_Generation_album_-_cover_art%29.jpg"
     }
 ]
-# Album.create(gg_album)
+Album.create(gg_album)
 
 gg_song = [
     {
@@ -869,7 +869,7 @@ gg_song = [
         album_id: Album.find_by(name: "The Boys").id
     }
 ]
-# Song.create(gg_song)
+Song.create(gg_song)
 
 gg_members = [
     {
@@ -906,10 +906,10 @@ gg_members = [
     }
 ]
 
-# gg_members.map do |member| 
-#     new_member=Member.create(member)
-#     Artist.find_by(name: "Girl's Generation").members << new_member
-# end
+gg_members.map do |member| 
+    new_member=Member.create(member)
+    Artist.find_by(name: "Girl's Generation").members << new_member
+end
 
 bts = {
     name: "BTS",
@@ -919,7 +919,7 @@ bts = {
     artist_image_url: "https://media.tenor.com/0aSvydSWjIgAAAAd/bts.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(bts)
+Artist.create(bts)
 
 bts_albums = [
     {
@@ -932,7 +932,7 @@ bts_albums = [
         year_released: 2020,
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/2/21/BTS_-_Map_of_the_Soul_7.png"
     }]
-# bts_albums.map { |album| Album.create(album) }
+bts_albums.map { |album| Album.create(album) }
 
 bts_songs = [
     {
@@ -981,7 +981,7 @@ bts_songs = [
         album_id: Album.find_by(name: "Map of the Soul").id
     }
 ]
-# bts_songs.map { |song| Song.create(song) }
+bts_songs.map { |song| Song.create(song) }
 
 bts_members = [
     {
@@ -1014,10 +1014,10 @@ bts_members = [
     }
 ]
 
-# bts_members.map do |member| 
-#     new_member = Member.create(member) 
-#     Artist.find_by(name: "BTS").members << new_member
-# end
+bts_members.map do |member| 
+    new_member = Member.create(member) 
+    Artist.find_by(name: "BTS").members << new_member
+end
 
 stray_kids = {
     name: "Stray Kids",
@@ -1027,7 +1027,7 @@ stray_kids = {
     artist_image_url: "https://media.tenor.com/o3iO38lDBIkAAAAC/stray-kids-get-cool.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(stray_kids)
+Artist.create(stray_kids)
 
 stray_kids_albums = [
     {
@@ -1046,7 +1046,7 @@ stray_kids_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/d/de/Stray_Kids_-_Maxident.png"
     }
 ]
-# stray_kids_albums.map { |album| Album.create(album) }
+stray_kids_albums.map { |album| Album.create(album) }
 
 stray_kids_songs = [
     {
@@ -1080,7 +1080,7 @@ stray_kids_songs = [
         album_id: Album.find_by(name: "Maxident").id
     }
 ]
-# stray_kids_songs.map { |song| Song.create(song) }
+stray_kids_songs.map { |song| Song.create(song) }
 
 stray_kids_members = [
     {
@@ -1117,10 +1117,10 @@ stray_kids_members = [
     }
 ]
 
-# stray_kids_members.map do |member| 
-#     new_member = Member.create(member) 
-#     Artist.find_by(name: "Stray Kids").members << new_member
-# end
+stray_kids_members.map do |member| 
+    new_member = Member.create(member) 
+    Artist.find_by(name: "Stray Kids").members << new_member
+end
 
 wonder_girls = {
     name: "Wonder Girls",
@@ -1130,7 +1130,7 @@ wonder_girls = {
     artist_image_url: "https://media.tenor.com/K70Xa0551dgAAAAC/wonder-girls-wonder.gif",
     user_id: User.find_by(username: "CASmooth").id
 }
-# Artist.create(wonder_girls)
+Artist.create(wonder_girls)
 
 wonder_girls_albums = [
     {
@@ -1144,7 +1144,7 @@ wonder_girls_albums = [
         album_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/53/WGNobody.jpg"
     }
 ]
-# wonder_girls_albums.map {|album| Album.create(album)}
+wonder_girls_albums.map {|album| Album.create(album)}
 
 wonder_girls_songs = [
     {
@@ -1158,7 +1158,7 @@ wonder_girls_songs = [
         album_id: Album.find_by(name: "The Wonder Years: Trilogy").id
     },
 ]
-# wonder_girls_songs.map {|song| Song.create(song)}
+wonder_girls_songs.map {|song| Song.create(song)}
 
 wonder_girls_members = [
     {
@@ -1191,9 +1191,9 @@ wonder_girls_members = [
     }
 ]
 
-# wonder_girls_members.map do |member| 
-#     new_member = Member.create(member) 
-#     Artist.find_by(name: "Wonder Girls").members << new_member
-# end
+wonder_girls_members.map do |member| 
+    new_member = Member.create(member) 
+    Artist.find_by(name: "Wonder Girls").members << new_member
+end
 
 puts 'Seeding done'

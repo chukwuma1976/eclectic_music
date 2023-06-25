@@ -4,7 +4,7 @@ import FilterByName from './FilterByName';
 import { UserContext } from './User';
 
 function DisplayAlbums() {
-    const { albums, setAlbums, resetSongs} = useContext(UserContext)
+    const { albums, setAlbums, resetSongs, resetArtists} = useContext(UserContext)
     const [name, setName] = useState('')
     const [artist, setArtist] = useState('')
     const [genre, setGenre] = useState("")
@@ -13,7 +13,6 @@ function DisplayAlbums() {
         const updatedAlbum = albums.find(album=>album.id === id)
         updatedAlbum.songs = songList
         onUpdate(updatedAlbum)
-        resetSongs()
     }
     function onUpdate(updatedAlbum){
         const albumWithUpdate = albums.map(album => {
@@ -22,11 +21,14 @@ function DisplayAlbums() {
             } else return album
         })
         setAlbums(albumWithUpdate)
+        resetArtists()
+        resetSongs()
     }
 
     function onDelete(id){
         setAlbums(albums.filter(album=>album.id !== id))
         resetSongs()
+        resetArtists()
     }
     const filteredByGenre = albums.filter(album=>album.genre.toLowerCase().includes(genre.toLowerCase()))
     const filteredByArtist = filteredByGenre.filter(album=>album.artists[0].name.toLowerCase().includes(artist.toLowerCase()))

@@ -16,6 +16,7 @@ function DisplayMembers() {
             } else return member
         })
         setMembers(updatedMembers)
+        resetArtists()
     }
 
     function onDelete(id){

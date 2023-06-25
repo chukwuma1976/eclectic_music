@@ -3,10 +3,11 @@ import { UserContext } from './User'
 import { useNavigate } from 'react-router-dom'
 
 function GoSolo({member}) {
-    const {user, today} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     const navigate = useNavigate()
     const [errors, setErrors] = useState(null)
     const {id, name, artists, image_url} = member
+    const today = new Date()
     const newSoloArtist= {
         name: name,
         genre: artists[0].genre,

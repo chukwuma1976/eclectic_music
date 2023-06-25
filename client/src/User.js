@@ -42,6 +42,12 @@ function UserProvider({children}) {
         .then(songs => {setSongs(songs)})
       }, []); 
 
+    function resetArtists(artists) {
+        fetch("/artists")
+        .then(res => res.json())
+        .then(artists => {setArtists(artists)}) 
+    }
+
     function resetAlbums(){
         fetch("/albums")
         .then(res => res.json())
@@ -81,7 +87,7 @@ function UserProvider({children}) {
             albums, setAlbums, 
             members, setMembers, 
             songs, setSongs, 
-            resetAlbums, resetMembers, resetSongs, resetAll
+            resetArtists, resetAlbums, resetMembers, resetSongs, resetAll
         }}>
             {children}
         </UserContext.Provider>
