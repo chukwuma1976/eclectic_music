@@ -24,7 +24,7 @@ function DisplaySoloArtist() {
     }, [])
 
     const {id, name, genre, date_established, interesting_fact, 
-        artist_image_url, albums, members, number_of_members} = artist
+        artist_image_url, albums, number_of_members} = artist
     const [displayProfile, setDisplayProfile] = useState(false)
     const [displayAddAlbum, setDisplayAddAlbum] = useState(false)
     const [artistAlbums, setArtistAlbums] = useState(albums)
